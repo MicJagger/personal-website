@@ -6,7 +6,13 @@
   justify-content: space-around;
   padding: calc(12px + 2vmin);
 }
-  
-.navbar-text {
+
+.navbar-links {
+  color: #eeeeee;
+  display: flex;
+  gap: 4rem;
+}
+
+.navbar-title {
   color: #eeeeee;
 }

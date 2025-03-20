@@ -4,8 +4,14 @@ const NavBar = () => {
     
     return (
         <nav className="navbar">
-                <a className="navbar-text" href="/projects">link 1</a>
-                <a className="navbar-text" href="/projects">link 2</a>
+            <nav className="navbar-title">
+                Michael Jagiello
+            </nav>
+            <nav className="navbar-links">
+                <a className="navbar-links" href="/projects">About</a>
+                <a className="navbar-links" href="/projects">Projects</a>
+                <a className="navbar-links" href="/projects">Contact</a>
+            </nav>
         </nav>
     );
 }

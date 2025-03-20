@@ -18,14 +18,12 @@ const HomePage = () => {
     return (
         <>
             <head>
-                <link rel="logo" href="../../public/favicon.ico" type="image/png"></link>
                 <title>Michael Jagiello</title>
             </head>
 
             <NavBar />
 
-            <header className="HomePage-header">
-
+            <section id="profile" className="HomePage-profile">
                 <img src={logo} className="HomePage-logo" alt="logo" />
                 <p>
                     hello world
@@ -38,7 +36,15 @@ const HomePage = () => {
                 >
                     get help
                 </a>
-            </header>
+            </section>
+
+            <section id="projects">
+
+            </section>
+
+            <section id="contact">
+
+            </section>
 
             <footer>
                 

@@ -5,9 +5,10 @@
 
 .HomePage-footer {
   background-color: #222222;
+  color: #eeeeee;
 }
 
-.HomePage-header {
+.HomePage-profile {
   background-color: #222222;
   min-height: 100vh;
   display: flex;
@@ -16,10 +17,6 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
-
-.HomePage-link {
-  color: #61dafb;
 }
 
 .HomePage-logo {
