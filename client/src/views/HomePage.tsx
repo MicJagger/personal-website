@@ -1,6 +1,7 @@
 import Alert from '../components/Alert'
 import logo from '../logo.svg';
 import '../styles/HomePage.css';
+import NavBar from '../components/NavBar';
 import {useState} from 'react'
 
 const HomePage = () => {
@@ -14,23 +15,23 @@ const HomePage = () => {
         setAlertMessage("null");
     }
 
-    
-
     return (
         <>
             <head>
+                <link rel="logo" href="../../public/favicon.ico" type="image/png"></link>
                 <title>Michael Jagiello</title>
             </head>
-            <Alert message={alertMessage} type={"alert-error"} />
 
-            <header className="App-header">
-                
-                <img src={logo} className="App-logo" alt="logo" />
+            <NavBar />
+
+            <header className="HomePage-header">
+
+                <img src={logo} className="HomePage-logo" alt="logo" />
                 <p>
                     hello world
                 </p>
                 <a
-                    className="App-link"
+                    className="HomePage-link"
                     href="https://reactjs.org"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -38,6 +39,11 @@ const HomePage = () => {
                     get help
                 </a>
             </header>
+
+            <footer>
+                
+            </footer>
+
         </>
     );
 }
