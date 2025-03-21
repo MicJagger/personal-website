@@ -1,18 +1,20 @@
 .navbar {
   align-items: center;
-  background-color: #222222;
+  background-color: #1e1e1e;
   display: flex;
-  font-size: calc(12px + 2vmin);
+  font-size: calc(1rem + 2vmin);
   justify-content: space-around;
-  padding: calc(12px + 2vmin);
+  min-height: 8dvh;
 }
 
 .navbar-links {
   color: #eeeeee;
   display: flex;
-  gap: 4rem;
+  gap: 4dvw;
+  text-decoration: none;
 }
 
 .navbar-title {
   color: #eeeeee;
+  text-decoration: none;
 }

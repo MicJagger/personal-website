@@ -23,31 +23,20 @@ const HomePage = () => {
 
             <NavBar />
 
-            <section id="profile" className="HomePage-profile">
-                <img src={logo} className="HomePage-logo" alt="logo" />
-                <p>
-                    hello world
+            <section id="profile" className="homepage-profile">
+                <img src={logo} className="homepage-logo" alt="logo" />
+                <p className="homepage-profile-text">
+                    Michael Jagiello
                 </p>
-                <a
-                    className="HomePage-link"
-                    href="https://reactjs.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    get help
-                </a>
             </section>
 
-            <section id="projects">
-
-            </section>
-
-            <section id="contact">
-
-            </section>
-
-            <footer>
+            <section id="projects" className="homepage-projects">
                 
+            </section>
+
+            <footer className="homepage-footer">
+                Copyright © 2025 Michael Jagiello. All Rights Reserved
+                <a className="homepage-footer" href="/">Go Home</a>
             </footer>
 
         </>
