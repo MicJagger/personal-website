@@ -5,6 +5,9 @@
   font-size: calc(1rem + 2vmin);
   height: 8dvh;
   justify-content: space-around;
+  position: fixed;
+  width: 100dvw;
+  z-index: 100;
 }
 
 .navbar-links {

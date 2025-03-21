@@ -29,7 +29,7 @@
   color: #eeeeee;
   display: flex;
   font-size: calc(1rem + 2vmin);
-  height: 85dvh;
+  height: 90dvh;
   min-width: 50vw;
   justify-content: center;
 }
