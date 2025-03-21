@@ -3,8 +3,8 @@
   background-color: #1e1e1e;
   display: flex;
   font-size: calc(1rem + 2vmin);
+  height: 8dvh;
   justify-content: space-around;
-  min-height: 8dvh;
 }
 
 .navbar-links {

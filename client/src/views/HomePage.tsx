@@ -1,4 +1,5 @@
 import Alert from '../components/Alert'
+import Footer from '../components/Footer'
 import logo from '../logo.svg';
 import '../styles/HomePage.css';
 import NavBar from '../components/NavBar';
@@ -34,11 +35,7 @@ const HomePage = () => {
                 
             </section>
 
-            <footer className="homepage-footer">
-                Copyright © 2025 Michael Jagiello. All Rights Reserved
-                <a className="homepage-footer" href="/">Go Home</a>
-            </footer>
-
+            <Footer />
         </>
     );
 }

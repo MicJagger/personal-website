@@ -3,23 +3,6 @@
   text-align: center;
 }
 
-.homepage-contact {
-  background-color: #222222;
-  color: #eeeeee;
-  min-height: 100dvh;
-}
-
-.homepage-footer {
-  align-items: center;
-  background-color: #1e1e1e;
-  color: #eeeeee;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  min-height: 1dvh;
-  padding: 1rem;
-}
-
 .homepage-logo {
   height: 40vmin;
   pointer-events: none;
@@ -46,7 +29,7 @@
   color: #eeeeee;
   display: flex;
   font-size: calc(1rem + 2vmin);
-  min-height: 90dvh;
+  height: 85dvh;
   min-width: 50vw;
   justify-content: center;
 }
