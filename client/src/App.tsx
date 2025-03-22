@@ -6,19 +6,11 @@ import Projects from './views/Projects'
 function App() {
   return (
     <BrowserRouter>
-      <Main />
-    </BrowserRouter>
-  );
-}
-
-const Main = () => {
-  return (
-    <>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/projects" element={<Projects />} />
       </Routes>
-    </>
+    </BrowserRouter>
   );
 }
 

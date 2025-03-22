@@ -1,11 +1,17 @@
 .homepage {
-  background-color: #222222;
-  text-align: center;
+  background-color: #262626;
+  color: #eeeeee;
+}
+
+img.social-button {
+  cursor: pointer;
+  max-width: 2rem;
+  min-width: 4dvmin;
 }
 
 .homepage-logo {
-  height: 40vmin;
   pointer-events: none;
+  width: 30dvmin;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -25,21 +31,27 @@
 
 .homepage-profile {
   align-items: center;
-  background-color: #222222;
-  color: #eeeeee;
   display: flex;
-  font-size: calc(1rem + 2vmin);
   height: 90dvh;
-  min-width: 50vw;
   justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 60dvw;
 }
 
 .homepage-profile-text {
-  width: 40vmin;
+  display: flex;
+  font-size: calc(1rem + 2vmin);
+  justify-content: center;
+  width: 30dvmin;
 }
 
 .homepage-projects {
-  background-color: #222222;
-  color: #eeeeee;
   min-height: 100dvh;
+}
+
+.socials {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
 }
