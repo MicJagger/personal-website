@@ -1,65 +1,79 @@
-.homepage {
-  background-color: #2c2c2c;
-  color: #eeeeee;
-}
-
 .homepage-face {
-  padding: 1dvmin;
+  padding: 1vmin;
   pointer-events: none;
-  width: 30dvmin;
+  width: 30vmin;
 }
 
 img.social-button {
   cursor: pointer;
   max-width: 3rem;
-  min-width: 5dvmin;
+  min-width: 5vmin;
 }
 
 .homepage-profile {
   align-items: center;
   display: flex;
-  height: 100dvh;
+  height: 100vh;
   justify-content: center;
-  min-width: 60dvw;
+  min-width: 60vw;
 }
 
 .homepage-profile-text {
+  color: #bbbbbb;
   display: flex;
   font-size: calc(1rem + 2vmin);
+  height: 1vh;
   justify-content: center;
-  min-height: 10dvh;
+  padding: 2px;
   text-align: center;
-  padding: 1dvmin;
-  width: 30dvmin;
+  width: 40vmin;
 }
 
-@media all and (max-width: 60rem) {
+.homepage-profile-name-text {
+  display: flex;
+  font-size: calc(2rem + 2vmin);
+  height: 1vh;
+  justify-content: center;
+  padding-bottom: 5px;
+  text-align: center;
+  width: 40vmin;
+}
+
+@media all and (max-width: 60em) {
   .homepage-face {
+    display: block;
+    padding: 0;
     pointer-events: none;
-    width: 50dvmin;
+    margin: auto;
+    min-width: 50vmin;
   }
 
   .homepage-profile {
     box-sizing: border-box;
     display: grid;
-    height: 100dvh;
+    height: 100vh;
     min-height: fit-content;
-    min-width: 60dvw;
-    padding-bottom: 20dvh;
-    padding-top: 20dvh;
+    width: 100%;
+    padding-bottom: 25vh;
+    padding-top: 25vh;
+  }
+
+  .homepage-profile-name-text {
+    width: 100%;
   }
 
   .homepage-profile-text {
-    width: 50dvmin;
+    width: 100%;
   }
 }
 
 .homepage-projects {
-  min-height: 100dvh;
+  min-height: 100vh;
 }
 
 .socials {
   display: flex;
   gap: 2rem;
   justify-content: center;
+  padding: 1vmin;
 }

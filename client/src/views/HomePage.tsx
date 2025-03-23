@@ -1,4 +1,5 @@
 import Alert from '../components/Alert'
+import '../styles/common.css'
 import Footer from '../components/Footer'
 import githubImage from '../assets/github192.png'
 import headImage from '../assets/temphead512.png';
@@ -46,10 +47,24 @@ const HomePage = () => {
                 <title>Michael Jagiello</title>
             </title>
 
-            <section className="homepage">
+            <section className="page-default">
                 <NavBar />
 
                 <section id="profile" className="homepage-profile">
+                    <img src={headImage} className="homepage-face" alt="face"/>
+                    <div>
+                        <p className="homepage-profile-text">I am</p>
+                        <p className="homepage-profile-name-text">Michael Jagiello</p>
+                        <p className="homepage-profile-text">Software Engineer</p>
+                        <p className="homepage-profile-text">Computer Nerd</p>
+                        <div className="socials">
+                            <GitHubButton />
+                            <LinkedInButton />
+                        </div>
+                    </div>
+                </section>
+
+                <section id="about" className="homepage-profile">
                     <img src={headImage} className="homepage-face" alt="face"/>
                     <div>
                         <p className="homepage-profile-text">
@@ -60,10 +75,6 @@ const HomePage = () => {
                             <LinkedInButton />
                         </div>
                     </div>
-                </section>
-
-                <section id="projects" className="homepage-projects">
-                
                 </section>
 
                 <Footer />

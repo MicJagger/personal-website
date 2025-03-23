@@ -8,7 +8,7 @@ const NavBar = () => {
                 <a className="navbar-title" href="/">Michael Jagiello</a>
             </nav>
             <nav className="navbar-links">
-                <a className="navbar-links" href="/#profile">About</a>
+                <a className="navbar-links" href="/#about">About</a>
                 <a className="navbar-links" href="/projects">Projects</a>
             </nav>
         </nav>

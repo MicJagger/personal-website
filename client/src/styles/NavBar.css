@@ -3,17 +3,17 @@
   background-color: #1e1e1e;
   display: flex;
   font-size: calc(1rem + 2vmin);
-  height: 8dvh;
+  height: 8vh;
   justify-content: space-around;
   position: fixed;
-  width: 100dvw;
+  width: 100vw;
   z-index: 100;
 }
 
 .navbar-links {
   color: #eeeeee;
   display: flex;
-  gap: 4dvw;
+  gap: 4vw;
   text-decoration: none;
 }
 

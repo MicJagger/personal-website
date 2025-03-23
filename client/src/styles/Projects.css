@@ -1,10 +1,8 @@
 .projects-main {
   align-items: center;
-  background-color: #222222;
-  color: #eeeeee;
   display: flex;
   font-size: calc(1rem + 2vmin);
-  height: 90dvh;
+  height: 90vh;
   min-width: 50vw;
   justify-content: center;
 }

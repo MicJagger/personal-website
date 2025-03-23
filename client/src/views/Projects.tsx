@@ -1,3 +1,4 @@
+import '../styles/common.css'
 import Footer from '../components/Footer'
 import NavBar from '../components/NavBar'
 import '../styles/Projects.css'
@@ -11,10 +12,10 @@ const Projects = () => {
 
         <NavBar />
 
-        <section id="main" className="projects-main">
-            <header className="projects-main">
+        <section id="main" className="page-default">
+            <section className="projects-main">
                 Projects
-            </header>
+            </section>
         </section>
 
         <Footer />
