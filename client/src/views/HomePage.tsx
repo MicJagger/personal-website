@@ -1,24 +1,20 @@
-import Alert from '../components/Alert'
 import '../styles/common.css'
 import Footer from '../components/Footer'
 import githubImageBlack from '../assets/github-black192.png'
 import githubImageWhite from '../assets/github-white192.png'
 import headImage from '../assets/temphead512.png';
 import linkedinImage from '../assets/linkedin192.png'
+import linkedinImageFullBlack from '../assets/linkedinFull-black.png'
+import linkedinImageFullWhite from '../assets/linkedinFull-white.png'
 import '../styles/HomePage.css';
 import NavBar from '../components/NavBar';
 import {Fragment, MouseEvent, useState} from 'react'
 
 const HomePage = () => {
-    const [alertMessage, setAlertMessage] = useState("null");
-
-    const throwError = (message:string) => {
-        setAlertMessage(message);
-    }
-
-    const endError = () => {
-        setAlertMessage("null");
-    }
+    /* TODO: light / dark mode
+    document.getElementById("home-page")?.classList.toggle("page-default");
+    document.getElementById("home-page")?.classList.toggle("page-default-light");
+    */
 
     const GitHubButton = () => {
         const handleMouseEvent = (mouseEvent: MouseEvent<HTMLImageElement>) => {
@@ -42,11 +38,22 @@ const HomePage = () => {
         );
     }
 
+    const LinkedInButtonFull = () => {
+        const handleMouseEvent = (mouseEvent: MouseEvent<HTMLImageElement>) => {
+            mouseEvent.preventDefault();
+            window.open("https://www.linkedin.com/in/michael-jagiello/");
+        }
+
+        return (
+            <img src={linkedinImageFullWhite} className="social-banner-button" alt="LinkedIn" onClick={handleMouseEvent}/>
+        );
+    }
+
     return (
         <>
             <title>Michael Jagiello</title>
 
-            <section className="page-default">
+            <section id="home-page" className="page-default">
                 <NavBar />
 
                 <section id="profile" className="homepage-profile">
@@ -64,15 +71,22 @@ const HomePage = () => {
                 </section>
 
                 <section id="about" className="homepage-about">
-                    <img src={headImage} className="homepage-face" alt="face"/>
-                    <div>
-                        <p className="homepage-profile-text">
-                            Michael Jagiello
+                    <header>About</header>
+
+                </section>
+
+                <section id="project-highlights" className="homepage-project-highlights">
+                    <header>Project Highlights</header>
+
+                </section>
+
+                <section id="contact" className="homepage-contact">
+                    <header>Contact Me</header>
+                    <div className="homepage-contact-text">
+                        <p>
+                            Connect with me on
                         </p>
-                        <div className="socials">
-                            <GitHubButton />
-                            <LinkedInButton />
-                        </div>
+                        <LinkedInButtonFull />
                     </div>
                 </section>
 
