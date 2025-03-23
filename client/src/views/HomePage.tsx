@@ -1,8 +1,8 @@
 import Alert from '../components/Alert'
 import Footer from '../components/Footer'
 import githubImage from '../assets/github192.png'
+import headImage from '../assets/temphead512.png';
 import linkedinImage from '../assets/linkedin192.png'
-import logo from '../logo.svg';
 import '../styles/HomePage.css';
 import NavBar from '../components/NavBar';
 import {Fragment, MouseEvent, useState} from 'react'
@@ -50,7 +50,7 @@ const HomePage = () => {
                 <NavBar />
 
                 <section id="profile" className="homepage-profile">
-                    <img src={logo} className="homepage-logo" alt="logo" />
+                    <img src={headImage} className="homepage-face" alt="face"/>
                     <div>
                         <p className="homepage-profile-text">
                             Michael Jagiello

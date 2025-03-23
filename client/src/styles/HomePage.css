@@ -1,41 +1,25 @@
 .homepage {
-  background-color: #262626;
+  background-color: #2c2c2c;
   color: #eeeeee;
 }
 
-img.social-button {
-  cursor: pointer;
-  max-width: 2rem;
-  min-width: 4dvmin;
-}
-
-.homepage-logo {
+.homepage-face {
+  padding: 1dvmin;
   pointer-events: none;
   width: 30dvmin;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .homepage-logo {
-    animation: HomePage-logo-spin infinite 20s linear;
-  }
-}
-
-@keyframes HomePage-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+img.social-button {
+  cursor: pointer;
+  max-width: 3rem;
+  min-width: 5dvmin;
 }
 
 .homepage-profile {
   align-items: center;
   display: flex;
-  height: 90dvh;
+  height: 100dvh;
   justify-content: center;
-  margin-left: auto;
-  margin-right: auto;
   min-width: 60dvw;
 }
 
@@ -43,7 +27,31 @@ img.social-button {
   display: flex;
   font-size: calc(1rem + 2vmin);
   justify-content: center;
+  min-height: 10dvh;
+  text-align: center;
+  padding: 1dvmin;
   width: 30dvmin;
+}
+
+@media all and (max-width: 60rem) {
+  .homepage-face {
+    pointer-events: none;
+    width: 50dvmin;
+  }
+
+  .homepage-profile {
+    box-sizing: border-box;
+    display: grid;
+    height: 100dvh;
+    min-height: fit-content;
+    min-width: 60dvw;
+    padding-bottom: 20dvh;
+    padding-top: 20dvh;
+  }
+
+  .homepage-profile-text {
+    width: 50dvmin;
+  }
 }
 
 .homepage-projects {
