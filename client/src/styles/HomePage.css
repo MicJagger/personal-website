@@ -1,13 +1,15 @@
+.homepage-about {
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  min-width: 60vw;
+}
+
 .homepage-face {
   padding: 1vmin;
   pointer-events: none;
   width: 30vmin;
-}
-
-img.social-button {
-  cursor: pointer;
-  max-width: 3rem;
-  min-width: 5vmin;
 }
 
 .homepage-profile {
@@ -70,6 +72,12 @@ img.social-button {
 .homepage-projects {
   min-height: 100vh;
 }
+
+img.social-button {
+    cursor: pointer;
+    max-width: 3rem;
+    min-width: 5vmin;
+  }
 
 .socials {
   display: flex;

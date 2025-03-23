@@ -11,13 +11,13 @@
 }
 
 .navbar-links {
-  color: #eeeeee;
+  color: #f8f8f8;
   display: flex;
   gap: 4vw;
   text-decoration: none;
 }
 
 .navbar-title {
-  color: #eeeeee;
+  color: #f8f8f8;
   text-decoration: none;
 }

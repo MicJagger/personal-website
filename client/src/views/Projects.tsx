@@ -5,21 +5,19 @@ import '../styles/Projects.css'
 
 const Projects = () => {
     return (
-    <>
-        <head>
+        <>
             <title>Projects</title>
-        </head>
 
-        <NavBar />
+            <section id="main" className="page-default">
+                <NavBar />
 
-        <section id="main" className="page-default">
-            <section className="projects-main">
-                Projects
+                <section className="projects-main">
+                    Projects
+                </section>
+
+                <Footer />
             </section>
-        </section>
-
-        <Footer />
-    </>
+        </>
     );
 }
 

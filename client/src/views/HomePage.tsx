@@ -1,7 +1,8 @@
 import Alert from '../components/Alert'
 import '../styles/common.css'
 import Footer from '../components/Footer'
-import githubImage from '../assets/github192.png'
+import githubImageBlack from '../assets/github-black192.png'
+import githubImageWhite from '../assets/github-white192.png'
 import headImage from '../assets/temphead512.png';
 import linkedinImage from '../assets/linkedin192.png'
 import '../styles/HomePage.css';
@@ -26,7 +27,7 @@ const HomePage = () => {
         }
 
         return (
-            <img src={githubImage} className="social-button" alt="LinkedIn" onClick={handleMouseEvent}/>
+            <img src={githubImageWhite} className="social-button" alt="GitHub" onClick={handleMouseEvent}/>
         );
     }
 
@@ -43,9 +44,7 @@ const HomePage = () => {
 
     return (
         <>
-            <title>
-                <title>Michael Jagiello</title>
-            </title>
+            <title>Michael Jagiello</title>
 
             <section className="page-default">
                 <NavBar />
@@ -64,7 +63,7 @@ const HomePage = () => {
                     </div>
                 </section>
 
-                <section id="about" className="homepage-profile">
+                <section id="about" className="homepage-about">
                     <img src={headImage} className="homepage-face" alt="face"/>
                     <div>
                         <p className="homepage-profile-text">

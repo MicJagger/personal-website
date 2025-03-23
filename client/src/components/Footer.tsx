@@ -7,7 +7,7 @@ const Footer = () => {
             <p className="footer-text">
                 Copyright © 2025 Michael Jagiello. All Rights Reserved
             </p>
-            <a className="footer-text" href="/">
+            <a className="footer-text" href="/#">
                 Go Home
             </a>
         </footer>
