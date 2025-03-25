@@ -1,0 +1,8 @@
+.projects-main {
+  align-items: center;
+  display: flex;
+  font-size: calc(1rem + 2vmin);
+  height: 90vh;
+  min-width: 50vw;
+  justify-content: center;
+}

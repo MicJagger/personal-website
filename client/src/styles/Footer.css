@@ -1,0 +1,15 @@
+.footer {
+  align-items: center;
+  background-color: #1e1e1e;
+  display: flex;
+  flex-direction: column;
+  font-size: calc(6px + 1vmin);
+  height: 10vh;
+  justify-content: center;
+  min-height: 50px;
+}
+
+.footer-text {
+  color: #f8f8f8;
+  padding-bottom: 8px;
+}
