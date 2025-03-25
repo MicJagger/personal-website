@@ -13,10 +13,6 @@ import {MouseEvent} from 'react'
 import pwmgenerator from '../assets/pwm-generator-simplified.png'
 
 const HomePage = () => {
-    /* TODO: light / dark mode
-    document.getElementById("home-page")?.classList.toggle("page-default");
-    document.getElementById("home-page")?.classList.toggle("page-default-light");
-    */
 
     const GitHubButton = () => {
         const handleMouseEvent = (mouseEvent: MouseEvent<HTMLImageElement>) => {

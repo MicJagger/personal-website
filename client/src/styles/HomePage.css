@@ -89,6 +89,7 @@
 }
 
 .face {
+  border-radius: 50%;
   padding: 1vmin;
   pointer-events: none;
   width: 30vmin;
