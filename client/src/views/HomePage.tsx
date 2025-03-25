@@ -3,12 +3,14 @@ import Footer from '../components/Footer'
 import githubImageBlack from '../assets/github-black192.png'
 import githubImageWhite from '../assets/github-white192.png'
 import headImage from '../assets/temphead512.png';
+import '../styles/HomePage.css';
 import linkedinImage from '../assets/linkedin192.png'
 import linkedinImageFullBlack from '../assets/linkedinFull-black.png'
 import linkedinImageFullWhite from '../assets/linkedinFull-white.png'
-import '../styles/HomePage.css';
+import localproconnect from '../assets/localpro-connect.png'
 import NavBar from '../components/NavBar';
 import {MouseEvent} from 'react'
+import pwmgenerator from '../assets/pwm-generator-simplified.png'
 
 const HomePage = () => {
     /* TODO: light / dark mode
@@ -49,6 +51,17 @@ const HomePage = () => {
         );
     }
 
+    const ButtonViewMore = (link: string) => {
+        const handleMouseEvent = (mouseEvent: MouseEvent<HTMLButtonElement>) => {
+            mouseEvent.preventDefault();
+            window.open(link);
+        }
+
+        return (
+            <button className="button-view-more" onClick={handleMouseEvent}>View More</button>
+        );
+    }
+
     return (
         <>
             <title>Michael Jagiello</title>
@@ -74,7 +87,21 @@ const HomePage = () => {
                     <header>About</header>
                     <p className="about-text">
                         Hey, I'm Michael, a senior Computer Science major at the University of Florida.
-                        
+                        Learning about computing has been a hobby of mine for a decade now, and I am happy to
+                        finally have gotten to creating.
+                        I enjoy just going out and making stuff, and finding new things I didn't understand prior.
+                    </p>
+                    <p className="about-text">
+                        Unlike many of the people I talk to, I love low-level programming and fundamentals, and have
+                        dedicated my life to understanding a computer from the text you are reading now,
+                        down to the registers working tirelessly to display it.
+                    </p>
+                    <p className="about-text">
+                        Despite my time in hardware and low-level software, that doesn't mean I don't enjoy production-level development.
+                        Building websites and scripts has its place, and machine code or even C++ simply will not always get the job done.
+                    </p>
+                    <p className="about-text">
+                        The goal is to know it all, but we all know that can't happen - I'm stubborn enough to try anyway.
                     </p>
 
                     <div className="array">
@@ -95,7 +122,7 @@ const HomePage = () => {
                             <p className="skills-box-title">Experienced In</p>
                             <ul className="list-box">
                                 <li>C / C++</li>
-                                <li>TypeScript / Javascript</li>
+                                <li>TypeScript / JavaScript</li>
                                 <li>HTML + CSS</li>
                                 <li>Python</li>
                                 <li>Git</li>
@@ -121,11 +148,33 @@ const HomePage = () => {
 
                 <section id="project-highlights" className="project-highlights">
                     <header>Project Highlights</header>
-
-                    <div className="project-box">
-
+                    <div className="array">
+                        <div className="project-box">
+                            <img src={headImage} className="project-image" alt="project-image"/>
+                            <div className="project-text">
+                                <p className="project-text-title">personal-website</p>
+                                <p className="project-text-subtitle">TypeScript | HTML | CSS</p>
+                                <div className="project-more">{ButtonViewMore("https://github.com/MicJagger/personal-website")}</div>
+                            </div>
+                        </div>
+                        <div className="project-box">
+                            <img src={localproconnect} className="project-image" alt="project-image"/>
+                            <div className="project-text">
+                                <p className="project-text-title">LocalPro Connect</p>
+                                <p className="project-text-subtitle">JavaScript | HTML | CSS</p>
+                                <div className="project-more">{ButtonViewMore("https://github.com/MicJagger/CENPROJECT")}</div>
+                            </div>
+                        </div>
+                        <div className="project-box">
+                            <img src={pwmgenerator} className="project-image" alt="project-image"/>
+                            <div className="project-text">
+                                <p className="project-text-title">pwm-generator</p>
+                                <p className="project-text-subtitle">C++</p>
+                                <div className="project-more">{ButtonViewMore("https://github.com/MicJagger/pwm-generator")}</div>
+                            </div>
+                        </div>
                     </div>
-
+                    {/* <a href="/project" className="">More Projects</a> */}
                 </section>
 
                 <section id="contact" className="contact">

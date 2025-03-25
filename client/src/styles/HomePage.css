@@ -4,11 +4,11 @@
   justify-content: center;
   min-height: 80vh;
   padding-top: 10vh;
-  padding-bottom: 10vh;
 }
 
 .about-text {
-  font-size: calc(1rem + 1vh);
+  color: #dddddd;
+  font-size: calc(0.8rem + 0.8vh);
   max-width: 80%;
   padding-left: 10%;
 }
@@ -20,13 +20,30 @@
   justify-content: center;
 }
 
+.button-view-more {
+  background: none;
+  border: #eeeeee 0.1rem solid;
+  border-radius: 2rem;
+  color: #eeeeee;
+  cursor: pointer;
+  display: flex;
+  font-size: 80%;
+  justify-content: center;
+  margin: 1rem;
+  padding: 1rem;
+  transition: all 500ms ease;
+  width: fit-content;
+}
+
 .contact {
   align-items: center;
   display: grid;
-  height: 20vh;
+  height: 20vmin;
   justify-content: center;
-  min-height: 10rem;
+  min-height: 20rem;
   min-width: 60vw;
+  padding-top: 10vh;
+  padding-bottom: 4vh;
 }
 
 .education-box {
@@ -45,7 +62,7 @@
 
 .education-details {
   border: #777777 0.1rem solid;
-  border-radius: 1rem;
+  border-radius: 2rem;
   display: grid;
   justify-content: center;
   line-height: 3rem;
@@ -98,9 +115,10 @@ img.social-button {
 
 .list-box {
   border: #777777 0.1rem solid;
-  border-radius: 1rem;
+  border-radius: 2rem;
   font-size: calc(1.5rem + 0.2vmin);
-  width: 20rem;
+  min-width: 20rem;
+  width: 25vw;
 }
 
 .profile {
@@ -137,17 +155,55 @@ img.social-button {
 }
 
 .project-box {
-  display: flex;
+  border: #777777 0.1rem solid;
+  border-radius: 2rem;
+  display: grid;
   font-size: calc(1rem + 1vmin);
+  margin: 2rem;
+  width: calc(20rem + 5vw);
+}
+
+.project-text {
+  display: grid;
+  justify-content: center;
+  line-height: 4rem;
+}
+
+.project-text-title {
+  display: flex;
+  font-size: 130%;
+  justify-content: center;
+  margin: 0rem;
+}
+
+.project-text-subtitle {
+  color: #aaaaaa;
+  display: flex;
+  font-size: 70%;
+  justify-content: center;
+  margin: 0rem;
+}
+
+.project-more {
+  display: flex;
+  justify-content: center;
+  margin: 0rem;
 }
 
 .project-highlights {
   align-items: center;
-  display: flex;
+  display: grid;
   height: fit-content;
   justify-content: center;
-  min-height: 90vh;
+  min-height: 60vh;
   padding-top: 10vh;
+}
+
+.project-image {
+  border-radius: 2rem;
+  height: 80%;
+  margin: 10%;
+  width: 80%;
 }
 
 .skills-box {
