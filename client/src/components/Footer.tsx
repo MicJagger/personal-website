@@ -1,13 +1,14 @@
+import '../styles/common.css'
 import '../styles/Footer.css'
 
 const Footer = () => {
     
     return (
         <footer className="footer">
-            <p className="footer-text">
+            <p className="small white">
                 Copyright © 2025 Michael Jagiello. All Rights Reserved
             </p>
-            <a className="footer-text" href="/#">
+            <a className="small white" href="/#">
                 Go Home
             </a>
         </footer>
