@@ -1,3 +1,8 @@
+.link-box {
+  padding: 1%;
+  width: 15vw;
+}
+
 nav.inner {
   align-items: center;
   background-color: #ffffff;
@@ -9,7 +14,7 @@ nav.inner {
   margin: auto;
   opacity: 0.5;
   position: relative;
-  width: 75%;
+  width: 80%;
 }
 
 nav.outer {
@@ -17,13 +22,15 @@ nav.outer {
   display: block;
   position: fixed;
   width: 100%;
-  z-index: 100;
+  z-index: 50;
 }
 
 .navbar-links {
   color: #000000;
   display: flex;
+  font-size: calc(1rem + 1vmin);
   gap: 4vw;
+  justify-content: center;
   text-decoration: none;
 }
 

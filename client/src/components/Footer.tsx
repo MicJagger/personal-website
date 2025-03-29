@@ -4,14 +4,11 @@ import '../styles/Footer.css'
 const Footer = () => {
     
     return (
-        <footer className="footer">
-            <p className="small white">
+        <footer className="outer"><footer className="inner font-default">
+            <p className="small">
                 Copyright © 2025 Michael Jagiello. All Rights Reserved
             </p>
-            <a className="small white" href="/#">
-                Go Home
-            </a>
-        </footer>
+        </footer></footer>
     );
 }
 

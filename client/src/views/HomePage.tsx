@@ -9,53 +9,85 @@ import linkedinImageFullBlack from '../assets/linkedinFull-black.png'
 import linkedinImageFullWhite from '../assets/linkedinFull-white.png'
 import localproconnect from '../assets/localpro-connect.png'
 import NavBar from '../components/NavBar';
-import {MouseEvent} from 'react'
+import { MouseEvent } from 'react'
 import pwmgenerator from '../assets/pwm-generator-simplified.png'
+
+
+
+
+
+import { Terminal } from '../utils/terminal';
+
+
+
+
+
+const handleClickButton = (mouseEvent: MouseEvent<HTMLButtonElement>, link: string) => {
+    mouseEvent.preventDefault();
+    window.open(link);
+}
+
+const handleClickImage = (mouseEvent: MouseEvent<HTMLImageElement>, link: string) => {
+    mouseEvent.preventDefault();
+    window.open(link);
+}
+
 
 const HomePage = () => {
 
-    const handleClickButton = (mouseEvent: MouseEvent<HTMLButtonElement>, link: string) => {
-        mouseEvent.preventDefault();
-        window.open(link);
-    }
+    var terminal1 = new Terminal("terminal", "input");
 
-    const handleClickImage = (mouseEvent: MouseEvent<HTMLImageElement>, link: string) => {
-        mouseEvent.preventDefault();
-        window.open(link);
-    }
+    terminal1.enableUserInput();
+
 
     return (
         <>
             <title>Michael Jagiello</title>
 
-            <section id="home" className="home">
-                
+            <section id="home" className="home font-default">
+
                 {NavBar()}
+
+                <section id="spacer" className="spacer"/>
+                <section id="spacer" className="spacer"/>
+
+
+
+                <section id="terminal" className="terminal">
+                    {}
+                </section>
+
+                <span id="input" className="input">
+                    
+                </span>
+
+
+
+                
+                <section id="spacer" className="spacer"/>
 
                 <section id="spacer" className="spacer"/>
 
                 <section id="about" className="segment-outer"><div className="segment-inner">
-                    <img src={headImage} className="shadow" alt="face"/>
-                    <div className="profile-info">
-                        <p>I am Michael Jagiello, Software Engineer and Computer Nerd</p>
+                    <div className="column-left box shadow">
+                        <img src={headImage} className="rounded" alt="face"/>
+                        <p>Text</p>
                     </div>
-
-                   
+                    <div className="column-right shadow">
+                        <div className="profile-info">
+                            <p>I am Michael Jagiello</p>
+                            <p>Software Engineer and Computer Nerd</p>
+                            <p>text</p>
+                            <p>text</p>
+                        </div>
+                    </div>
                 </div></section>
 
                 <section id="experience" className="segment-outer"><div className="segment-inner">
                     <div className="wrap-pieces">
                         <div className="education-box">
                             <p className="education-box-title">Education</p>
-                            <ul className="education-details">
-                                <p className="education-box-title">University of Florida</p>
-                                <p className="education-sub-title">Gainesville, Florida</p>
-                                <p className="education-title">Bachelor's of Science</p>
-                                <p className="education-sub-title">in</p>
-                                <p className="education-title">Computer Science</p>
-                                <p className="education-sub-title">3.6 GPA</p>
-                                <p className="education-sub-title"> </p>
-                            </ul>
+
                         </div>
 
                         <div className="skills-box">
@@ -113,7 +145,6 @@ const HomePage = () => {
                         </div>
 
                     </div>
-                    {/* <a href="/project" className="">More Projects</a> */}
                 </div></section>
 
                 <section id="spacer" className="spacer"/>

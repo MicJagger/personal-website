@@ -1,10 +1,29 @@
-.footer {
+footer.inner {
   align-items: center;
-  background-color: #1e1e1e;
+  background-color: #ffffff;
+  color: #000000;
   display: flex;
-  flex-direction: column;
-  font-size: calc(6px + 1vmin);
-  height: 10vh;
+  font-size: calc(1rem + 2vmin);
+  height: 6vh;
   justify-content: center;
-  min-height: 50px;
+  margin: auto;
+}
+
+footer.outer {
+  background-color: transparent;
+  display: block;
+  width: 100%;
+  z-index: 100;
+}
+
+.navbar-links {
+  color: #000000;
+  display: flex;
+  gap: 4vw;
+  text-decoration: none;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 900px) {
+
 }
