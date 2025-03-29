@@ -11,16 +11,7 @@ import localproconnect from '../assets/localpro-connect.png'
 import NavBar from '../components/NavBar';
 import { MouseEvent } from 'react'
 import pwmgenerator from '../assets/pwm-generator-simplified.png'
-
-
-
-
-
 import { Terminal } from '../utils/terminal';
-
-
-
-
 
 const handleClickButton = (mouseEvent: MouseEvent<HTMLButtonElement>, link: string) => {
     mouseEvent.preventDefault();
@@ -35,7 +26,12 @@ const handleClickImage = (mouseEvent: MouseEvent<HTMLImageElement>, link: string
 
 const HomePage = () => {
 
-    var terminal1 = new Terminal("terminal", "input");
+    var terminal1 = new Terminal("output", "input");
+    //var terminal2 = new Terminal("output", "input");
+    //var terminal3 = new Terminal("output", "input");
+    //var terminal4 = new Terminal("output", "input");
+
+    //var terminal5 = new Terminal("output", "input");
 
     terminal1.enableUserInput();
 
@@ -48,25 +44,43 @@ const HomePage = () => {
 
                 {NavBar()}
 
-                <section id="spacer" className="spacer"/>
-                <section id="spacer" className="spacer"/>
+                
+                <section id="spacer" className="spacer-other"/>
 
 
-
+                {/*
                 <section id="terminal" className="terminal">
-                    {}
-                </section>
+                <pre className="terminal font-default font-medium margin-0">
 
-                <span id="input" className="input">
-                    
-                </span>
+                    <div id="output" className="font-default font-medium"></div>
+
+                    <span id="newline" className="">&gt;&nbsp;
+                        <span id="input" className="input font-default font-medium"></span><b className="cursor font-medium">█</b>
+                    </span>
+                
+                </pre>
+                </section>
+                */}
+                
+                
 
 
 
                 
-                <section id="spacer" className="spacer"/>
+                <section id="spacer" className="spacer-other"/>
 
-                <section id="spacer" className="spacer"/>
+                <section id="about" className="segment-outer"><div className="bounded">
+                    <p>about</p>
+                    <pre className="terminal font-default font-medium margin-0">
+
+                        <div id="output" className="font-default font-medium"></div>
+
+                        <span id="newline" className="">&gt;&nbsp;
+                            <span id="input" className="input font-default font-medium"></span><b className="cursor font-medium">█</b>
+                        </span>
+
+                    </pre>
+                </div></section>
 
                 <section id="about" className="segment-outer"><div className="segment-inner">
                     <div className="column-left box shadow">
