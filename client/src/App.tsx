@@ -4,19 +4,26 @@ import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import HomePage from './views/HomePage'
 
 function App() {
-
-    function checkView(view: MediaQueryList) {
-        if (view.matches) {
-            localStorage.setItem("format", "mobile");
-        } else {
-            localStorage.setItem("format", "desktop");
-        }
-    }
     
-    // watch to see if view is thin
-    const view = window.matchMedia("(max-width: 900px)");
-    checkView(view);
-    view.addEventListener("change", function() {checkView(view)});
+    // watch to see view width (if it works it works, will likely make pretty later)
+    const thin = window.matchMedia("(max-width: 800px)");
+    const wide = window.matchMedia("(min-width: 800px) and (max-width: 1200px)");
+    const verywide = window.matchMedia("(min-width: 1200px)");
+    thin.addEventListener("change", function() {
+        if (thin.matches) {
+            localStorage.setItem("format", "thin");
+        }
+    });
+    wide.addEventListener("change", function() {
+        if (wide.matches) {
+            localStorage.setItem("format", "wide");
+        }
+    });
+    verywide.addEventListener("change", function() {
+        if (verywide.matches) {
+            localStorage.setItem("format", "verywide");
+        }
+    });
 
     return (
         <>

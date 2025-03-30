@@ -25,13 +25,12 @@ const HomePage = () => {
     // footer
     var terminal5 = new Terminal("4", "output5", "input5");
 
+    function sleep(time: number) {
+        return new Promise(resolve => setTimeout(resolve, time));
+    }
+
     // waits until html elements are modifiable, then executes onLoad()
     async function loadWatcher() {
-
-        function sleep(time: number) {
-            return new Promise(resolve => setTimeout(resolve, time));
-        }
-
         var loadTest = document.getElementById("footer");
         while (true) {
             loadTest = document.getElementById("footer");
@@ -43,14 +42,33 @@ const HomePage = () => {
         }
     }
 
-    function onLoad() {
+    async function onLoad() {
         console.log("loaded!");
-        terminal0.enableUserInput();
+
+        // initialize window size
+        if (window.innerWidth < 800) {
+            localStorage.setItem("format", "thin");
+        }
+        else if (window.innerWidth >= 800 && window.innerWidth < 1200) {
+            localStorage.setItem("format", "wide");
+        }
+        else if (window.innerWidth >= 1200) {
+            localStorage.setItem("format", "verywide");
+        }
+        
+        await terminal0.artificialInput("fetch", 5);
+        await sleep(2000);
+        var scrollPoint = document.getElementById("about");
+        scrollPoint?.scrollIntoView({
+            block: "start"
+        })
+        await sleep(1500);
         terminal1.artificialInput("about", 5);
         terminal2.artificialInput("experience", 5);
         terminal3.artificialInput("projects", 5);
         terminal4.artificialInput("contact", 5);
         terminal5.artificialInput("copyright", 5);
+        terminal0.enableUserInput();
     }
 
     loadWatcher();
@@ -60,8 +78,8 @@ const HomePage = () => {
             <title>Michael Jagiello</title>
 
             <section id="home" className="home font-default">
-
-                <section id="main" className="segment-outer"><div className="bounded">
+                
+                <section id="main" className="terminal-main">
                     <pre className="terminal font-default font-medium margin-0">
 
                         <div id="output0" className="font-default font-medium"></div>
@@ -71,13 +89,15 @@ const HomePage = () => {
                         </span>
 
                     </pre>
-                </div></section>
+                </section>
 
-                {NavBar()}
+                {/*NavBar()*/}
+
+                <div className="spacer"></div>
 
                 <section id="about" className="segment-outer"><div className="bounded">
-                    <p>about</p>
-                    <pre className="terminal font-default font-medium margin-0">
+                    <div className="terminal-label">About</div>
+                    <pre className="terminal min-height font-default font-medium margin-0">
 
                         <div id="output1" className="font-default font-medium"></div>
 
@@ -88,9 +108,11 @@ const HomePage = () => {
                     </pre>
                 </div></section>
 
+                <div className="spacer"></div>
+
                 <section id="experience" className="segment-outer"><div className="bounded">
-                    <p>experience</p>
-                    <pre className="terminal font-default font-medium margin-0">
+                    <div className="terminal-label">Experience</div>
+                    <pre className="terminal min-height font-default font-medium margin-0">
 
                         <div id="output2" className="font-default font-medium"></div>
 
@@ -101,9 +123,11 @@ const HomePage = () => {
                     </pre>
                 </div></section>
 
+                <div className="spacer"></div>
+
                 <section id="projects" className="segment-outer"><div className="bounded">
-                    <p>projects</p>
-                    <pre className="terminal font-default font-medium margin-0">
+                    <div className="terminal-label">Projects</div>
+                    <pre className="terminal min-height font-default font-medium margin-0">
 
                         <div id="output3" className="font-default font-medium"></div>
 
@@ -114,9 +138,11 @@ const HomePage = () => {
                     </pre>
                 </div></section>
 
+                <div className="spacer"></div>
+
                 <section id="contact" className="segment-outer"><div className="bounded">
-                    <p>contact</p>
-                    <pre className="terminal font-default font-medium margin-0">
+                    <div className="terminal-label">Contact</div>
+                    <pre className="terminal min-height font-default font-medium margin-0">
 
                         <div id="output4" className="font-default font-medium"></div>
 
@@ -127,22 +153,9 @@ const HomePage = () => {
                     </pre>
                 </div></section>
 
-                {/*
+                <div className="spacer"></div>
 
-                <section id="about" className="segment-outer"><div className="segment-inner">
-                    <div className="column-left box shadow">
-                        <img src={headImage} className="rounded" alt="face"/>
-                        <p>Text</p>
-                    </div>
-                    <div className="column-right shadow">
-                        <div className="profile-info">
-                            <p>I am Michael Jagiello</p>
-                            <p>Software Engineer and Computer Nerd</p>
-                            <p>text</p>
-                            <p>text</p>
-                        </div>
-                    </div>
-                </div></section>
+                {/*
 
                 <section id="experience" className="segment-outer"><div className="segment-inner">
                     <div className="wrap-pieces">
@@ -205,23 +218,6 @@ const HomePage = () => {
                             </div>
                         </div>
 
-                    </div>
-                </div></section>
-
-                <section id="spacer" className="spacer"/>
-
-                <section id="contact" className="segment-outer"><div className="segment-inner">
-                    <header>Contact Me</header>
-                    <p>
-                        Connect with me on
-                        <img src={linkedinImageFullBlack} className="social-banner-button" alt="LinkedIn" 
-                            onClick={(event) => handleClickImage(event, ("https://www.linkedin.com/in/michael-jagiello/"))}/>
-                    </p>
-                </div></section>
-
-                <section id="spacer" className="spacer"/>
-
-                
 
                 */}
 

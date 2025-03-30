@@ -6,7 +6,7 @@ export class Terminal {
     public inputLocation: string;
 
     // limits length of I/O, or limits what is displayed
-    // TODO: currently output restrictions are not implemented, implement them at some point : )
+    // outputLengthLimit is not implemented
     public outputLengthLimit: number;
     public outputVisibilityLimit: number;
     public inputLengthLimit: number;
@@ -25,10 +25,20 @@ export class Terminal {
         this.outputLocation = outputLoc;
         this.inputLocation = inputLoc;
 
-        this.outputLengthLimit = 1000;
-        this.outputVisibilityLimit = 48;
-        this.inputLengthLimit = 1000;
-        this.inputVisibilityLimit = 48;
+        this.outputLengthLimit = 200;
+        this.inputLengthLimit = 200;
+        if (localStorage.getItem("format") === "thin") {   
+            this.outputVisibilityLimit = 32;
+            this.inputVisibilityLimit = 32;
+        }
+        else if (localStorage.getItem("format") === "wide") {
+            this.outputVisibilityLimit = 48;
+            this.inputVisibilityLimit = 48;
+        }
+        else {
+            this.outputVisibilityLimit = 64;
+            this.inputVisibilityLimit = 64;
+        }
 
         this.defaultClass = "font-medium";
         this.defaultSectionClass = "";
@@ -84,7 +94,7 @@ export class Terminal {
         output!.appendChild(newPiece);
     }
 
-    public commitInput() {
+    public async commitInput() {
         const output = document.getElementById(this.outputLocation);
         const newPiece = document.createElement("span");
         newPiece.className = "font-default";
@@ -96,7 +106,7 @@ export class Terminal {
     }
 
     // dont chain these without async management
-    public async addToOutput(message: string[], sectionClass?: string, charsPerSecond?: number, bypassLimits?: boolean) {
+    public async addToOutput(message: string[], sectionClass?: string, charsPerSecond?: number, bypassLimits?: boolean, hyperlink?: string, newpage?: boolean) {
 
         var keyboardWasEnabled: boolean = this.allowUserInput;
         if (keyboardWasEnabled) {
@@ -114,38 +124,101 @@ export class Terminal {
 
         // message is split into even and odd indices
         var output = document.getElementById(this.outputLocation);
-        var newSection = document.createElement("section");
+        
+        var newSection: HTMLElement;
+        newSection = document.createElement("section");
+
         if (sectionClass !== null && sectionClass !== undefined) {
             newSection.className = sectionClass;
         }
         output!.appendChild(newSection);
+
         var newPiece: HTMLSpanElement;
         for (let i = 0; i < message.length; i++) {
             
             // even indices indicate styling
             if (i % 2 === 0) {
-                newPiece = document.createElement("span");
+                if (hyperlink !== null && hyperlink !== undefined) {
+                    newPiece = document.createElement("a");
+                    newPiece.setAttribute("href", hyperlink);
+                    if (newpage === null || newpage === undefined || newpage === true) {
+                        newPiece.setAttribute("target", "_blank");
+                        newPiece.setAttribute("rel", "noopener noreferrer");
+                    }
+                }
+                else {
+                    newPiece = document.createElement("span");
+                }
+
                 newSection!.appendChild(newPiece);
                 newPiece.className = message[i];
             }
-            // odd indices indicate messaging
+            // odd indices indicate message
             else {
                 for (let j = 0; j < message[i].length; j++) {
                     if (message[i].charAt(j) === "\n") {
                         // gather details to begin new line with same details
                         newPiece!.textContent += " ";
                         
-                        // output newline
                         const newLine = document.createElement("p");
                         newSection!.appendChild(newLine);
 
                         if (j < message[i].length - 1) {
-                            newPiece = document.createElement("span");
+                            if (hyperlink !== null && hyperlink !== undefined) {
+                                newPiece = document.createElement("a");
+                                newPiece.setAttribute("href", hyperlink);
+                                if (newpage === null || newpage === undefined || newpage === true) {
+                                    newPiece.setAttribute("target", "_blank");
+                                    newPiece.setAttribute("rel", "noopener noreferrer");
+                                }
+                            }
+                            else {
+                                newPiece = document.createElement("span");
+                            }
+
                             newSection!.appendChild(newPiece);
                             newPiece.className = message[i - 1];
                         }
                     }
                     else {
+                        // length limiting depending on font
+                        let wrapLine: boolean = false;
+                        if (message[i].includes("font-small")) { // if font is small
+                            if (newPiece!.textContent!.length! >= (this.outputVisibilityLimit * 1.5)) {
+                                wrapLine = true;
+                            }
+                        }
+                        else if (message[i].includes("font-large")) { // if font is large
+                            if (newPiece!.textContent!.length! >= (this.outputVisibilityLimit * 0.75)) {
+                                wrapLine = true;
+                            }
+                        }
+                        else { // if font is medium / other
+                            if (newPiece!.textContent!.length! >= (this.outputVisibilityLimit * 1.5)) {
+                                wrapLine = true;
+                            }
+                        }
+
+                        // wrap the line
+                        if (wrapLine) {
+                            const newLine = document.createElement("p");
+                            newSection!.appendChild(newLine);
+
+                            if (hyperlink !== null && hyperlink !== undefined) {
+                                newPiece = document.createElement("a");
+                                newPiece.setAttribute("href", hyperlink);
+                                if (newpage === null || newpage === undefined || newpage === true) {
+                                    newPiece.setAttribute("target", "_blank");
+                                    newPiece.setAttribute("rel", "noopener noreferrer");
+                                }
+                            }
+                            else {
+                                newPiece = document.createElement("span");
+                            }
+
+                            newSection!.appendChild(newPiece);
+                            newPiece.className = message[i - 1];
+                        }
                         newPiece!.textContent += message[i].charAt(j);
                     }
                     // if space, skip sleep cycle (to tab faster)
@@ -156,7 +229,6 @@ export class Terminal {
             }
         }
 
-        // output newline
         const newLine = document.createElement("p");
         newSection!.appendChild(newLine);
 
@@ -217,7 +289,7 @@ export class Terminal {
             this.addToInput(text[i]);
             await charSpeedLimiter(charSpeed);
         }
-        this.commitInput();
+        await this.commitInput();
     }
 
     // handler(s)
@@ -252,7 +324,7 @@ export class Terminal {
 
     // do commands
 
-    public async executeCommand(text: string) {
+    public async executeCommand(text: string, charSpeed?: number) {
         var args: string[] = [];
 
         // separate into arguments
@@ -301,7 +373,7 @@ export class Terminal {
                     this.addToOutput(msg);
                     break;
                 }
-                if (localStorage.getItem("format") === "desktop") { // name is horizontal
+                if (localStorage.getItem("format") === "verywide") { // name is horizontal
                     await this.addToOutput(cmd.name, "font-small");
                 }
                 else { // name is vertical
@@ -318,7 +390,8 @@ export class Terminal {
                     this.addToOutput(msg);
                     break;
                 }
-                this.addToOutput(cmd.contact);
+                await this.addToOutput(cmd.contact_github, undefined, 192, undefined, "https://github.com/MicJagger");
+                this.addToOutput(cmd.contact_linkedin, undefined, 192, undefined, "https://www.linkedin.com/in/michael-jagiello/");
                 break;
             }
             case "copyright": {
@@ -328,7 +401,15 @@ export class Terminal {
                     this.addToOutput(msg);
                     break;
                 }
-                //this.addToOutput(cmd.copyright);
+                if (localStorage.getItem("format") === "thin") {
+                    this.addToOutput(cmd.copyright_thin);
+                }
+                else if (localStorage.getItem("format") === "wide") {
+                    this.addToOutput(cmd.copyright_wide);
+                }
+                else if (localStorage.getItem("format") === "verywide") {
+                    this.addToOutput(cmd.copyright_verywide);
+                }
                 break;
             }
             case "experience": {
@@ -339,6 +420,18 @@ export class Terminal {
                     break;
                 }
                 this.addToOutput(cmd.experience);
+                break;
+            }
+            case "fetch": {
+                if (args.length !== 1) {
+                    let msg: string[] = cmd.expected_arg_count;
+                    msg.push("1");
+                    this.addToOutput(msg);
+                    break;
+                }
+
+                this.addToOutput(["", "fetch command"]);
+
                 break;
             }
             case "font": {

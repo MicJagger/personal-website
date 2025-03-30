@@ -1,10 +1,82 @@
 // do not put a newline at the end of any of these
 
+export const about: string[] = [ 
+"", 
+" "
+];
+
+export const contact_github: string[] = [ 
+"link-unstyle white", "GitHub\n",
+"link-unstyle white",
+"         #############         \n" +
+"      ###################      \n" +
+"    #######################    \n" +
+"   ##########################  \n" +
+"  ######  ###########  ####### \n" +
+" #######               ####### \n" +
+"#######                 #######\n" +
+"######                   ######\n" +
+"######                   ######\n" +
+"######                   ######\n" +
+"#######                 #######\n" +
+"#########             #########\n" +
+" ############     ############ \n" +
+"  ###########     ###########  \n" +
+"   ######          #########   \n" +
+"     #######       #######     \n" +
+"       #####       #####       "
+];
+
+export const contact_linkedin: string[] = [ 
+"link-unstyle linkedin", "LinkedIn\n",
+"link-unstyle linkedin",
+"+++++++++++++++++++++++++++++++\n" +
+"+++++++++++++++++++++++++++++++\n" +
+"+++++=  -++++++++++++++++++++++\n" +
+"++++      +++++++++++++++++++++\n" +
+"++++:     +++++++++++++++++++++\n" +
+"+++++====++++++++++++++++++++++\n" +
+"++++=    -++-   :=:     -++++++\n" +
+"++++=     ++              =++++\n" +
+"++++=     ++              .++++\n" +
+"++++=     ++     -+++-     ++++\n" +
+"++++=     ++     =+++=     ++++\n" +
+"++++=     ++     =+++=     ++++\n" +
+"++++=     ++     =+++=     ++++\n" +
+"++++=     ++     =+++=     ++++\n" +
+"++++=    :++:   .=++++    .++++\n" +
+"+++++++++++++++++++++++++++++++\n" +
+"+++++++++++++++++++++++++++++++"
+];
+
+export const copyright_thin: string[] = [
+"", 
+"  Copyright © 2025 Michael Jagiello\n" + 
+"         All Rights Reserved"
+]
+
+export const copyright_verywide: string[] = [
+"", 
+"                                Copyright © 2025 Michael Jagiello\n" + 
+"                                        All Rights Reserved"
+]
+
+export const copyright_wide: string[] = [
+"", 
+"            Copyright © 2025 Michael Jagiello\n" + 
+"                    All Rights Reserved"
+]
+
 // push the expected value at the end
 export var expected_arg_count: string[] = [
 "", "Incorrect number of arguments. Expected: ",
 "green"
 ];
+
+export const experience: string[] = [ 
+"",
+" "
+]; 
 
 export const font_list: string[] = [
 "", "List of fonts: \n",
@@ -17,12 +89,16 @@ export const help: string[] = [
 "", "        you're already here\n",
 "green", "    clear\n",
 "", "        clears the terminal\n",
+"green", "    font\n",
+"", "        changes the default font size\n",
 "green", "    about\n",
 "", "        tells you stuff about me\n",
 "green", "    experience\n",
 "", "        rattles off my experiences, skills, and education\n",
 "green", "    contact\n",
 "", "        lists contact information and other socials\n",
+"green", "    copyright\n",
+"", "        prints basic copyright information\n",
 "green", "    projects\n",
 "", "        gives a few examples of cool stuff i did"
 ];
@@ -65,21 +141,6 @@ export const namelast: string[] = [ "font-small",
 " \\____/  \\__,_| \\__, ||_| \\___||_||_| \\___/ \n" +
 "                 __/ |                      \n" +
 "                |___/                       "
-];
-
-export const about: string[] = [ 
-"", 
-" "
-];
-
-export const contact: string[] = [ 
-"",
-" "
-];
-
-export const experience: string[] = [ 
-"",
-" "
 ];
 
 var projects: string[] = [
