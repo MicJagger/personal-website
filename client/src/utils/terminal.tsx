@@ -6,11 +6,16 @@ export class Terminal {
     public inputLocation: string;
 
     // limits length of I/O, or limits what is displayed
-    // currently output restrictions are not implemented
+    // TODO: currently output restrictions are not implemented, implement them at some point : )
     public outputLengthLimit: number;
     public outputVisibilityLimit: number;
     public inputLengthLimit: number;
     public inputVisibilityLimit: number;
+
+    // for setting default fonts for everything, including user input
+    public defaultClass: string;
+    // for setting default fonts and stuff for addToOutput, currently not implemented in other sections
+    public defaultSectionClass: string;
     
     private allowUserInput: boolean;
     private input: string;
@@ -21,15 +26,24 @@ export class Terminal {
         this.inputLocation = inputLoc;
 
         this.outputLengthLimit = 1000;
-        this.outputVisibilityLimit = 32;
+        this.outputVisibilityLimit = 48;
         this.inputLengthLimit = 1000;
-        this.inputVisibilityLimit = 32;
+        this.inputVisibilityLimit = 48;
+
+        this.defaultClass = "font-medium";
+        this.defaultSectionClass = "";
 
         this.allowUserInput = false;
         this.input = "";
 
         console.log("init terminal");
     };
+
+
+    // only works in async functions
+    private sleepFor(milliseconds: number) {
+        return new Promise(resolve => setTimeout(resolve, milliseconds));
+    }
 
 
     // user input setters
@@ -41,7 +55,6 @@ export class Terminal {
             console.log("enabled user input on terminal " + this.id);
             // enable cursor
             var loc: string = "c" + this.id;
-            console.log(loc);
             const cursor = document.getElementById(loc);
             cursor!.textContent = "█";
         }
@@ -59,80 +72,94 @@ export class Terminal {
         }
     }
 
+    public getUserInput(): boolean {
+        return this.allowUserInput;
+    }
 
     // output management
 
     public outputNewline() {
         const output = document.getElementById(this.outputLocation);
-        const newSection = document.createElement("p");
-        output!.appendChild(newSection);
+        const newPiece = document.createElement("p");
+        output!.appendChild(newPiece);
     }
 
     public commitInput() {
         const output = document.getElementById(this.outputLocation);
-        const newSection = document.createElement("span");
-        newSection.className = "font-default font-medium";
-        newSection.textContent = "> " + this.input;
-        output!.appendChild(newSection);
+        const newPiece = document.createElement("span");
+        newPiece.className = "font-default";
+        newPiece.textContent = "> " + this.input;
+        output!.appendChild(newPiece);
         this.outputNewline();
         this.executeCommand(this.input);
         this.clearInput();
     }
 
     // dont chain these without async management
-    public async addToOutput(message: string[], charsPerSecond?: number) {
+    public async addToOutput(message: string[], sectionClass?: string, charsPerSecond?: number, bypassLimits?: boolean) {
 
         var keyboardWasEnabled: boolean = this.allowUserInput;
         if (keyboardWasEnabled) {
             window.removeEventListener("keydown", this.handleKey);
         }
 
-        function charSpeedLimiter(charsPerSecond: number) {
-            return new Promise(resolve => setTimeout(resolve, 1000 / charsPerSecond));
-        }
-
         var charSpeed: number;
-        if (charsPerSecond !== null) {
-            charSpeed = 32;
+        if (charsPerSecond === null || charsPerSecond === undefined) {
+            charSpeed = 50;
         }
         else {
             charSpeed = charsPerSecond;
         }
+        var sleepTime: number = 1000 / charSpeed;
 
         // message is split into even and odd indices
-        let output = document.getElementById(this.outputLocation); 
+        var output = document.getElementById(this.outputLocation);
+        var newSection = document.createElement("section");
+        if (sectionClass !== null && sectionClass !== undefined) {
+            newSection.className = sectionClass;
+        }
+        output!.appendChild(newSection);
+        var newPiece: HTMLSpanElement;
         for (let i = 0; i < message.length; i++) {
-            var newSection: HTMLSpanElement;
+            
             // even indices indicate styling
             if (i % 2 === 0) {
-                newSection = document.createElement("span");
-                output!.appendChild(newSection);
-                newSection.className = message[i];
+                newPiece = document.createElement("span");
+                newSection!.appendChild(newPiece);
+                newPiece.className = message[i];
             }
             // odd indices indicate messaging
             else {
                 for (let j = 0; j < message[i].length; j++) {
                     if (message[i].charAt(j) === "\n") {
                         // gather details to begin new line with same details
-                        newSection!.textContent += " ";
-                        this.outputNewline();
-                        if (j === message[i].length) {
-                            newSection = document.createElement("span");
-                            output!.appendChild(newSection);
-                            newSection.className = message[i - 1];
+                        newPiece!.textContent += " ";
+                        
+                        // output newline
+                        const newLine = document.createElement("p");
+                        newSection!.appendChild(newLine);
+
+                        if (j < message[i].length - 1) {
+                            newPiece = document.createElement("span");
+                            newSection!.appendChild(newPiece);
+                            newPiece.className = message[i - 1];
                         }
                     }
                     else {
-                        newSection!.textContent += message[i].charAt(j);
+                        newPiece!.textContent += message[i].charAt(j);
                     }
                     // if space, skip sleep cycle (to tab faster)
                     if (message[i].charAt(j) !== " ") {
-                        await charSpeedLimiter(charSpeed);
+                        await this.sleepFor(sleepTime);
                     }
                 }
             }
         }
-        this.outputNewline();
+
+        // output newline
+        const newLine = document.createElement("p");
+        newSection!.appendChild(newLine);
+
         if (keyboardWasEnabled) {
             window.addEventListener("keydown", this.handleKey);
         }
@@ -225,7 +252,7 @@ export class Terminal {
 
     // do commands
 
-    public executeCommand(text: string) {
+    public async executeCommand(text: string) {
         var args: string[] = [];
 
         // separate into arguments
@@ -267,37 +294,85 @@ export class Terminal {
                 this.addToOutput(cmd.help);
                 break;
             }
-            case "print": {
-                if (args.length < 2) {
+            case "about": {
+                if (args.length !== 1) {
                     let msg: string[] = cmd.expected_arg_count;
-                    msg.push("2+");
+                    msg.push("1");
                     this.addToOutput(msg);
                     break;
                 }
-                if (args[1] === "about") {
-                    if (args.length > 2) {
-                        let msg: string[] = cmd.expected_arg_count;
-                        msg.push("2");
-                        this.addToOutput(msg);
-                        break;
-                    }
-                    this.addToOutput(cmd.print_about);
+                if (localStorage.getItem("format") === "desktop") { // name is horizontal
+                    await this.addToOutput(cmd.name, "font-small");
                 }
-                else if (args[1] ==="contact") {
-                    this.addToOutput(cmd.print_contact);
+                else { // name is vertical
+                    await this.addToOutput(cmd.namefirst, "font-small", undefined, true);
+                    await this.addToOutput(cmd.namelast, "font-small", undefined, true);
                 }
-                else if (args[1] === "experience") {
-                    if (args.length > 2) {
-                        let msg: string[] = cmd.expected_arg_count;
-                        msg.push("2");
-                        this.addToOutput(msg);
-                        break;
-                    }
-                    this.addToOutput(cmd.print_experience);
+                this.addToOutput(cmd.about, "", undefined, true);
+                break;
+            }
+            case "contact": {
+                if (args.length !== 1) {
+                    let msg: string[] = cmd.expected_arg_count;
+                    msg.push("1");
+                    this.addToOutput(msg);
+                    break;
                 }
-                else if (args[1] === "projects") {
-                    
+                this.addToOutput(cmd.contact);
+                break;
+            }
+            case "copyright": {
+                if (args.length !== 1) {
+                    let msg: string[] = cmd.expected_arg_count;
+                    msg.push("1");
+                    this.addToOutput(msg);
+                    break;
                 }
+                //this.addToOutput(cmd.copyright);
+                break;
+            }
+            case "experience": {
+                if (args.length !== 1) {
+                    let msg: string[] = cmd.expected_arg_count;
+                    msg.push("1");
+                    this.addToOutput(msg);
+                    break;
+                }
+                this.addToOutput(cmd.experience);
+                break;
+            }
+            case "font": {
+                if (args.length !== 2) {
+                    let msg: string[] = cmd.expected_arg_count;
+                    msg.push("2");
+                    this.addToOutput(msg);
+                    break;
+                }
+                if (args[1] === "small") {
+                    this.changeFont("font-small");
+                    this.addToOutput(["", "Changed font size."]);
+                }
+                else if (args[1] === "medium") {
+                    this.changeFont("font-medium");
+                    this.addToOutput(["", "Changed font size."]);
+                }
+                else if (args[1] === "large") {
+                    this.changeFont("font-large");
+                    this.addToOutput(["", "Changed font size."]);
+                }
+                else {
+                    this.addToOutput(cmd.font_list);
+                }
+                break;
+            }
+            case "projects": {
+                if (args.length !== 1) {
+                    let msg: string[] = cmd.expected_arg_count;
+                    msg.push("1");
+                    this.addToOutput(msg);
+                    break;
+                }
+                this.addToOutput(cmd.projects);
                 break;
             }
             default: {
@@ -310,5 +385,14 @@ export class Terminal {
 
     // other
 
+    public changeFont(classname: string) {
+        const output = document.getElementById(this.outputLocation);
+        const newline = document.getElementById("newline" + this.id);
+        output?.classList.remove(this.defaultClass);
+        newline?.classList.remove(this.defaultClass);
+        this.defaultClass = classname;
+        output?.classList.add(this.defaultClass);
+        newline?.classList.add(this.defaultClass);
+    }
 
 }

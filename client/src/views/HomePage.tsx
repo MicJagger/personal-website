@@ -7,11 +7,23 @@ import { Terminal } from '../utils/terminal';
 
 const HomePage = () => {
 
+    // home
     var terminal0 = new Terminal("0", "output0", "input0");
+
+    // about
     var terminal1 = new Terminal("1", "output1", "input1");
+
+    // experience
     var terminal2 = new Terminal("2", "output2", "input2");
+
+    // projects
     var terminal3 = new Terminal("3", "output3", "input3");
+
+    // contact
     var terminal4 = new Terminal("4", "output4", "input4");
+
+    // footer
+    var terminal5 = new Terminal("4", "output5", "input5");
 
     // waits until html elements are modifiable, then executes onLoad()
     async function loadWatcher() {
@@ -34,10 +46,11 @@ const HomePage = () => {
     function onLoad() {
         console.log("loaded!");
         terminal0.enableUserInput();
-        terminal1.artificialInput("print about", 5);
-        terminal2.artificialInput("print experience", 6);
-        terminal3.artificialInput("print project -all", 6);
-        terminal4.artificialInput("print contact", 6);
+        terminal1.artificialInput("about", 5);
+        terminal2.artificialInput("experience", 5);
+        terminal3.artificialInput("projects", 5);
+        terminal4.artificialInput("contact", 5);
+        terminal5.artificialInput("copyright", 5);
     }
 
     loadWatcher();
@@ -53,8 +66,8 @@ const HomePage = () => {
 
                         <div id="output0" className="font-default font-medium"></div>
 
-                        <span id="newline" className="">&gt;&nbsp;
-                            <span id="input0" className="input font-default font-medium"></span><b id="c0" className="cursor font-medium"></b>
+                        <span id="newline0" className="">&gt;&nbsp;
+                            <span id="input0" className="input font-default"></span><b id="c0" className="cursor font-medium"></b>
                         </span>
 
                     </pre>
@@ -68,7 +81,7 @@ const HomePage = () => {
 
                         <div id="output1" className="font-default font-medium"></div>
 
-                        <span id="newline" className="">&gt;&nbsp;
+                        <span id="newline1" className="">&gt;&nbsp;
                             <span id="input1" className="input font-default font-medium"></span><b id="c1" className="cursor font-medium"></b>
                         </span>
 
@@ -81,7 +94,7 @@ const HomePage = () => {
 
                         <div id="output2" className="font-default font-medium"></div>
 
-                        <span id="newline" className="">&gt;&nbsp;
+                        <span id="newline2" className="">&gt;&nbsp;
                             <span id="input2" className="input font-default font-medium"></span><b id="c2" className="cursor font-medium"></b>
                         </span>
 
@@ -94,7 +107,7 @@ const HomePage = () => {
 
                         <div id="output3" className="font-default font-medium"></div>
 
-                        <span id="newline" className="">&gt;&nbsp;
+                        <span id="newline3" className="">&gt;&nbsp;
                             <span id="input3" className="input font-default font-medium"></span><b id="c3" className="cursor font-medium"></b>
                         </span>
 
@@ -107,7 +120,7 @@ const HomePage = () => {
 
                         <div id="output4" className="font-default font-medium"></div>
 
-                        <span id="newline" className="">&gt;&nbsp;
+                        <span id="newline4" className="">&gt;&nbsp;
                             <span id="input4" className="input font-default font-medium"></span><b id="c4" className="cursor font-medium"></b>
                         </span>
 
@@ -212,7 +225,17 @@ const HomePage = () => {
 
                 */}
 
-                {Footer()}
+                <section id="footer" className="segment-outer">
+                    <pre className="terminal font-default font-medium margin-0">
+
+                        <div id="output5" className="font-default font-medium"></div>
+
+                        <span id="newline5" className="">&gt;&nbsp;
+                            <span id="input5" className="input font-default font-medium"></span><b id="c5" className="cursor font-medium"></b>
+                        </span>
+
+                    </pre>
+                </section>
 
             </section>
         </>

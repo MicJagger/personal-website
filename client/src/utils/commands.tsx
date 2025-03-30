@@ -1,25 +1,30 @@
 // do not put a newline at the end of any of these
 
-// artificial inputs
-
-export const input_get_about: string = "";
-
-export const input_help: string = "help";
-
-
-// outputs
-
 // push the expected value at the end
 export var expected_arg_count: string[] = [
 "", "Incorrect number of arguments. Expected: ",
 "green"
 ];
 
+export const font_list: string[] = [
+"", "List of fonts: \n",
+"green", "small    medium    large"
+];
+
 export const help: string[] = [
 "", "Commands:\n",
 "green", "    help\n",
-"", "        you're already here"
-
+"", "        you're already here\n",
+"green", "    clear\n",
+"", "        clears the terminal\n",
+"green", "    about\n",
+"", "        tells you stuff about me\n",
+"green", "    experience\n",
+"", "        rattles off my experiences, skills, and education\n",
+"green", "    contact\n",
+"", "        lists contact information and other socials\n",
+"green", "    projects\n",
+"", "        gives a few examples of cool stuff i did"
 ];
 
 export const invalid: string[] = [
@@ -29,34 +34,73 @@ export const invalid: string[] = [
 "", "\" for a list of commands."
 ];
 
-export const name: string[] = [ // this looks bad because \ => \\   :(
-"",
-"  __  __  _        _                   _        _                _        _  _        \n" +
-" |  \\/  |(_)      | |                 | |      | |              (_)      | || |       \n" +
-" | \\  / | _   ___ | |__    __ _   ___ | |      | |  __ _   __ _  _   ___ | || |  ___  \n" +
-" | |\\/| || | / __|| '_ \\  / _` | / _ \\| |  _   | | / _` | / _` || | / _ \\| || | / _ \\ \n" +
-" | |  | || || (__ | | | || (_| ||  __/| | | |__| || (_| || (_| || ||  __/| || || (_) |\n" +
-" |_|  |_||_| \\___||_| |_| \\__,_| \\___||_|  \\____/  \\__,_| \\__, ||_| \\___||_||_| \\___/ \n" +
-"                                                           __/ |                      \n" +
-"                                                          |___/                       \n"
+export const name: string[] = [ "font-small",
+"     __  __  _        _                   _        _                _        _  _        \n" +
+"    |  \\/  |(_)      | |                 | |      | |              (_)      | || |       \n" +
+"    | \\  / | _   ___ | |__    __ _   ___ | |      | |  __ _   __ _  _   ___ | || |  ___  \n" +
+"    | |\\/| || | / __|| '_ \\  / _` | / _ \\| |  _   | | / _` | / _` || | / _ \\| || | / _ \\ \n" +
+"    | |  | || || (__ | | | || (_| ||  __/| | | |__| || (_| || (_| || ||  __/| || || (_) |\n" +
+"    |_|  |_||_| \\___||_| |_| \\__,_| \\___||_|  \\____/  \\__,_| \\__, ||_| \\___||_||_| \\___/ \n" +
+"                                                              __/ |                      \n" +
+"                                                             |___/                       "
+]
+
+export const namefirst: string[] = [ "font-small",
+"  __  __  _        _                   _ \n" +
+" |  \\/  |(_)      | |                 | |\n" +
+" | \\  / | _   ___ | |__    __ _   ___ | |\n" +
+" | |\\/| || | / __|| '_ \\  / _` | / _ \\| |\n" +
+" | |  | || || (__ | | | || (_| ||  __/| |\n" +
+" |_|  |_||_| \\___||_| |_| \\__,_| \\___||_|\n" +
+"                                         \n" +
+"                                         \n"
 ];
 
-export const print_about: string[] = [ 
-"",
-"About Me: "
+export const namelast: string[] = [ "font-small",
+"      _                _        _  _        \n" +
+"     | |              (_)      | || |       \n" +
+"     | |  __ _   __ _  _   ___ | || |  ___  \n" +
+" _   | | / _` | / _` || | / _ \\| || | / _ \\ \n" +
+"| |__| || (_| || (_| || ||  __/| || || (_) |\n" +
+" \\____/  \\__,_| \\__, ||_| \\___||_||_| \\___/ \n" +
+"                 __/ |                      \n" +
+"                |___/                       "
 ];
 
-export const print_contact: string[] = [ 
-"",
-"About Me: "
+export const about: string[] = [ 
+"", 
+" "
 ];
 
-export const print_experience: string[] = [ 
+export const contact: string[] = [ 
 "",
-"About Me: "
+" "
 ];
 
-export const print_project_pwm_generator: string[] = [ 
+export const experience: string[] = [ 
 "",
-"About Me: "
+" "
 ];
+
+var projects: string[] = [
+"", ""
+];
+
+export const project_pwm_generator: string[] = [ 
+"",
+" "
+];
+
+export const try_help: string[] = [
+"", "Try \"",
+"green", "help",
+"", "\" for a list of commands."
+];
+
+// build
+
+// build projects
+for (let i = 0; i < project_pwm_generator.length; i++) {
+    projects.push(project_pwm_generator[i]);
+}
+export { projects };
