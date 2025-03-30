@@ -1,3 +1,8 @@
+.bounded {
+  margin: auto;
+  width: 90vw;
+}
+
 .box {
   background-color: #282c34;
 }
@@ -17,9 +22,37 @@
   padding: 5%;
 }
 
+.cursor {
+  opacity: 1;
+  text-decoration: blink;
+  animation: blinker 1.2s step-start infinite;
+}
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
+.font-medium {
+  font-size: 1.5rem;
+}
+
 .home {
   background-color: #282c34;
   width: 100vw;
+}
+
+.newline {
+  display: flex;
+}
+
+.output {
+  display: flex;
+}
+
+p {
+  margin-block-end: 0px;
+  margin-block-start: 0px;
 }
 
 .segment-inner {
@@ -53,58 +86,13 @@
   height: 10vh;
 }
 
-
-
-.bounded {
-  margin: auto;
-  width: 90%;
-}
-
-p {
-  margin-block-end: 0px;
-  margin-block-start: 0px;
-}
-
-.font-medium {
-  font-size: 1.5rem;
-}
-
-.output {
-  display: flex;
-
-}
-
-.newline {
-  display: flex;
-}
-
 .terminal {
   background-color: #000000;
   color: #ffffff;
   display: block;
   height: fit-content;
-
   width: 100%;
 }
-
-
-
-
-
-
-.cursor {
-  opacity: 1;
-  text-decoration: blink;
-  animation: blinker 1.2s step-start infinite;
-}
-@keyframes blinker {
-  50% {
-    opacity: 0;
-  }
-}
-
-
-
 
 
 
@@ -127,11 +115,6 @@ p {
 
 
 
-
-
-
-
-
 /* Thin Adjustments */
 @media (max-width: 1200px) {
   .segment-inner {
@@ -140,10 +123,46 @@ p {
 }
 
 
+
 /* Mobile Adjustments */
 @media (max-width: 900px) {
   .segment-inner {
     grid-template-columns: none;
     width: 90%;
   }
+}
+
+
+
+/* Colors */
+.black {
+  color: #000000;
+}
+
+.blue {
+  color: #0000ff;
+}
+
+.cyan {
+  color: #00ffff;
+}
+
+.green {
+  color: #00ff00;
+}
+
+.magenta {
+  color: #ff00ff;
+}
+
+.red {
+  color: #ff0000;
+}
+
+.yellow {
+  color: #ffff00;
+}
+
+.white {
+  color: #ffffff;
 }

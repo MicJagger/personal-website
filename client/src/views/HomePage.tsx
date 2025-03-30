@@ -1,40 +1,46 @@
 import '../styles/common.css'
 import Footer from '../components/Footer'
-import githubImageBlack from '../assets/github-black192.png'
-import githubImageWhite from '../assets/github-white192.png'
-import headImage from '../assets/fillerimage.png';
 import '../styles/HomePage.css';
-import linkedinImage from '../assets/linkedin192.png'
-import linkedinImageFullBlack from '../assets/linkedinFull-black.png'
-import linkedinImageFullWhite from '../assets/linkedinFull-white.png'
-import localproconnect from '../assets/localpro-connect.png'
 import NavBar from '../components/NavBar';
 import { MouseEvent } from 'react'
-import pwmgenerator from '../assets/pwm-generator-simplified.png'
 import { Terminal } from '../utils/terminal';
-
-const handleClickButton = (mouseEvent: MouseEvent<HTMLButtonElement>, link: string) => {
-    mouseEvent.preventDefault();
-    window.open(link);
-}
-
-const handleClickImage = (mouseEvent: MouseEvent<HTMLImageElement>, link: string) => {
-    mouseEvent.preventDefault();
-    window.open(link);
-}
-
 
 const HomePage = () => {
 
-    var terminal1 = new Terminal("output", "input");
-    //var terminal2 = new Terminal("output", "input");
-    //var terminal3 = new Terminal("output", "input");
-    //var terminal4 = new Terminal("output", "input");
+    var terminal0 = new Terminal("0", "output0", "input0");
+    var terminal1 = new Terminal("1", "output1", "input1");
+    var terminal2 = new Terminal("2", "output2", "input2");
+    var terminal3 = new Terminal("3", "output3", "input3");
+    var terminal4 = new Terminal("4", "output4", "input4");
 
-    //var terminal5 = new Terminal("output", "input");
+    // waits until html elements are modifiable, then executes onLoad()
+    async function loadWatcher() {
 
-    terminal1.enableUserInput();
+        function sleep(time: number) {
+            return new Promise(resolve => setTimeout(resolve, time));
+        }
 
+        var loadTest = document.getElementById("footer");
+        while (true) {
+            loadTest = document.getElementById("footer");
+            if (loadTest !== null) {
+                onLoad();
+                break;
+            }
+            await sleep(50);
+        }
+    }
+
+    function onLoad() {
+        console.log("loaded!");
+        terminal0.enableUserInput();
+        terminal1.artificialInput("print about", 5);
+        terminal2.artificialInput("print experience", 6);
+        terminal3.artificialInput("print project -all", 6);
+        terminal4.artificialInput("print contact", 6);
+    }
+
+    loadWatcher();
 
     return (
         <>
@@ -42,45 +48,73 @@ const HomePage = () => {
 
             <section id="home" className="home font-default">
 
+                <section id="main" className="segment-outer"><div className="bounded">
+                    <pre className="terminal font-default font-medium margin-0">
+
+                        <div id="output0" className="font-default font-medium"></div>
+
+                        <span id="newline" className="">&gt;&nbsp;
+                            <span id="input0" className="input font-default font-medium"></span><b id="c0" className="cursor font-medium"></b>
+                        </span>
+
+                    </pre>
+                </div></section>
+
                 {NavBar()}
-
-                
-                <section id="spacer" className="spacer-other"/>
-
-
-                {/*
-                <section id="terminal" className="terminal">
-                <pre className="terminal font-default font-medium margin-0">
-
-                    <div id="output" className="font-default font-medium"></div>
-
-                    <span id="newline" className="">&gt;&nbsp;
-                        <span id="input" className="input font-default font-medium"></span><b className="cursor font-medium">█</b>
-                    </span>
-                
-                </pre>
-                </section>
-                */}
-                
-                
-
-
-
-                
-                <section id="spacer" className="spacer-other"/>
 
                 <section id="about" className="segment-outer"><div className="bounded">
                     <p>about</p>
                     <pre className="terminal font-default font-medium margin-0">
 
-                        <div id="output" className="font-default font-medium"></div>
+                        <div id="output1" className="font-default font-medium"></div>
 
                         <span id="newline" className="">&gt;&nbsp;
-                            <span id="input" className="input font-default font-medium"></span><b className="cursor font-medium">█</b>
+                            <span id="input1" className="input font-default font-medium"></span><b id="c1" className="cursor font-medium"></b>
                         </span>
 
                     </pre>
                 </div></section>
+
+                <section id="experience" className="segment-outer"><div className="bounded">
+                    <p>experience</p>
+                    <pre className="terminal font-default font-medium margin-0">
+
+                        <div id="output2" className="font-default font-medium"></div>
+
+                        <span id="newline" className="">&gt;&nbsp;
+                            <span id="input2" className="input font-default font-medium"></span><b id="c2" className="cursor font-medium"></b>
+                        </span>
+
+                    </pre>
+                </div></section>
+
+                <section id="projects" className="segment-outer"><div className="bounded">
+                    <p>projects</p>
+                    <pre className="terminal font-default font-medium margin-0">
+
+                        <div id="output3" className="font-default font-medium"></div>
+
+                        <span id="newline" className="">&gt;&nbsp;
+                            <span id="input3" className="input font-default font-medium"></span><b id="c3" className="cursor font-medium"></b>
+                        </span>
+
+                    </pre>
+                </div></section>
+
+                <section id="contact" className="segment-outer"><div className="bounded">
+                    <p>contact</p>
+                    <pre className="terminal font-default font-medium margin-0">
+
+                        <div id="output4" className="font-default font-medium"></div>
+
+                        <span id="newline" className="">&gt;&nbsp;
+                            <span id="input4" className="input font-default font-medium"></span><b id="c4" className="cursor font-medium"></b>
+                        </span>
+
+                    </pre>
+                </div></section>
+
+                {/*
 
                 <section id="about" className="segment-outer"><div className="segment-inner">
                     <div className="column-left box shadow">
@@ -173,6 +207,10 @@ const HomePage = () => {
                 </div></section>
 
                 <section id="spacer" className="spacer"/>
+
+                
+
+                */}
 
                 {Footer()}
 

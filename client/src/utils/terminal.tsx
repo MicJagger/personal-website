@@ -1,16 +1,30 @@
-import './commands'
-import { cmd_help, cmd_invalid } from './commands';
+import * as cmd from './commands';
 
 export class Terminal {
+    public id: string;
     public outputLocation: string;
     public inputLocation: string;
+
+    // limits length of I/O, or limits what is displayed
+    // currently output restrictions are not implemented
+    public outputLengthLimit: number;
+    public outputVisibilityLimit: number;
+    public inputLengthLimit: number;
+    public inputVisibilityLimit: number;
     
     private allowUserInput: boolean;
     private input: string;
 
-    public constructor(outputLoc: string, inputLoc: string) {
+    public constructor(terminalID: string, outputLoc: string, inputLoc: string) {
+        this.id = terminalID;
         this.outputLocation = outputLoc;
         this.inputLocation = inputLoc;
+
+        this.outputLengthLimit = 1000;
+        this.outputVisibilityLimit = 32;
+        this.inputLengthLimit = 1000;
+        this.inputVisibilityLimit = 32;
+
         this.allowUserInput = false;
         this.input = "";
 
@@ -24,7 +38,12 @@ export class Terminal {
         if (this.allowUserInput === false) {
             window.addEventListener("keydown", this.handleKey);
             this.allowUserInput = true;
-            console.log("enabled user input");
+            console.log("enabled user input on terminal " + this.id);
+            // enable cursor
+            var loc: string = "c" + this.id;
+            console.log(loc);
+            const cursor = document.getElementById(loc);
+            cursor!.textContent = "█";
         }
     }
 
@@ -32,7 +51,11 @@ export class Terminal {
         if (this.allowUserInput === true) {
             window.removeEventListener("keydown", this.handleKey);
             this.allowUserInput = false;
-            console.log("disabled user input");
+            console.log("disabled user input on terminal " + this.id);
+            // disable cursor
+            var loc: string = "c" + this.id;
+            const cursor = document.getElementById(loc);
+            cursor!.textContent = "";
         }
     }
 
@@ -56,9 +79,102 @@ export class Terminal {
         this.clearInput();
     }
 
-    public addToOutput(message: string[], charsPerSecond?: number) {
+    // dont chain these without async management
+    public async addToOutput(message: string[], charsPerSecond?: number) {
 
-        function sleep(charsPerSecond: number) {
+        var keyboardWasEnabled: boolean = this.allowUserInput;
+        if (keyboardWasEnabled) {
+            window.removeEventListener("keydown", this.handleKey);
+        }
+
+        function charSpeedLimiter(charsPerSecond: number) {
+            return new Promise(resolve => setTimeout(resolve, 1000 / charsPerSecond));
+        }
+
+        var charSpeed: number;
+        if (charsPerSecond !== null) {
+            charSpeed = 32;
+        }
+        else {
+            charSpeed = charsPerSecond;
+        }
+
+        // message is split into even and odd indices
+        let output = document.getElementById(this.outputLocation); 
+        for (let i = 0; i < message.length; i++) {
+            var newSection: HTMLSpanElement;
+            // even indices indicate styling
+            if (i % 2 === 0) {
+                newSection = document.createElement("span");
+                output!.appendChild(newSection);
+                newSection.className = message[i];
+            }
+            // odd indices indicate messaging
+            else {
+                for (let j = 0; j < message[i].length; j++) {
+                    if (message[i].charAt(j) === "\n") {
+                        // gather details to begin new line with same details
+                        newSection!.textContent += " ";
+                        this.outputNewline();
+                        if (j === message[i].length) {
+                            newSection = document.createElement("span");
+                            output!.appendChild(newSection);
+                            newSection.className = message[i - 1];
+                        }
+                    }
+                    else {
+                        newSection!.textContent += message[i].charAt(j);
+                    }
+                    // if space, skip sleep cycle (to tab faster)
+                    if (message[i].charAt(j) !== " ") {
+                        await charSpeedLimiter(charSpeed);
+                    }
+                }
+            }
+        }
+        this.outputNewline();
+        if (keyboardWasEnabled) {
+            window.addEventListener("keydown", this.handleKey);
+        }
+    }
+
+
+    // input management
+
+    public addToInput(char: string) {
+        // restrict input to length
+        if (this.input.length < this.inputLengthLimit) {
+            this.input = this.input.concat(char);
+            const input = document.getElementById(this.inputLocation);
+            // restricts visibility to limit value
+            input!.textContent = this.input.substring(0, this.inputVisibilityLimit);
+            if (this.input.length >= this.inputVisibilityLimit) {
+                input!.textContent += "...";
+            }
+        }
+    }
+
+    public popInput() {
+        if (this.input.length > 0) {
+            this.input = this.input.slice(0, this.input.length - 1);
+            const input = document.getElementById(this.inputLocation);
+            // restricts visibility to limit value
+            input!.textContent = this.input.substring(0, this.inputVisibilityLimit);
+            if (this.input.length >= this.inputVisibilityLimit) {
+                input!.textContent += "...";
+            }
+        }
+    }
+
+    public clearInput() {
+        this.input = "";
+        const input = document.getElementById(this.inputLocation);
+        input!.textContent = this.input;
+    }
+
+    public async artificialInput(text: string, charsPerSecond?: number) {
+
+        function charSpeedLimiter(charsPerSecond: number) {
             return new Promise(resolve => setTimeout(resolve, 1000 / charsPerSecond));
         }
 
@@ -70,56 +186,14 @@ export class Terminal {
             charSpeed = charsPerSecond;
         }
 
-        // message is split into even and odd indices 
-        for (let i = 0; i < message.length; i++) {
-            let output = document.getElementById(this.outputLocation);
-            let newSection = document.createElement("span");
-            // even indices indicate styling
-            if (i % 2 === 0) {
-                newSection.className = message[i];
-            }
-            // odd indices indicate messaging
-            else {
-                for (let j = 0; j < message[i].length; j++) {
-                    if (message[i].charAt(j) === "\n") {
-                        output!.appendChild(newSection);
-                        // gather details to begin new line with same details
-                        this.outputNewline();
-                        newSection = document.createElement("span");
-                        newSection.className = message[i - 1];
-                    }
-                    else {
-                        newSection.textContent += message[i].charAt(j);
-                    }
-                    sleep(charSpeed).then(() => {});
-                }
-                output!.appendChild(newSection);
-            }
+        for (let i = 0; i < text.length; i++) {
+            this.addToInput(text[i]);
+            await charSpeedLimiter(charSpeed);
         }
+        this.commitInput();
     }
 
-
-    // input management
-
-    public addToInput(char: string) {
-        this.input = this.input.concat(char);
-        const input = document.getElementById(this.inputLocation);
-        input!.textContent = this.input;
-    }
-
-    public popInput() {
-        if (this.input.length > 0) {
-            this.input = this.input.slice(0, this.input.length - 1);
-            const input = document.getElementById(this.inputLocation);
-            input!.textContent = this.input;
-        }
-    }
-
-    public clearInput() {
-        this.input = "";
-        const input = document.getElementById(this.inputLocation);
-        input!.textContent = this.input;
-    }
+    // handler(s)
 
     private handleKey = (key: KeyboardEvent) => {
         key.preventDefault();
@@ -149,7 +223,6 @@ export class Terminal {
         }
     }
 
-
     // do commands
 
     public executeCommand(text: string) {
@@ -178,31 +251,64 @@ export class Terminal {
         }
 
         switch (args[0]) {
-            case "help": {
-                if (args.length > 1) {
-                    console.log("Unnecessary arguments");
-                }
-                cmd_Help(this);
+            case "clear": {
+                const output = document.getElementById(this.outputLocation);
+                output!.querySelectorAll("p").forEach(newline => newline.parentNode?.removeChild(newline));
+                output!.querySelectorAll("span").forEach(item => item.parentNode?.removeChild(item));
                 break;
             }
-
+            case "help": {
+                if (args.length !== 1) {
+                    let msg: string[] = cmd.expected_arg_count;
+                    msg.push("1");
+                    this.addToOutput(msg);
+                    break;
+                }
+                this.addToOutput(cmd.help);
+                break;
+            }
+            case "print": {
+                if (args.length < 2) {
+                    let msg: string[] = cmd.expected_arg_count;
+                    msg.push("2+");
+                    this.addToOutput(msg);
+                    break;
+                }
+                if (args[1] === "about") {
+                    if (args.length > 2) {
+                        let msg: string[] = cmd.expected_arg_count;
+                        msg.push("2");
+                        this.addToOutput(msg);
+                        break;
+                    }
+                    this.addToOutput(cmd.print_about);
+                }
+                else if (args[1] ==="contact") {
+                    this.addToOutput(cmd.print_contact);
+                }
+                else if (args[1] === "experience") {
+                    if (args.length > 2) {
+                        let msg: string[] = cmd.expected_arg_count;
+                        msg.push("2");
+                        this.addToOutput(msg);
+                        break;
+                    }
+                    this.addToOutput(cmd.print_experience);
+                }
+                else if (args[1] === "projects") {
+                    
+                }
+                break;
+            }
             default: {
-                cmd_Invalid(this);
+                this.addToOutput(cmd.invalid);
                 break;
             }
         }
     }
 
-}
 
-const cmd_Invalid = (terminal: Terminal) => {
-    terminal.addToOutput(cmd_invalid);
-    terminal.outputNewline();
-}
+    // other
 
-const cmd_Help = (terminal: Terminal) => {
-    terminal.addToOutput(cmd_help);
-    terminal.outputNewline();
-}
 
-export {}
+}
