@@ -1,4 +1,6 @@
-// do not put a newline at the end of any of these
+// newline at the end of these is optional
+// it currently "does nothing", future changes may make it important
+// it is best practice in case of future changes for line length support
 
 export const about: string[] = [ 
 "", 
@@ -24,7 +26,7 @@ export const contact_github: string[] = [
 "  ###########     ###########  \n" +
 "   ######          #########   \n" +
 "     #######       #######     \n" +
-"       #####       #####       "
+"       #####       #####       \n"
 ];
 
 export const contact_linkedin: string[] = [ 
@@ -46,41 +48,36 @@ export const contact_linkedin: string[] = [
 "++++=     ++     =+++=     ++++\n" +
 "++++=    :++:   .=++++    .++++\n" +
 "+++++++++++++++++++++++++++++++\n" +
-"+++++++++++++++++++++++++++++++"
+"+++++++++++++++++++++++++++++++\n"
 ];
 
-export const copyright_thin: string[] = [
+export const copyright: string[] = [
 "", 
-"  Copyright © 2025 Michael Jagiello\n" + 
-"         All Rights Reserved"
-]
-
-export const copyright_verywide: string[] = [
-"", 
-"                                Copyright © 2025 Michael Jagiello\n" + 
-"                                        All Rights Reserved"
-]
-
-export const copyright_wide: string[] = [
-"", 
-"            Copyright © 2025 Michael Jagiello\n" + 
-"                    All Rights Reserved"
+"© 2025 Michael Jagiello\n" + 
+"  All Rights Reserved\n"
 ]
 
 // push the expected value at the end
 export var expected_arg_count: string[] = [
-"", "Incorrect number of arguments. Expected: ",
+"red", "Incorrect number of arguments.", 
+"", " Expected: ",
 "green"
 ];
 
-export const experience: string[] = [ 
-"",
-" "
-]; 
+export const education: string[] = [ 
+"font-title", "Education\n",
+"", " - University of Florida - \n",
+"", " - Bachelor's of Science - \n",
+"", " -   Computer Science    - \n",
+];
+
+export const experience: string[] = [
+"font-title", "Experience\n"
+];
 
 export const font_list: string[] = [
 "", "List of fonts: \n",
-"green", "small    medium    large"
+"green", "small    medium    large\n"
 ];
 
 export const help: string[] = [
@@ -94,20 +91,20 @@ export const help: string[] = [
 "green", "    about\n",
 "", "        tells you stuff about me\n",
 "green", "    experience\n",
-"", "        rattles off my experiences, skills, and education\n",
+"", "        rattles off my education, experience, and skills\n",
 "green", "    contact\n",
 "", "        lists contact information and other socials\n",
 "green", "    copyright\n",
 "", "        prints basic copyright information\n",
 "green", "    projects\n",
-"", "        gives a few examples of cool stuff i did"
+"", "        gives a few examples of cool stuff i did\n"
 ];
 
 export const invalid: string[] = [
-"", "Invalid command. ",
-"", "Try \"",
+"red", "Invalid command.",
+"", " Try \"",
 "green", "help",
-"", "\" for a list of commands."
+"", "\" for a list of commands.\n"
 ];
 
 export const name: string[] = [ "font-small",
@@ -118,7 +115,7 @@ export const name: string[] = [ "font-small",
 "    | |  | || || (__ | | | || (_| ||  __/| | | |__| || (_| || (_| || ||  __/| || || (_) |\n" +
 "    |_|  |_||_| \\___||_| |_| \\__,_| \\___||_|  \\____/  \\__,_| \\__, ||_| \\___||_||_| \\___/ \n" +
 "                                                              __/ |                      \n" +
-"                                                             |___/                       "
+"                                                             |___/                       \n"
 ]
 
 export const namefirst: string[] = [ "font-small",
@@ -140,7 +137,7 @@ export const namelast: string[] = [ "font-small",
 "| |__| || (_| || (_| || ||  __/| || || (_) |\n" +
 " \\____/  \\__,_| \\__, ||_| \\___||_||_| \\___/ \n" +
 "                 __/ |                      \n" +
-"                |___/                       "
+"                |___/                       \n"
 ];
 
 var projects: string[] = [
@@ -152,10 +149,55 @@ export const project_pwm_generator: string[] = [
 " "
 ];
 
+export const skills: string[] = [
+"font-title", "Skills\n",
+"", 
+" - C && C++                    \n" +
+" - Java                        \n" +
+" - TypeScript && JavaScript    \n" +
+" - HTML && CSS                 \n" +
+" - Python                      \n" +
+" - C# && Unity                 \n" +
+" - SQL                         \n" +
+" - Git                         \n" +
+" - Docker                      \n" +
+" - Linux CLI                   \n" +
+" - 3D Design in AutoCAD        \n" + 
+" - Server Hosting              \n"
+];
+
+export const skills_verywide: string[] = [
+"font-title", "Skills\n",
+"", 
+" - C && C++                      - Java                        \n" +
+" - TypeScript && JavaScript      - HTML && CSS                 \n" +
+" - Python                        - C# && Unity                 \n" +
+" - SQL                           - Git                         \n" +
+" - Docker                        - Linux CLI                   \n" +
+" - 3D Design in AutoCAD          - Server Hosting              \n"
+];
+
+export const splash: string[] = [
+"blue-brighter", 
+"                .---. \n" +
+"                |   | \n" +
+" __  __   ___   '---' \n" +
+"|  |/  `.'   `. .---. \n" +
+"|   .-.  .-.   '|   | \n" +
+"|  |  |  |  |  ||   | \n" +
+"|  |  |  |  |  ||   | \n" +
+"|  |  |  |  |  ||   | \n" +
+"|  |  |  |  |  ||   | \n" +
+"|__|  |__|  |__||   | \n" +
+"             __.'   ' \n" +
+"            |      '  \n" +
+"            |____.'   \n"
+];
+
 export const try_help: string[] = [
 "", "Try \"",
 "green", "help",
-"", "\" for a list of commands."
+"", "\" for a list of commands.\n"
 ];
 
 // build

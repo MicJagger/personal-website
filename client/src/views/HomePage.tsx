@@ -1,7 +1,5 @@
 import '../styles/common.css'
-import Footer from '../components/Footer'
 import '../styles/HomePage.css';
-import NavBar from '../components/NavBar';
 import { MouseEvent } from 'react'
 import { Terminal } from '../utils/terminal';
 
@@ -56,8 +54,9 @@ const HomePage = () => {
             localStorage.setItem("format", "verywide");
         }
         
-        await terminal0.artificialInput("fetch", 5);
-        await sleep(2000);
+        await sleep(1000);
+        await terminal0.artificialInput("init", 3);
+        await sleep(1500);
         var scrollPoint = document.getElementById("about");
         scrollPoint?.scrollIntoView({
             block: "start"
@@ -90,8 +89,6 @@ const HomePage = () => {
 
                     </pre>
                 </section>
-
-                {/*NavBar()*/}
 
                 <div className="spacer"></div>
 
@@ -154,72 +151,6 @@ const HomePage = () => {
                 </div></section>
 
                 <div className="spacer"></div>
-
-                {/*
-
-                <section id="experience" className="segment-outer"><div className="segment-inner">
-                    <div className="wrap-pieces">
-                        <div className="education-box">
-                            <p className="education-box-title">Education</p>
-
-                        </div>
-
-                        <div className="skills-box">
-                            <p className="skills-box-title">Experienced In</p>
-                            <ul className="list-box">
-                                <li>C / C++</li>
-                                <li>TypeScript / JavaScript</li>
-                                <li>HTML + CSS</li>
-                                <li>Python</li>
-                                <li>Git</li>
-                                <li>Linux</li>
-                                <li>3D Design, AutoCAD</li>
-                            </ul>
-                        </div>
-
-                        <div className="skills-box">
-                            <p className="skills-box-title">Familiar With</p>
-                            <ul className="list-box">
-                                <li>Java</li>
-                                <li>SQL</li>
-                                <li>C#, Unity</li>
-                                <li>Docker</li>
-                                <li>ARM & x86 Assembly</li>
-                                <li>Web Hosting</li>
-                                <li>Server Management</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div></section>
-
-                <section id="projects" className="segment-outer"><div className="segment-inner">
-                    <header>Projects</header>
-                    <div className="wrap-pieces">
-
-                        <div className="project-box">
-                            <p className="project-text-title">personal-website</p>
-                            <img src={headImage} className="project-image" alt="project-image"/>
-                            <p className="project-text-subtitle">TypeScript | HTML | CSS</p>
-                        </div>
-
-                        <div className="project-box">
-                            <img src={localproconnect} className="project-image" alt="project-image"/>
-                            <div className="project-text">
-                                <p className="project-text-title">LocalPro Connect</p>
-                                <p className="project-text-subtitle">JavaScript | HTML | CSS</p>
-                            </div>
-                        </div>
-
-                        <div className="project-box">
-                            <img src={pwmgenerator} className="project-image" alt="project-image"/>
-                            <div className="project-text">
-                                <p className="project-text-title">pwm-generator</p>
-                                <p className="project-text-subtitle">C++</p>
-                            </div>
-                        </div>
-
-
-                */}
 
                 <section id="footer" className="segment-outer">
                     <pre className="terminal font-default font-medium margin-0">

@@ -45,6 +45,10 @@
   font-size: 0.8rem;
 }
 
+.font-title {
+  font-size: 2.4rem;
+}
+
 .home {
   background-color: #282c34;
   width: 100%;
@@ -168,6 +172,10 @@ p {
 
 .blue {
   color: #0000ff;
+}
+
+.blue-brighter {
+  color: #2040ff;
 }
 
 .cyan {

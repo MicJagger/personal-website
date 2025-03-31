@@ -101,8 +101,9 @@ export class Terminal {
         newPiece.textContent = "> " + this.input;
         output!.appendChild(newPiece);
         this.outputNewline();
-        this.executeCommand(this.input);
+        var command: string = this.input;
         this.clearInput();
+        await this.executeCommand(command);
     }
 
     // dont chain these without async management
@@ -183,18 +184,23 @@ export class Terminal {
                     else {
                         // length limiting depending on font
                         let wrapLine: boolean = false;
-                        if (message[i].includes("font-small")) { // if font is small
+                        if (message[i - 1].includes("font-small")) { // if font is small
                             if (newPiece!.textContent!.length! >= (this.outputVisibilityLimit * 1.5)) {
                                 wrapLine = true;
                             }
                         }
-                        else if (message[i].includes("font-large")) { // if font is large
+                        else if (message[i - 1].includes("font-large")) { // if font is large
                             if (newPiece!.textContent!.length! >= (this.outputVisibilityLimit * 0.75)) {
                                 wrapLine = true;
                             }
                         }
+                        else if (message[i - 1].includes("font-title")) { // if font is large
+                            if (newPiece!.textContent!.length! >= (this.outputVisibilityLimit * 0.5)) {
+                                wrapLine = true;
+                            }
+                        }
                         else { // if font is medium / other
-                            if (newPiece!.textContent!.length! >= (this.outputVisibilityLimit * 1.5)) {
+                            if (newPiece!.textContent!.length! >= (this.outputVisibilityLimit * 1)) {
                                 wrapLine = true;
                             }
                         }
@@ -228,9 +234,6 @@ export class Terminal {
                 }
             }
         }
-
-        const newLine = document.createElement("p");
-        newSection!.appendChild(newLine);
 
         if (keyboardWasEnabled) {
             window.addEventListener("keydown", this.handleKey);
@@ -359,117 +362,118 @@ export class Terminal {
             case "help": {
                 if (args.length !== 1) {
                     let msg: string[] = cmd.expected_arg_count;
-                    msg.push("1");
-                    this.addToOutput(msg);
+                    msg.push("1\n");
+                    await this.addToOutput(msg);
                     break;
                 }
-                this.addToOutput(cmd.help);
+                await this.addToOutput(cmd.help);
                 break;
             }
             case "about": {
                 if (args.length !== 1) {
                     let msg: string[] = cmd.expected_arg_count;
-                    msg.push("1");
+                    msg.push("1\n");
                     this.addToOutput(msg);
                     break;
                 }
                 if (localStorage.getItem("format") === "verywide") { // name is horizontal
-                    await this.addToOutput(cmd.name, "font-small");
+                    await this.addToOutput(cmd.name, "font-small centered-column", 64);
                 }
                 else { // name is vertical
-                    await this.addToOutput(cmd.namefirst, "font-small", undefined, true);
-                    await this.addToOutput(cmd.namelast, "font-small", undefined, true);
+                    await this.addToOutput(cmd.namefirst, "font-small centered-column", 64);
+                    await this.addToOutput(cmd.namelast, "font-small centered-column", 64);
                 }
-                this.addToOutput(cmd.about, "", undefined, true);
+                await this.addToOutput(cmd.about, "", undefined, true);
                 break;
             }
             case "contact": {
                 if (args.length !== 1) {
                     let msg: string[] = cmd.expected_arg_count;
-                    msg.push("1");
-                    this.addToOutput(msg);
+                    msg.push("1\n");
+                    await this.addToOutput(msg);
                     break;
                 }
-                await this.addToOutput(cmd.contact_github, undefined, 192, undefined, "https://github.com/MicJagger");
-                this.addToOutput(cmd.contact_linkedin, undefined, 192, undefined, "https://www.linkedin.com/in/michael-jagiello/");
+                await this.addToOutput(cmd.contact_github, "font-small", 192, undefined, "https://github.com/MicJagger");
+                await this.addToOutput(cmd.contact_linkedin, "font-small", 192, undefined, "https://www.linkedin.com/in/michael-jagiello/");
                 break;
             }
             case "copyright": {
                 if (args.length !== 1) {
                     let msg: string[] = cmd.expected_arg_count;
-                    msg.push("1");
-                    this.addToOutput(msg);
+                    msg.push("1\n");
+                    await this.addToOutput(msg);
                     break;
                 }
-                if (localStorage.getItem("format") === "thin") {
-                    this.addToOutput(cmd.copyright_thin);
-                }
-                else if (localStorage.getItem("format") === "wide") {
-                    this.addToOutput(cmd.copyright_wide);
-                }
-                else if (localStorage.getItem("format") === "verywide") {
-                    this.addToOutput(cmd.copyright_verywide);
-                }
+                await this.addToOutput(cmd.copyright, "centered-column");
                 break;
             }
             case "experience": {
                 if (args.length !== 1) {
                     let msg: string[] = cmd.expected_arg_count;
-                    msg.push("1");
-                    this.addToOutput(msg);
+                    msg.push("1\n");
+                    await this.addToOutput(msg);
                     break;
                 }
-                this.addToOutput(cmd.experience);
-                break;
-            }
-            case "fetch": {
-                if (args.length !== 1) {
-                    let msg: string[] = cmd.expected_arg_count;
-                    msg.push("1");
-                    this.addToOutput(msg);
-                    break;
+                await this.addToOutput(cmd.education);
+                await this.addToOutput(cmd.experience);
+                if (localStorage.getItem("format") === "wide") {
+                    await this.addToOutput(cmd.skills_verywide);
                 }
-
-                this.addToOutput(["", "fetch command"]);
-
+                else {
+                    await this.addToOutput(cmd.skills);
+                }
                 break;
             }
             case "font": {
                 if (args.length !== 2) {
                     let msg: string[] = cmd.expected_arg_count;
-                    msg.push("2");
-                    this.addToOutput(msg);
+                    msg.push("2\n");
+                    await this.addToOutput(msg);
                     break;
                 }
                 if (args[1] === "small") {
                     this.changeFont("font-small");
-                    this.addToOutput(["", "Changed font size."]);
+                    await this.addToOutput(["", "Changed font size.\n"]);
                 }
                 else if (args[1] === "medium") {
                     this.changeFont("font-medium");
-                    this.addToOutput(["", "Changed font size."]);
+                    await this.addToOutput(["", "Changed font size.\n"]);
                 }
                 else if (args[1] === "large") {
                     this.changeFont("font-large");
-                    this.addToOutput(["", "Changed font size."]);
+                    await this.addToOutput(["", "Changed font size.\n"]);
                 }
                 else {
-                    this.addToOutput(cmd.font_list);
+                    await this.addToOutput(cmd.font_list);
                 }
+                break;
+            }
+            case "init": {
+                if (args.length !== 1) {
+                    let msg: string[] = cmd.expected_arg_count;
+                    msg.push("1\n");
+                    this.addToOutput(msg);
+                    break;
+                }
+                await this.addToOutput(cmd.splash, undefined, 64);
+                await this.addToOutput(["", "running in... a web browser\n"], undefined, 32);
+                await this.addToOutput(["", "windowWidth=\n" + window.innerWidth.toString()], undefined, 32);
+                await this.addToOutput(["", "windowHeight=\n" + window.innerHeight.toString()], undefined, 32);
+                await this.addToOutput(["", "loading...\n"], undefined, 32);
                 break;
             }
             case "projects": {
                 if (args.length !== 1) {
                     let msg: string[] = cmd.expected_arg_count;
-                    msg.push("1");
-                    this.addToOutput(msg);
+                    msg.push("1\n");
+                    await this.addToOutput(msg);
                     break;
                 }
-                this.addToOutput(cmd.projects);
+                await this.addToOutput(cmd.projects);
                 break;
             }
             default: {
-                this.addToOutput(cmd.invalid);
+                await this.addToOutput(cmd.invalid);
                 break;
             }
         }
