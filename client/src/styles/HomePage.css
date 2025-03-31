@@ -47,6 +47,7 @@
 
 .home {
   background-color: #282c34;
+  white-space: pre-wrap;
   width: 100%;
 }
 
@@ -122,10 +123,6 @@ p {
   max-height: 100vh;
   overflow: auto;
   width: 100%;
-}
-
-.text {
-  font-size: 10rem;
 }
 
 

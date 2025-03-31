@@ -6,11 +6,7 @@ export class Terminal {
     public inputLocation: string;
 
     // limits length of I/O, or limits what is displayed
-    // outputLengthLimit is not implemented
-    public outputLengthLimit: number;
-    public outputVisibilityLimit: number;
     public inputLengthLimit: number;
-    public inputVisibilityLimit: number;
 
     // for setting default fonts for everything, including user input
     public defaultClass: string;
@@ -25,24 +21,7 @@ export class Terminal {
         this.outputLocation = outputLoc;
         this.inputLocation = inputLoc;
 
-        this.outputLengthLimit = 200;
-        this.inputLengthLimit = 200;
-        if (localStorage.getItem("format") === "verythin") { // not completely implemented
-            this.outputVisibilityLimit = 24;
-            this.inputVisibilityLimit = 24;
-        }
-        else if (localStorage.getItem("format") === "thin") {   
-            this.outputVisibilityLimit = 32;
-            this.inputVisibilityLimit = 32;
-        }
-        else if (localStorage.getItem("format") === "wide") {
-            this.outputVisibilityLimit = 48;
-            this.inputVisibilityLimit = 48;
-        }
-        else {
-            this.outputVisibilityLimit = 64;
-            this.inputVisibilityLimit = 64;
-        }
+        this.inputLengthLimit = 100;
 
         this.defaultClass = "font-medium";
         this.defaultSectionClass = "";
@@ -152,7 +131,7 @@ export class Terminal {
                     }
                 }
                 else {
-                    newPiece = document.createElement("span");
+                    newPiece = document.createElement("p");
                 }
 
                 newSection!.appendChild(newPiece);
@@ -178,7 +157,7 @@ export class Terminal {
                                 }
                             }
                             else {
-                                newPiece = document.createElement("span");
+                                newPiece = document.createElement("p");
                             }
 
                             newSection!.appendChild(newPiece);
@@ -186,49 +165,6 @@ export class Terminal {
                         }
                     }
                     else {
-                        // length limiting depending on font
-                        let wrapLine: boolean = false;
-                        if (message[i - 1].includes("font-small")) { // if font is small
-                            if (newPiece!.textContent!.length! >= (this.outputVisibilityLimit * 1.5)) {
-                                wrapLine = true;
-                            }
-                        }
-                        else if (message[i - 1].includes("font-large")) { // if font is large
-                            if (newPiece!.textContent!.length! >= (this.outputVisibilityLimit * 0.75)) {
-                                wrapLine = true;
-                            }
-                        }
-                        else if (message[i - 1].includes("font-title")) { // if font is large
-                            if (newPiece!.textContent!.length! >= (this.outputVisibilityLimit * 0.5)) {
-                                wrapLine = true;
-                            }
-                        }
-                        else { // if font is medium / other
-                            if (newPiece!.textContent!.length! >= (this.outputVisibilityLimit * 1)) {
-                                wrapLine = true;
-                            }
-                        }
-
-                        // wrap the line
-                        if (wrapLine) {
-                            const newLine = document.createElement("p");
-                            newSection!.appendChild(newLine);
-
-                            if (hyperlink !== null && hyperlink !== undefined) {
-                                newPiece = document.createElement("a");
-                                newPiece.setAttribute("href", hyperlink);
-                                if (newpage === null || newpage === undefined || newpage === true) {
-                                    newPiece.setAttribute("target", "_blank");
-                                    newPiece.setAttribute("rel", "noopener noreferrer");
-                                }
-                            }
-                            else {
-                                newPiece = document.createElement("span");
-                            }
-
-                            newSection!.appendChild(newPiece);
-                            newPiece.className = message[i - 1];
-                        }
                         newPiece!.textContent += message[i].charAt(j);
                     }
                     // if space, skip sleep cycle (to tab faster)
@@ -253,10 +189,7 @@ export class Terminal {
             this.input = this.input.concat(char);
             const input = document.getElementById(this.inputLocation);
             // restricts visibility to limit value
-            input!.textContent = this.input.substring(0, this.inputVisibilityLimit);
-            if (this.input.length >= this.inputVisibilityLimit) {
-                input!.textContent += "...";
-            }
+            input!.textContent = this.input;
         }
     }
 
@@ -265,10 +198,7 @@ export class Terminal {
             this.input = this.input.slice(0, this.input.length - 1);
             const input = document.getElementById(this.inputLocation);
             // restricts visibility to limit value
-            input!.textContent = this.input.substring(0, this.inputVisibilityLimit);
-            if (this.input.length >= this.inputVisibilityLimit) {
-                input!.textContent += "...";
-            }
+            input!.textContent = this.input;
         }
     }
 

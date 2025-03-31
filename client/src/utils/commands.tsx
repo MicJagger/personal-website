@@ -89,7 +89,7 @@ export const experience: string[] = [
 " - Prioritize top-tier customer support to consistently hold above a 90% satisfaction rate\n" +
 " - Foster a cohesive team atmosphere and train coworkers in computing competency\n",
 "", "\n",
-"", "I am looking to add more :)\n"
+"", "I am looking to expand this list :)\n"
 ];
 
 export const font_list: string[] = [

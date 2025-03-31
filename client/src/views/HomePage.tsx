@@ -79,7 +79,7 @@ const HomePage = () => {
             <section id="home" className="home font-default">
                 
                 <section id="main" className="terminal-main shadow">
-                    <pre className="terminal font-default font-medium margin-0">
+                    <div className="terminal font-default font-medium margin-0">
 
                         <div id="output0" className="font-default font-medium"></div>
 
@@ -87,14 +87,14 @@ const HomePage = () => {
                             <span id="input0" className="input font-default"></span><b id="c0" className="cursor font-medium"></b>
                         </span>
 
-                    </pre>
+                    </div>
                 </section>
 
                 <div className="spacer"></div>
 
                 <section id="about" className="segment-outer"><div className="bounded shadow">
                     <div className="terminal-label">About</div>
-                    <pre className="terminal min-height font-default font-medium margin-0">
+                    <div className="terminal min-height font-default font-medium margin-0">
 
                         <div id="output1" className="font-default font-medium"></div>
 
@@ -102,14 +102,14 @@ const HomePage = () => {
                             <span id="input1" className="input font-default font-medium"></span><b id="c1" className="cursor font-medium"></b>
                         </span>
 
-                    </pre>
+                    </div>
                 </div></section>
 
                 <div className="spacer"></div>
 
                 <section id="experience" className="segment-outer"><div className="bounded shadow">
                     <div className="terminal-label">Experience</div>
-                    <pre className="terminal min-height font-default font-medium margin-0">
+                    <div className="terminal min-height font-default font-medium margin-0">
 
                         <div id="output2" className="font-default font-medium"></div>
 
@@ -117,14 +117,14 @@ const HomePage = () => {
                             <span id="input2" className="input font-default font-medium"></span><b id="c2" className="cursor font-medium"></b>
                         </span>
 
-                    </pre>
+                    </div>
                 </div></section>
 
                 <div className="spacer"></div>
 
                 <section id="projects" className="segment-outer"><div className="bounded shadow">
                     <div className="terminal-label">Projects</div>
-                    <pre className="terminal min-height font-default font-medium margin-0">
+                    <div className="terminal min-height font-default font-medium margin-0">
 
                         <div id="output3" className="font-default font-medium"></div>
 
@@ -132,14 +132,14 @@ const HomePage = () => {
                             <span id="input3" className="input font-default font-medium"></span><b id="c3" className="cursor font-medium"></b>
                         </span>
 
-                    </pre>
+                    </div>
                 </div></section>
 
                 <div className="spacer"></div>
 
                 <section id="contact" className="segment-outer"><div className="bounded shadow">
                     <div className="terminal-label">Contact</div>
-                    <pre className="terminal min-height font-default font-medium margin-0">
+                    <div className="terminal min-height font-default font-medium margin-0">
 
                         <div id="output4" className="font-default font-medium"></div>
 
@@ -147,13 +147,13 @@ const HomePage = () => {
                             <span id="input4" className="input font-default font-medium"></span><b id="c4" className="cursor font-medium"></b>
                         </span>
 
-                    </pre>
+                    </div>
                 </div></section>
 
                 <div className="spacer"></div>
 
                 <section id="footer" className="segment-outer">
-                    <pre className="terminal font-default font-medium margin-0 shadow">
+                    <div className="terminal font-default font-medium margin-0 shadow">
 
                         <div id="output5" className="font-default font-medium"></div>
 
@@ -161,7 +161,7 @@ const HomePage = () => {
                             <span id="input5" className="input font-default font-medium"></span><b id="c5" className="cursor font-medium"></b>
                         </span>
 
-                    </pre>
+                    </div>
                 </section>
 
             </section>
