@@ -27,7 +27,11 @@ export class Terminal {
 
         this.outputLengthLimit = 200;
         this.inputLengthLimit = 200;
-        if (localStorage.getItem("format") === "thin") {   
+        if (localStorage.getItem("format") === "verythin") { // not completely implemented
+            this.outputVisibilityLimit = 24;
+            this.inputVisibilityLimit = 24;
+        }
+        else if (localStorage.getItem("format") === "thin") {   
             this.outputVisibilityLimit = 32;
             this.inputVisibilityLimit = 32;
         }
@@ -377,13 +381,14 @@ export class Terminal {
                     break;
                 }
                 if (localStorage.getItem("format") === "verywide") { // name is horizontal
-                    await this.addToOutput(cmd.name, "font-small centered-column", 64);
+                    await this.addToOutput(cmd.name, "font-small centered-column", 64, undefined, "/#contact", false);
                 }
                 else { // name is vertical
-                    await this.addToOutput(cmd.namefirst, "font-small centered-column", 64);
-                    await this.addToOutput(cmd.namelast, "font-small centered-column", 64);
+                    await this.addToOutput(cmd.namefirst, "centered-column", 64, undefined, "/#contact", false);
+                    await this.addToOutput(cmd.namelast, "centered-column", 64, undefined, "/#contact", false);
                 }
-                await this.addToOutput(cmd.about, "", undefined, true);
+                await this.addToOutput(cmd.about, undefined, 64);
+                await this.addToOutput(cmd.about_reachme, undefined, 32, undefined, "/#contact", false);
                 break;
             }
             case "contact": {
@@ -393,8 +398,8 @@ export class Terminal {
                     await this.addToOutput(msg);
                     break;
                 }
-                await this.addToOutput(cmd.contact_github, "font-small", 192, undefined, "https://github.com/MicJagger");
-                await this.addToOutput(cmd.contact_linkedin, "font-small", 192, undefined, "https://www.linkedin.com/in/michael-jagiello/");
+                await this.addToOutput(cmd.contact_github, undefined, 192, undefined, "https://github.com/MicJagger");
+                await this.addToOutput(cmd.contact_linkedin, undefined, 192, undefined, "https://www.linkedin.com/in/michael-jagiello/");
                 break;
             }
             case "copyright": {
@@ -415,8 +420,10 @@ export class Terminal {
                     break;
                 }
                 await this.addToOutput(cmd.education);
+                await this.addToOutput(["", " "]);
                 await this.addToOutput(cmd.experience);
-                if (localStorage.getItem("format") === "wide") {
+                await this.addToOutput(["", " "]);
+                if (localStorage.getItem("format") === "verywide") {
                     await this.addToOutput(cmd.skills_verywide);
                 }
                 else {
@@ -457,8 +464,8 @@ export class Terminal {
                 }
                 await this.addToOutput(cmd.splash, undefined, 64);
                 await this.addToOutput(["", "running in... a web browser\n"], undefined, 32);
-                await this.addToOutput(["", "windowWidth=\n" + window.innerWidth.toString()], undefined, 32);
-                await this.addToOutput(["", "windowHeight=\n" + window.innerHeight.toString()], undefined, 32);
+                await this.addToOutput(["", "windowWidth=" + window.innerWidth.toString() + "\n"], undefined, 32);
+                await this.addToOutput(["", "windowHeight=" + window.innerHeight.toString() + "\n"], undefined, 32);
                 await this.addToOutput(["", "loading...\n"], undefined, 32);
                 break;
             }

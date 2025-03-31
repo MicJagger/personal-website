@@ -21,7 +21,7 @@ const HomePage = () => {
     var terminal4 = new Terminal("4", "output4", "input4");
 
     // footer
-    var terminal5 = new Terminal("4", "output5", "input5");
+    var terminal5 = new Terminal("5", "output5", "input5");
 
     function sleep(time: number) {
         return new Promise(resolve => setTimeout(resolve, time));
@@ -78,7 +78,7 @@ const HomePage = () => {
 
             <section id="home" className="home font-default">
                 
-                <section id="main" className="terminal-main">
+                <section id="main" className="terminal-main shadow">
                     <pre className="terminal font-default font-medium margin-0">
 
                         <div id="output0" className="font-default font-medium"></div>
@@ -92,7 +92,7 @@ const HomePage = () => {
 
                 <div className="spacer"></div>
 
-                <section id="about" className="segment-outer"><div className="bounded">
+                <section id="about" className="segment-outer"><div className="bounded shadow">
                     <div className="terminal-label">About</div>
                     <pre className="terminal min-height font-default font-medium margin-0">
 
@@ -107,7 +107,7 @@ const HomePage = () => {
 
                 <div className="spacer"></div>
 
-                <section id="experience" className="segment-outer"><div className="bounded">
+                <section id="experience" className="segment-outer"><div className="bounded shadow">
                     <div className="terminal-label">Experience</div>
                     <pre className="terminal min-height font-default font-medium margin-0">
 
@@ -122,7 +122,7 @@ const HomePage = () => {
 
                 <div className="spacer"></div>
 
-                <section id="projects" className="segment-outer"><div className="bounded">
+                <section id="projects" className="segment-outer"><div className="bounded shadow">
                     <div className="terminal-label">Projects</div>
                     <pre className="terminal min-height font-default font-medium margin-0">
 
@@ -137,7 +137,7 @@ const HomePage = () => {
 
                 <div className="spacer"></div>
 
-                <section id="contact" className="segment-outer"><div className="bounded">
+                <section id="contact" className="segment-outer"><div className="bounded shadow">
                     <div className="terminal-label">Contact</div>
                     <pre className="terminal min-height font-default font-medium margin-0">
 
@@ -153,7 +153,7 @@ const HomePage = () => {
                 <div className="spacer"></div>
 
                 <section id="footer" className="segment-outer">
-                    <pre className="terminal font-default font-medium margin-0">
+                    <pre className="terminal font-default font-medium margin-0 shadow">
 
                         <div id="output5" className="font-default font-medium"></div>
 

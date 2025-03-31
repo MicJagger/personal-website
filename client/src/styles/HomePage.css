@@ -1,10 +1,6 @@
 .bounded {
   margin: auto;
-  width: 60vw;
-}
-
-.box {
-  background-color: #282c34;
+  width: 65vw;
 }
 
 .column-left {
@@ -101,7 +97,7 @@ p {
 }
 
 .terminal {
-  background-color: #000000;
+  background-color: #1a1a28;
   color: #ffffff;
   display: block;
   height: fit-content;
@@ -110,7 +106,9 @@ p {
 
 .terminal-label {
   background-color: #ffffff;
-  color: #000000;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  color: #1a1a28;
   display: flex;
   font-size: 1.6rem;
   height: fit-content;
@@ -119,11 +117,15 @@ p {
 }
 
 .terminal-main {
-  background-color: #000000;
+  background-color: #1a1a28;
   height: 100vh;
   max-height: 100vh;
   overflow: auto;
   width: 100%;
+}
+
+.text {
+  font-size: 10rem;
 }
 
 
