@@ -86,9 +86,9 @@ export const experience: string[] = [
 "font-large", "Best Buy\n",
 "", 
 " - Exceeded store targets to be number one in sales for FY24Q2 with over $300k in revenue\n" +
-" - Prioritize top-tier customer support to consistently hold above a 90% satisfaction rate\n" +
-" - Foster a cohesive team atmosphere and train coworkers in computing competency\n" +
-" - Research and develop resources to maintain team repository of detailed product information\n",
+" - Prioritized top-tier customer support to consistently hold above a 90% satisfaction rate\n" +
+" - Fostered a cohesive team atmosphere and train coworkers in computing competency\n" +
+" - Researched and developed resources to maintain team repository of detailed product information\n",
 "", "\n",
 "", "I am looking to expand this list :)\n"
 ];
@@ -190,7 +190,7 @@ export const project_personal_website: string[] = [
 "This website right here!\n" +
 "Built using TypeScript, and of course HTML and CSS.\n" +
 "These terminals are fully functional, and are not just animations.\n" +
-"The terminal at the top of the page is usable, and once clicked you can run any of these commands and more.\n" +
+"The terminal at the top of the page is usable, and once the input line is clicked you can run any of these commands and more.\n" +
 "\n"
 ];
 

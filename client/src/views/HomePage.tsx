@@ -72,6 +72,8 @@ const HomePage = () => {
 
     loadWatcher();
 
+    // for enabling / disabling input on terminal0
+
     const clickOn0 = (mouseEvent: MouseEvent<HTMLSpanElement>) => {
         terminal0.enableUserInput();
     }

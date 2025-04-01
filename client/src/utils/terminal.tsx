@@ -38,6 +38,16 @@ export class Terminal {
         return new Promise(resolve => setTimeout(resolve, milliseconds));
     }
 
+    // snap screen to terminal0 input
+    private checkAndScrollTerminal0() {
+        if (this.id === "0") {
+            var scrollPoint = document.getElementById("newline0");
+            scrollPoint?.scrollIntoView({
+                block: "end"
+            });
+        }
+    }
+
 
     // user input setters
 
@@ -177,6 +187,7 @@ export class Terminal {
                         }
                         else {
                             newPiece!.textContent += message[i].charAt(j);
+                            this.checkAndScrollTerminal0();
                         }
                         // if space, skip sleep cycle (to tab faster)
                         if (message[i].charAt(j) !== " ") {
