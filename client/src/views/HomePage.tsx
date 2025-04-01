@@ -1,189 +1,183 @@
 import '../styles/common.css'
-import Footer from '../components/Footer'
-import githubImageBlack from '../assets/github-black192.png'
-import githubImageWhite from '../assets/github-white192.png'
-import headImage from '../assets/temphead512.png';
 import '../styles/HomePage.css';
-import linkedinImage from '../assets/linkedin192.png'
-import linkedinImageFullBlack from '../assets/linkedinFull-black.png'
-import linkedinImageFullWhite from '../assets/linkedinFull-white.png'
-import localproconnect from '../assets/localpro-connect.png'
-import NavBar from '../components/NavBar';
-import {MouseEvent} from 'react'
-import pwmgenerator from '../assets/pwm-generator-simplified.png'
+import { MouseEvent } from 'react'
+import { Terminal } from '../utils/terminal';
 
 const HomePage = () => {
 
-    const GitHubButton = () => {
-        const handleMouseEvent = (mouseEvent: MouseEvent<HTMLImageElement>) => {
-            mouseEvent.preventDefault();
-            window.open("https://github.com/MicJagger");
-        }
+    // home
+    var terminal0 = new Terminal("0", "output0", "input0");
 
-        return (
-            <img src={githubImageWhite} className="social-button" alt="GitHub" onClick={handleMouseEvent}/>
-        );
+    // about
+    var terminal1 = new Terminal("1", "output1", "input1");
+
+    // experience
+    var terminal2 = new Terminal("2", "output2", "input2");
+
+    // projects
+    var terminal3 = new Terminal("3", "output3", "input3");
+
+    // contact
+    var terminal4 = new Terminal("4", "output4", "input4");
+
+    // footer
+    var terminal5 = new Terminal("5", "output5", "input5");
+
+    function sleep(time: number) {
+        return new Promise(resolve => setTimeout(resolve, time));
     }
 
-    const LinkedInButton = () => {
-        const handleMouseEvent = (mouseEvent: MouseEvent<HTMLImageElement>) => {
-            mouseEvent.preventDefault();
-            window.open("https://www.linkedin.com/in/michael-jagiello/");
+    // waits until html elements are modifiable, then executes onLoad()
+    async function loadWatcher() {
+        var loadTest = document.getElementById("footer");
+        while (true) {
+            loadTest = document.getElementById("footer");
+            if (loadTest !== null) {
+                onLoad();
+                break;
+            }
+            await sleep(50);
         }
-
-        return (
-            <img src={linkedinImage} className="social-button" alt="LinkedIn" onClick={handleMouseEvent}/>
-        );
     }
 
-    const LinkedInButtonFull = () => {
-        const handleMouseEvent = (mouseEvent: MouseEvent<HTMLImageElement>) => {
-            mouseEvent.preventDefault();
-            window.open("https://www.linkedin.com/in/michael-jagiello/");
-        }
+    async function onLoad() {
+        console.log("loaded!");
 
-        return (
-            <img src={linkedinImageFullWhite} className="social-banner-button" alt="LinkedIn" onClick={handleMouseEvent}/>
-        );
+        // initialize window size
+        if (window.innerWidth < 800) {
+            localStorage.setItem("format", "thin");
+        }
+        else if (window.innerWidth >= 800 && window.innerWidth < 1200) {
+            localStorage.setItem("format", "wide");
+        }
+        else if (window.innerWidth >= 1200) {
+            localStorage.setItem("format", "verywide");
+        }
+        
+        await sleep(1000);
+        await terminal0.artificialInput("fetch", 2);
+        await sleep(1500);
+        var scrollPoint = document.getElementById("about");
+        scrollPoint?.scrollIntoView({
+            block: "start"
+        })
+        await sleep(1500);
+        terminal1.artificialInput("about", 5);
+        terminal2.artificialInput("experience", 5);
+        terminal3.artificialInput("projects", 5);
+        terminal4.artificialInput("contact", 5);
+        terminal5.artificialInput("copyright", 5);
+        //terminal0.enableUserInput();
     }
 
-    const ButtonViewMore = (link: string) => {
-        const handleMouseEvent = (mouseEvent: MouseEvent<HTMLButtonElement>) => {
-            mouseEvent.preventDefault();
-            window.open(link);
-        }
+    loadWatcher();
 
-        return (
-            <button className="button-view-more" onClick={handleMouseEvent}>View More</button>
-        );
+    // for enabling / disabling input on terminal0
+
+    const clickOn0 = (mouseEvent: MouseEvent<HTMLSpanElement>) => {
+        terminal0.enableUserInput();
+    }
+
+    const clickOff0 = (mouseEvent: MouseEvent) => {
+        terminal0.disableUserInput();
     }
 
     return (
         <>
             <title>Michael Jagiello</title>
 
-            <section id="home-page" className="page-default">
-                <NavBar />
+            <section id="home" className="home font-default">
+                
+                <section id="main" className="terminal-main shadow">
+                    <div className="terminal font-default font-medium margin-0">
 
-                <section id="profile" className="profile">
-                    <img src={headImage} className="face" alt="face"/>
-                    <div className="profile-info">
-                        <p className="profile-text">I am</p>
-                        <p className="profile-name-text">Michael Jagiello</p>
-                        <p className="profile-text">Software Engineer</p>
-                        <p className="profile-text">Computer Nerd</p>
-                        <div className="socials">
-                            <GitHubButton />
-                            <LinkedInButton />
-                        </div>
+                        <div id="output0" className="font-default font-medium" onClick={clickOff0}></div>
+
+                        <span id="newline0" className="width-full" onClick={clickOn0}>&gt;&nbsp;
+                            <span id="input0" className="input font-default"></span><b id="c0" className="cursor font-medium" />
+                        </span>
+
                     </div>
                 </section>
 
-                <section id="about" className="about">
-                    <header>About</header>
-                    <p className="about-text">
-                        Hey, I'm Michael, a senior Computer Science major at the University of Florida.
-                        Learning about computing has been a hobby of mine for a decade now, and I am happy to
-                        finally have gotten to creating.
-                        I enjoy just going out and making stuff, and finding new things I didn't understand prior.
-                    </p>
-                    <p className="about-text">
-                        Unlike many of the people I talk to, I love low-level programming and fundamentals, and have
-                        dedicated my life to understanding a computer from the text you are reading now,
-                        down to the registers working tirelessly to display it.
-                    </p>
-                    <p className="about-text">
-                        Despite my time in hardware and low-level software, that doesn't mean I don't enjoy production-level development.
-                        Building websites and scripts has its place, and machine code or even C++ simply will not always get the job done.
-                    </p>
-                    <p className="about-text">
-                        The goal is to know it all, but we all know that can't happen - I'm stubborn enough to try anyway.
-                    </p>
+                <section id="everthingelse" onClick={clickOff0}>
 
-                    <div className="array">
-                        <div className="education-box">
-                            <p className="education-box-title">Education</p>
-                            <ul className="education-details">
-                                <p className="education-box-title">University of Florida</p>
-                                <p className="education-sub-title">Gainesville, Florida</p>
-                                <p className="education-title">Bachelor's of Science</p>
-                                <p className="education-sub-title">in</p>
-                                <p className="education-title">Computer Science</p>
-                                <p className="education-sub-title">3.6 GPA</p>
-                                <p className="education-sub-title"> </p>
-                            </ul>
-                        </div> 
+                <div className="spacer" />
 
-                        <div className="skills-box">
-                            <p className="skills-box-title">Experienced In</p>
-                            <ul className="list-box">
-                                <li>C / C++</li>
-                                <li>TypeScript / JavaScript</li>
-                                <li>HTML + CSS</li>
-                                <li>Python</li>
-                                <li>Git</li>
-                                <li>Linux</li>
-                                <li>3D Design, AutoCAD</li>
-                            </ul>
-                        </div>
+                <section id="about" className="segment-outer"><div className="bounded shadow">
+                    <div className="terminal-label">About</div>
+                    <div className="terminal min-height font-default font-medium margin-0">
 
-                        <div className="skills-box">
-                            <p className="skills-box-title">Familiar With</p>
-                            <ul className="list-box">
-                                <li>Java</li>
-                                <li>SQL</li>
-                                <li>C#, Unity</li>
-                                <li>Docker</li>
-                                <li>ARM & x86 Assembly</li>
-                                <li>Web Hosting</li>
-                                <li>Server Management</li>
-                            </ul>
-                        </div>
+                        <div id="output1" className="font-default font-medium"></div>
+
+                        <span id="newline1" className="">&gt;&nbsp;
+                            <span id="input1" className="input font-default font-medium"></span><b id="c1" className="cursor font-medium"></b>
+                        </span>
+
+                    </div>
+                </div></section>
+
+                <div className="spacer" />
+
+                <section id="experience" className="segment-outer"><div className="bounded shadow">
+                    <div className="terminal-label">Experience</div>
+                    <div className="terminal min-height font-default font-medium margin-0">
+
+                        <div id="output2" className="font-default font-medium"></div>
+
+                        <span id="newline2" className="">&gt;&nbsp;
+                            <span id="input2" className="input font-default font-medium"></span><b id="c2" className="cursor font-medium"></b>
+                        </span>
+
+                    </div>
+                </div></section>
+
+                <div className="spacer" />
+
+                <section id="projects" className="segment-outer"><div className="bounded shadow">
+                    <div className="terminal-label">Projects</div>
+                    <div className="terminal min-height font-default font-medium margin-0">
+
+                        <div id="output3" className="font-default font-medium"></div>
+
+                        <span id="newline3" className="">&gt;&nbsp;
+                            <span id="input3" className="input font-default font-medium"></span><b id="c3" className="cursor font-medium"></b>
+                        </span>
+
+                    </div>
+                </div></section>
+
+                <div className="spacer" />
+
+                <section id="contact" className="segment-outer"><div className="bounded shadow">
+                    <div className="terminal-label">Contact</div>
+                    <div className="terminal min-height font-default font-medium margin-0">
+
+                        <div id="output4" className="font-default font-medium"></div>
+
+                        <span id="newline4" className="">&gt;&nbsp;
+                            <span id="input4" className="input font-default font-medium"></span><b id="c4" className="cursor font-medium"></b>
+                        </span>
+
+                    </div>
+                </div></section>
+
+                <div className="spacer" />
+
+                <section id="footer" className="segment-outer">
+                    <div className="terminal font-default font-medium margin-0 shadow">
+
+                        <div id="output5" className="font-default font-medium"></div>
+
+                        <span id="newline5" className="">&gt;&nbsp;
+                            <span id="input5" className="input font-default font-medium"></span><b id="c5" className="cursor font-medium"></b>
+                        </span>
+
                     </div>
                 </section>
 
-                <section id="project-highlights" className="project-highlights">
-                    <header>Project Highlights</header>
-                    <div className="array">
-                        <div className="project-box">
-                            <img src={headImage} className="project-image" alt="project-image"/>
-                            <div className="project-text">
-                                <p className="project-text-title">personal-website</p>
-                                <p className="project-text-subtitle">TypeScript | HTML | CSS</p>
-                                <div className="project-more">{ButtonViewMore("https://github.com/MicJagger/personal-website")}</div>
-                            </div>
-                        </div>
-                        <div className="project-box">
-                            <img src={localproconnect} className="project-image" alt="project-image"/>
-                            <div className="project-text">
-                                <p className="project-text-title">LocalPro Connect</p>
-                                <p className="project-text-subtitle">JavaScript | HTML | CSS</p>
-                                <div className="project-more">{ButtonViewMore("https://github.com/MicJagger/CENPROJECT")}</div>
-                            </div>
-                        </div>
-                        <div className="project-box">
-                            <img src={pwmgenerator} className="project-image" alt="project-image"/>
-                            <div className="project-text">
-                                <p className="project-text-title">pwm-generator</p>
-                                <p className="project-text-subtitle">C++</p>
-                                <div className="project-more">{ButtonViewMore("https://github.com/MicJagger/pwm-generator")}</div>
-                            </div>
-                        </div>
-                    </div>
-                    {/* <a href="/project" className="">More Projects</a> */}
                 </section>
 
-                <section id="contact" className="contact">
-                    <header>Contact Me</header>
-                    <div className="text">
-                        <p>
-                            Connect with me on
-                        </p>
-                        <LinkedInButtonFull />
-                    </div>
-                </section>
-
-                <Footer />
             </section>
         </>
     );

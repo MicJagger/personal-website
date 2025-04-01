@@ -1,15 +1,58 @@
+.centered {
+  display: flex;
+  justify-content: center;
+}
+
+.centered-column {
+  display: grid;
+  justify-content: center;
+}
+
+.centered-vertical {
+  align-items: center;
+}
+
+.cursor-point {
+  cursor: pointer;
+}
+
+.font-default {
+  font-family: "Fragment Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+
+header {
+  display: flex;
+  font-size: calc(2rem + 2vmin);
+  justify-content: center;
+}
+
 html {
   scroll-behavior: smooth;
 }
-  
-.page-default {
-  background-color: #2c2c2c;
-  color: #f8f8f8;
-  font-family: sans-serif;
+
+.margin-0 {
+  margin: 0px;
 }
 
-.page-default-light {
-  background-color: #f8f8f8;
-  color: #000000;
-  font-family: sans-serif;
+.rounded {
+  border-radius: 50%;
+}
+
+.rounded-half {
+  border-radius: 25%;
+}
+
+.shadow {
+  box-shadow: 0px 0px 10px #00000080;
+}
+
+.white {
+  color: #ffffff;
+}
+
+.width-full {
+  display: flex;
+  width: 100%;
 }

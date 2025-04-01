@@ -1,23 +1,40 @@
-.navbar {
+.link-box {
+  padding: 1%;
+  width: 15vw;
+}
+
+nav.inner {
   align-items: center;
-  background-color: #1e1e1e;
+  background-color: #ffffff;
+  color: #000000;
   display: flex;
   font-size: calc(1rem + 2vmin);
-  height: 8vh;
-  justify-content: space-around;
+  height: 6vh;
+  justify-content: center;
+  margin: auto;
+  opacity: 0.5;
+  position: relative;
+  width: 80%;
+}
+
+nav.outer {
+  background-color: transparent;
+  display: block;
   position: fixed;
-  width: 100vw;
-  z-index: 100;
+  width: 100%;
+  z-index: 50;
 }
 
 .navbar-links {
-  color: #f8f8f8;
+  color: #000000;
   display: flex;
+  font-size: calc(1rem + 1vmin);
   gap: 4vw;
+  justify-content: center;
   text-decoration: none;
 }
 
-.navbar-title {
-  color: #f8f8f8;
-  text-decoration: none;
+/* Mobile Adjustments */
+@media (max-width: 900px) {
+
 }
