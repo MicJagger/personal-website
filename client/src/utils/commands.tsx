@@ -10,12 +10,31 @@ export const about: string[] = [
 
 export const about_reachme: string[] = [
 "link-unstyle white", "You can reach out to me using my ",
-"white innerHTML", "<a class=\"white\" href=\"/#contact\">contacts</a>",
+"white innerHTML", "<a class=\"white bolden\" href=\"/#contact\">contacts</a>",
 "link-unstyle white", ".\n"
 ];
 
+export const contacts_verywide: string[] = [
+"innerHTML", "<a class=\"link-unstyle white\" href=\"https://github.com/MicJagger\">         #############         </a>   ", "innerHTML", "<a class=\"link-unstyle linkedin\" href=\"https://www.linkedin.com/in/michael-jagiello/\">+++++++++++++++++++++++++++++++</a>\n",
+"innerHTML", "<a class=\"link-unstyle white\" href=\"https://github.com/MicJagger\">      ###################      </a>   ", "innerHTML", "<a class=\"link-unstyle linkedin\" href=\"https://www.linkedin.com/in/michael-jagiello/\">+++++++++++++++++++++++++++++++</a>\n",
+"innerHTML", "<a class=\"link-unstyle white\" href=\"https://github.com/MicJagger\">    #######################    </a>   ", "innerHTML", "<a class=\"link-unstyle linkedin\" href=\"https://www.linkedin.com/in/michael-jagiello/\">+++++=  -++++++++++++++++++++++</a>\n",
+"innerHTML", "<a class=\"link-unstyle white\" href=\"https://github.com/MicJagger\">   ##########################  </a>   ", "innerHTML", "<a class=\"link-unstyle linkedin\" href=\"https://www.linkedin.com/in/michael-jagiello/\">++++      +++++++++++++++++++++</a>\n",
+"innerHTML", "<a class=\"link-unstyle white\" href=\"https://github.com/MicJagger\">  ######  ###########  ####### </a>   ", "innerHTML", "<a class=\"link-unstyle linkedin\" href=\"https://www.linkedin.com/in/michael-jagiello/\">++++:     +++++++++++++++++++++</a>\n",
+"innerHTML", "<a class=\"link-unstyle white\" href=\"https://github.com/MicJagger\"> #######               ####### </a>   ", "innerHTML", "<a class=\"link-unstyle linkedin\" href=\"https://www.linkedin.com/in/michael-jagiello/\">+++++====++++++++++++++++++++++</a>\n",
+"innerHTML", "<a class=\"link-unstyle white\" href=\"https://github.com/MicJagger\">#######                 #######</a>   ", "innerHTML", "<a class=\"link-unstyle linkedin\" href=\"https://www.linkedin.com/in/michael-jagiello/\">++++=    -++-   :=:     -++++++</a>\n",
+"innerHTML", "<a class=\"link-unstyle white\" href=\"https://github.com/MicJagger\">######                   ######</a>   ", "innerHTML", "<a class=\"link-unstyle linkedin\" href=\"https://www.linkedin.com/in/michael-jagiello/\">++++=     ++              =++++</a>\n",
+"innerHTML", "<a class=\"link-unstyle white\" href=\"https://github.com/MicJagger\">######                   ######</a>   ", "innerHTML", "<a class=\"link-unstyle linkedin\" href=\"https://www.linkedin.com/in/michael-jagiello/\">++++=     ++              .++++</a>\n",
+"innerHTML", "<a class=\"link-unstyle white\" href=\"https://github.com/MicJagger\">######                   ######</a>   ", "innerHTML", "<a class=\"link-unstyle linkedin\" href=\"https://www.linkedin.com/in/michael-jagiello/\">++++=     ++     -+++-     ++++</a>\n",
+"innerHTML", "<a class=\"link-unstyle white\" href=\"https://github.com/MicJagger\">#######                 #######</a>   ", "innerHTML", "<a class=\"link-unstyle linkedin\" href=\"https://www.linkedin.com/in/michael-jagiello/\">++++=     ++     =+++=     ++++</a>\n",
+"innerHTML", "<a class=\"link-unstyle white\" href=\"https://github.com/MicJagger\">#########             #########</a>   ", "innerHTML", "<a class=\"link-unstyle linkedin\" href=\"https://www.linkedin.com/in/michael-jagiello/\">++++=     ++     =+++=     ++++</a>\n",
+"innerHTML", "<a class=\"link-unstyle white\" href=\"https://github.com/MicJagger\"> ############     ############ </a>   ", "innerHTML", "<a class=\"link-unstyle linkedin\" href=\"https://www.linkedin.com/in/michael-jagiello/\">++++=     ++     =+++=     ++++</a>\n",
+"innerHTML", "<a class=\"link-unstyle white\" href=\"https://github.com/MicJagger\">  ####   ####     ###########  </a>   ", "innerHTML", "<a class=\"link-unstyle linkedin\" href=\"https://www.linkedin.com/in/michael-jagiello/\">++++=     ++     =+++=     ++++</a>\n",
+"innerHTML", "<a class=\"link-unstyle white\" href=\"https://github.com/MicJagger\">   #####           #########   </a>   ", "innerHTML", "<a class=\"link-unstyle linkedin\" href=\"https://www.linkedin.com/in/michael-jagiello/\">++++=    :++:   .=++++    .++++</a>\n",
+"innerHTML", "<a class=\"link-unstyle white\" href=\"https://github.com/MicJagger\">     #######       #######     </a>   ", "innerHTML", "<a class=\"link-unstyle linkedin\" href=\"https://www.linkedin.com/in/michael-jagiello/\">+++++++++++++++++++++++++++++++</a>\n",
+"innerHTML", "<a class=\"link-unstyle white\" href=\"https://github.com/MicJagger\">       #####       #####       </a>   ", "innerHTML", "<a class=\"link-unstyle linkedin\" href=\"https://www.linkedin.com/in/michael-jagiello/\">+++++++++++++++++++++++++++++++</a>\n"
+]
+
 export const contact_github: string[] = [ 
-"link-unstyle white", "GitHub\n",
 "link-unstyle white",
 "         #############         \n" +
 "      ###################      \n" +
@@ -30,14 +49,13 @@ export const contact_github: string[] = [
 "#######                 #######\n" +
 "#########             #########\n" +
 " ############     ############ \n" +
-"  ###########     ###########  \n" +
-"   ######          #########   \n" +
+"  ####   ####     ###########  \n" +
+"   #####           #########   \n" +
 "     #######       #######     \n" +
 "       #####       #####       \n"
 ];
 
 export const contact_linkedin: string[] = [ 
-"link-unstyle linkedin", "LinkedIn\n",
 "link-unstyle linkedin",
 "+++++++++++++++++++++++++++++++\n" +
 "+++++++++++++++++++++++++++++++\n" +
@@ -170,7 +188,7 @@ export const project_bingo_simulator: string[] = [
 ];
 
 export const project_bingo_simulator_title: string[] = [ 
-"white font-large", "Bingo Simulator"
+"white font-large bolden", "Bingo Simulator"
 ];
 
 export const project_localpro_connect: string[] = [ 
@@ -182,7 +200,7 @@ export const project_localpro_connect: string[] = [
 ];
 
 export const project_localpro_connect_title: string[] = [ 
-"white font-large", "LocalPro Connect"
+"white font-large bolden", "LocalPro Connect"
 ];
 
 export const project_personal_website: string[] = [ 
@@ -195,7 +213,7 @@ export const project_personal_website: string[] = [
 ];
 
 export const project_personal_website_title: string[] = [ 
-"white font-large", "Personal Website"
+"white font-large bolden", "Personal Website"
 ];
 
 export const project_pwm_generator: string[] = [ 
@@ -207,7 +225,7 @@ export const project_pwm_generator: string[] = [
 ];
 
 export const project_pwm_generator_title: string[] = [ 
-"white font-large", "PWM Generator"
+"white font-large bolden", "PWM Generator"
 ];
 
 // Back to normal

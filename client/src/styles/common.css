@@ -32,23 +32,8 @@ html {
   scroll-behavior: smooth;
 }
 
-img {
-  display: flex;
-  max-height: 100%;
-  max-width: 100%;
-}
-
 .margin-0 {
   margin: 0px;
-}
-
-.reset-size {
-  height: auto;
-  max-height: auto;
-  max-width: auto;
-  min-height: auto;
-  min-width: auto;
-  width: auto;
 }
 
 .rounded {
@@ -70,10 +55,4 @@ img {
 .width-full {
   display: flex;
   width: 100%;
-}
-
-.wrap-pieces {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
 }
