@@ -55,7 +55,7 @@ const HomePage = () => {
         }
         
         await sleep(1000);
-        await terminal0.artificialInput("init", 3);
+        await terminal0.artificialInput("fetch", 2);
         await sleep(1500);
         var scrollPoint = document.getElementById("about");
         scrollPoint?.scrollIntoView({
@@ -67,10 +67,18 @@ const HomePage = () => {
         terminal3.artificialInput("projects", 5);
         terminal4.artificialInput("contact", 5);
         terminal5.artificialInput("copyright", 5);
-        terminal0.enableUserInput();
+        //terminal0.enableUserInput();
     }
 
     loadWatcher();
+
+    const clickOn0 = (mouseEvent: MouseEvent<HTMLSpanElement>) => {
+        terminal0.enableUserInput();
+    }
+
+    const clickOff0 = (mouseEvent: MouseEvent) => {
+        terminal0.disableUserInput();
+    }
 
     return (
         <>
@@ -81,16 +89,18 @@ const HomePage = () => {
                 <section id="main" className="terminal-main shadow">
                     <div className="terminal font-default font-medium margin-0">
 
-                        <div id="output0" className="font-default font-medium"></div>
+                        <div id="output0" className="font-default font-medium" onClick={clickOff0}></div>
 
-                        <span id="newline0" className="">&gt;&nbsp;
-                            <span id="input0" className="input font-default"></span><b id="c0" className="cursor font-medium"></b>
+                        <span id="newline0" className="width-full" onClick={clickOn0}>&gt;&nbsp;
+                            <span id="input0" className="input font-default"></span><b id="c0" className="cursor font-medium" />
                         </span>
 
                     </div>
                 </section>
 
-                <div className="spacer"></div>
+                <section id="everthingelse" onClick={clickOff0}>
+
+                <div className="spacer" />
 
                 <section id="about" className="segment-outer"><div className="bounded shadow">
                     <div className="terminal-label">About</div>
@@ -105,7 +115,7 @@ const HomePage = () => {
                     </div>
                 </div></section>
 
-                <div className="spacer"></div>
+                <div className="spacer" />
 
                 <section id="experience" className="segment-outer"><div className="bounded shadow">
                     <div className="terminal-label">Experience</div>
@@ -120,7 +130,7 @@ const HomePage = () => {
                     </div>
                 </div></section>
 
-                <div className="spacer"></div>
+                <div className="spacer" />
 
                 <section id="projects" className="segment-outer"><div className="bounded shadow">
                     <div className="terminal-label">Projects</div>
@@ -135,7 +145,7 @@ const HomePage = () => {
                     </div>
                 </div></section>
 
-                <div className="spacer"></div>
+                <div className="spacer" />
 
                 <section id="contact" className="segment-outer"><div className="bounded shadow">
                     <div className="terminal-label">Contact</div>
@@ -150,7 +160,7 @@ const HomePage = () => {
                     </div>
                 </div></section>
 
-                <div className="spacer"></div>
+                <div className="spacer" />
 
                 <section id="footer" className="segment-outer">
                     <div className="terminal font-default font-medium margin-0 shadow">
@@ -162,6 +172,8 @@ const HomePage = () => {
                         </span>
 
                     </div>
+                </section>
+
                 </section>
 
             </section>

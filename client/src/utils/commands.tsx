@@ -4,13 +4,13 @@
 
 export const about: string[] = [
 "", "\n",
-"", "Hey, I'm Michael! I'm a Software Engineer that enjoys making cool stuff, and learning something new every day.\n\n" +
+"", "Hey, I'm Michael! I'm a Software Engineer and computer nerd that enjoys making cool stuff, and learning something new every day.\n\n" +
 "I am always looking to improve my skills and to gain more experience in anything computing.\n\n"
 ];
 
 export const about_reachme: string[] = [
-"link-unstyle white", "You can reach out to me ",
-"white", "here",
+"link-unstyle white", "You can reach out to me using my ",
+"white innerHTML", "<a class=\"white\" href=\"/#contact\">contacts</a>",
 "link-unstyle white", ".\n"
 ];
 
@@ -82,12 +82,13 @@ export const education: string[] = [
 export const experience: string[] = [
 "font-title", "Experience\n",
 "", "\n",
-"font-large", "Computing Specialist\n",
+"font-large", "Computing Category Specialist\n",
 "font-large", "Best Buy\n",
 "", 
 " - Exceeded store targets to be number one in sales for FY24Q2 with over $300k in revenue\n" +
 " - Prioritize top-tier customer support to consistently hold above a 90% satisfaction rate\n" +
-" - Foster a cohesive team atmosphere and train coworkers in computing competency\n",
+" - Foster a cohesive team atmosphere and train coworkers in computing competency\n" +
+" - Research and develop resources to maintain team repository of detailed product information\n",
 "", "\n",
 "", "I am looking to expand this list :)\n"
 ];
@@ -105,7 +106,7 @@ export const help: string[] = [
 "", "    clears the terminal\n",
 "green", "  font FONT_CHOICE\n",
 "", "    changes the normal font size\n",
-"", "    small, medium (def), large\n",
+"", "    small, medium (default), large\n",
 "green", "  about\n",
 "", "    tells you stuff about me\n",
 "green", "  experience\n",
@@ -158,26 +159,60 @@ export const namelast: string[] = [ "link-unstyle white font-small",
 "                |___/                       \n"
 ];
 
-var projects: string[] = [
-"", ""
+// projects 
+
+export const project_bingo_simulator: string[] = [ 
+"",
+"Bingo Simulator is a C++ algorithm and analyzer to run bingo cards in parallel, and track their moves to complete.\n" +
+"It is a personal project of mine, and I had to rethink how I could do random card generation, as well as deal with multithreading.\n" +
+"The program has been optimized to be able to run billions of cards per hour, and as such can give highly-precise distributions of card wins.\n" +
+"\n"
 ];
 
-export const project_bingo_simulator: string[] = [
-"",
-" "
+export const project_bingo_simulator_title: string[] = [ 
+"white font-large", "Bingo Simulator"
 ];
 
-export const project_localpro_connect: string[] = [
+export const project_localpro_connect: string[] = [ 
 "",
-" "
+"This is a website made by a team of mine, using the MERN stack in JavaScript, and ran using Docker.\n" +
+"It features business and customer accounts, where businesses can post their available services and the locations they're available.\n" +
+"From here, customers can view these listings, book services, and leave reviews and ratings on the businesses.\n" +
+"\n"
+];
+
+export const project_localpro_connect_title: string[] = [ 
+"white font-large", "LocalPro Connect"
+];
+
+export const project_personal_website: string[] = [ 
+"",
+"This website right here!\n" +
+"Built using TypeScript, and of course HTML and CSS.\n" +
+"These terminals are fully functional, and are not just animations.\n" +
+"The terminal at the top of the page is usable, and once clicked you can run any of these commands and more.\n" +
+"\n"
+];
+
+export const project_personal_website_title: string[] = [ 
+"white font-large", "Personal Website"
 ];
 
 export const project_pwm_generator: string[] = [ 
 "",
-" "
+"This is a C++ library for ArduinoIDE-compatible microcontrollers to output custom PWM signals.\n" +
+"Most microcontrollers will have an adequate number of PWM outputs to achieve analog voltage, but some may not have enough for a project's needs.\n" +
+"This library allows the microcontroller to take non-PWM pins and pulse it within tight constraints to get precise, consistent voltages.\n" +
+"\n"
 ];
 
-export const skills: string[] = [
+export const project_pwm_generator_title: string[] = [ 
+"white font-large", "PWM Generator"
+];
+
+// Back to normal
+
+export const skills: string[] = [ 
 "font-title", "Skills\n",
 "", "\n", "",
 " - C && C++\n" +
@@ -194,7 +229,7 @@ export const skills: string[] = [
 " - Server Hosting\n"
 ];
 
-export const skills_verywide: string[] = [
+export const skills_verywide: string[] = [ 
 "font-title", "Skills\n",
 "", 
 " - C && C++                      - Java                        \n" +
@@ -205,7 +240,7 @@ export const skills_verywide: string[] = [
 " - 3D Design in AutoCAD          - Server Hosting              \n"
 ];
 
-export const splash: string[] = [
+export const splash: string[] = [ 
 "blue-brighter", 
 "                .---. \n" +
 "                |   | \n" +
@@ -222,16 +257,8 @@ export const splash: string[] = [
 "            |____.'   \n"
 ];
 
-export const try_help: string[] = [
+export const try_help: string[] = [ 
 "", "Try \"",
 "green", "help",
 "", "\" for a list of commands.\n"
 ];
-
-// build
-
-// build projects
-for (let i = 0; i < project_pwm_generator.length; i++) {
-    projects.push(project_pwm_generator[i]);
-}
-export { projects };

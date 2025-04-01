@@ -67,6 +67,11 @@ img {
   color: #ffffff;
 }
 
+.width-full {
+  display: flex;
+  width: 100%;
+}
+
 .wrap-pieces {
   display: flex;
   flex-wrap: wrap;

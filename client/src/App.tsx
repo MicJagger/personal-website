@@ -11,7 +11,7 @@ function App() {
     const wide = window.matchMedia("(min-width: 800px) and (max-width: 1199px)");
     const verywide = window.matchMedia("(min-width: 1200px)");
     verythin.addEventListener("change", function() { // verythin is not completely implemented
-        if (thin.matches) {
+        if (verythin.matches) {
             localStorage.setItem("format", "verythin");
         }
     });

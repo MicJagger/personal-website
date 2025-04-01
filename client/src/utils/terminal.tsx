@@ -90,7 +90,7 @@ export class Terminal {
     }
 
     // dont chain these without async management
-    public async addToOutput(message: string[], sectionClass?: string, charsPerSecond?: number, bypassLimits?: boolean, hyperlink?: string, newpage?: boolean) {
+    public async addToOutput(message: string[], sectionClass?: string, charsPerSecond?: number, hyperlink?: string, newpage?: boolean) {
 
         var keyboardWasEnabled: boolean = this.allowUserInput;
         if (keyboardWasEnabled) {
@@ -118,10 +118,17 @@ export class Terminal {
         output!.appendChild(newSection);
 
         var newPiece: HTMLSpanElement;
+        let innerHTML: boolean;
         for (let i = 0; i < message.length; i++) {
             
             // even indices indicate styling
             if (i % 2 === 0) {
+                if (message[i].includes("innerHTML")) {
+                    innerHTML = true;
+                }
+                else {
+                    innerHTML = false;
+                }
                 if (hyperlink !== null && hyperlink !== undefined) {
                     newPiece = document.createElement("a");
                     newPiece.setAttribute("href", hyperlink);
@@ -131,7 +138,7 @@ export class Terminal {
                     }
                 }
                 else {
-                    newPiece = document.createElement("p");
+                    newPiece = document.createElement("span");
                 }
 
                 newSection!.appendChild(newPiece);
@@ -139,37 +146,42 @@ export class Terminal {
             }
             // odd indices indicate message
             else {
-                for (let j = 0; j < message[i].length; j++) {
-                    if (message[i].charAt(j) === "\n") {
-                        // gather details to begin new line with same details
-                        newPiece!.textContent += " ";
-                        
-                        const newLine = document.createElement("p");
-                        newSection!.appendChild(newLine);
-
-                        if (j < message[i].length - 1) {
-                            if (hyperlink !== null && hyperlink !== undefined) {
-                                newPiece = document.createElement("a");
-                                newPiece.setAttribute("href", hyperlink);
-                                if (newpage === null || newpage === undefined || newpage === true) {
-                                    newPiece.setAttribute("target", "_blank");
-                                    newPiece.setAttribute("rel", "noopener noreferrer");
+                if (innerHTML! === true) { // inner html form
+                    newPiece!.innerHTML = message[i];
+                }
+                else { // standard
+                    for (let j = 0; j < message[i].length; j++) {
+                        if (message[i].charAt(j) === "\n") {
+                            // gather details to begin new line with same details
+                            newPiece!.textContent += " ";
+                            
+                            const newLine = document.createElement("p");
+                            newSection!.appendChild(newLine);
+    
+                            if (j < message[i].length - 1) {
+                                if (hyperlink !== null && hyperlink !== undefined) {
+                                    newPiece = document.createElement("a");
+                                    newPiece.setAttribute("href", hyperlink);
+                                    if (newpage === null || newpage === undefined || newpage === true) {
+                                        newPiece.setAttribute("target", "_blank");
+                                        newPiece.setAttribute("rel", "noopener noreferrer");
+                                    }
                                 }
+                                else {
+                                    newPiece = document.createElement("span");
+                                }
+    
+                                newSection!.appendChild(newPiece);
+                                newPiece.className = message[i - 1];
                             }
-                            else {
-                                newPiece = document.createElement("p");
-                            }
-
-                            newSection!.appendChild(newPiece);
-                            newPiece.className = message[i - 1];
                         }
-                    }
-                    else {
-                        newPiece!.textContent += message[i].charAt(j);
-                    }
-                    // if space, skip sleep cycle (to tab faster)
-                    if (message[i].charAt(j) !== " ") {
-                        await this.sleepFor(sleepTime);
+                        else {
+                            newPiece!.textContent += message[i].charAt(j);
+                        }
+                        // if space, skip sleep cycle (to tab faster)
+                        if (message[i].charAt(j) !== " ") {
+                            await this.sleepFor(sleepTime);
+                        }
                     }
                 }
             }
@@ -261,7 +273,7 @@ export class Terminal {
 
     // do commands
 
-    public async executeCommand(text: string, charSpeed?: number) {
+    public async executeCommand(text: string) {
         var args: string[] = [];
 
         // separate into arguments
@@ -311,14 +323,14 @@ export class Terminal {
                     break;
                 }
                 if (localStorage.getItem("format") === "verywide") { // name is horizontal
-                    await this.addToOutput(cmd.name, "font-small centered-column", 64, undefined, "/#contact", false);
+                    await this.addToOutput(cmd.name, "font-small centered-column", 64, "/#contact", false);
                 }
                 else { // name is vertical
-                    await this.addToOutput(cmd.namefirst, "centered-column", 64, undefined, "/#contact", false);
-                    await this.addToOutput(cmd.namelast, "centered-column", 64, undefined, "/#contact", false);
+                    await this.addToOutput(cmd.namefirst, "centered-column", 64, "/#contact", false);
+                    await this.addToOutput(cmd.namelast, "centered-column", 64, "/#contact", false);
                 }
                 await this.addToOutput(cmd.about, undefined, 64);
-                await this.addToOutput(cmd.about_reachme, undefined, 32, undefined, "/#contact", false);
+                await this.addToOutput(cmd.about_reachme, undefined, 32);
                 break;
             }
             case "contact": {
@@ -328,8 +340,8 @@ export class Terminal {
                     await this.addToOutput(msg);
                     break;
                 }
-                await this.addToOutput(cmd.contact_github, undefined, 192, undefined, "https://github.com/MicJagger");
-                await this.addToOutput(cmd.contact_linkedin, undefined, 192, undefined, "https://www.linkedin.com/in/michael-jagiello/");
+                await this.addToOutput(cmd.contact_github, undefined, 192, "https://github.com/MicJagger");
+                await this.addToOutput(cmd.contact_linkedin, undefined, 192, "https://www.linkedin.com/in/michael-jagiello/");
                 break;
             }
             case "copyright": {
@@ -351,7 +363,7 @@ export class Terminal {
                 }
                 await this.addToOutput(cmd.education);
                 await this.addToOutput(["", " "]);
-                await this.addToOutput(cmd.experience);
+                await this.addToOutput(cmd.experience, undefined, 64);
                 await this.addToOutput(["", " "]);
                 if (localStorage.getItem("format") === "verywide") {
                     await this.addToOutput(cmd.skills_verywide);
@@ -359,6 +371,20 @@ export class Terminal {
                 else {
                     await this.addToOutput(cmd.skills);
                 }
+                break;
+            }
+            case "fetch": {
+                if (args.length !== 1) {
+                    let msg: string[] = cmd.expected_arg_count;
+                    msg.push("1\n");
+                    this.addToOutput(msg);
+                    break;
+                }
+                await this.addToOutput(cmd.splash, undefined, 128);
+                await this.addToOutput(["", "running in... a web browser\n"], undefined, 48);
+                await this.addToOutput(["", "windowWidth=" + window.innerWidth.toString() + "\n"], undefined, 48);
+                await this.addToOutput(["", "windowHeight=" + window.innerHeight.toString() + "\n"], undefined, 48);
+                await this.addToOutput(["", "loading...\n"], undefined, 48);
                 break;
             }
             case "font": {
@@ -385,20 +411,6 @@ export class Terminal {
                 }
                 break;
             }
-            case "init": {
-                if (args.length !== 1) {
-                    let msg: string[] = cmd.expected_arg_count;
-                    msg.push("1\n");
-                    this.addToOutput(msg);
-                    break;
-                }
-                await this.addToOutput(cmd.splash, undefined, 64);
-                await this.addToOutput(["", "running in... a web browser\n"], undefined, 32);
-                await this.addToOutput(["", "windowWidth=" + window.innerWidth.toString() + "\n"], undefined, 32);
-                await this.addToOutput(["", "windowHeight=" + window.innerHeight.toString() + "\n"], undefined, 32);
-                await this.addToOutput(["", "loading...\n"], undefined, 32);
-                break;
-            }
             case "projects": {
                 if (args.length !== 1) {
                     let msg: string[] = cmd.expected_arg_count;
@@ -406,7 +418,14 @@ export class Terminal {
                     await this.addToOutput(msg);
                     break;
                 }
-                await this.addToOutput(cmd.projects);
+                await this.addToOutput(cmd.project_personal_website_title, undefined, undefined, "https://github.com/MicJagger/personal-website");
+                await this.addToOutput(cmd.project_personal_website, undefined, 64);
+                await this.addToOutput(cmd.project_localpro_connect_title, undefined, undefined, "https://github.com/MicJagger/CENPROJECT");
+                await this.addToOutput(cmd.project_localpro_connect, undefined, 64);
+                await this.addToOutput(cmd.project_bingo_simulator_title, undefined, undefined, "https://github.com/MicJagger/bingo-simulator");
+                await this.addToOutput(cmd.project_bingo_simulator, undefined, 64);
+                await this.addToOutput(cmd.project_pwm_generator_title, undefined, undefined, "https://github.com/MicJagger/pwm-generator");
+                await this.addToOutput(cmd.project_pwm_generator, undefined, 64);
                 break;
             }
             default: {
