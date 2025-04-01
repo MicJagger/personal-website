@@ -54,19 +54,19 @@ const HomePage = () => {
             localStorage.setItem("format", "verywide");
         }
         
-        await sleep(1000);
-        await terminal0.artificialInput("fetch", 2);
+        await sleep(500);
+        await terminal0.artificialInput("fetch", 3);
         await sleep(1500);
         var scrollPoint = document.getElementById("about");
         scrollPoint?.scrollIntoView({
             block: "start"
         })
-        await sleep(1500);
-        terminal1.artificialInput("about", 5);
-        terminal2.artificialInput("experience", 5);
-        terminal3.artificialInput("projects", 5);
-        terminal4.artificialInput("contact", 5);
-        terminal5.artificialInput("copyright", 5);
+        await sleep(1000);
+        terminal1.artificialInput("about", 6);
+        terminal2.artificialInput("experience", 8);
+        terminal3.artificialInput("projects", 8);
+        terminal4.artificialInput("contact", 6);
+        terminal5.artificialInput("copyright", 8);
         //terminal0.enableUserInput();
     }
 

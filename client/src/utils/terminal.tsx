@@ -335,14 +335,14 @@ export class Terminal {
                     break;
                 }
                 if (localStorage.getItem("format") === "verywide") { // name is horizontal
-                    await this.addToOutput(cmd.name, "font-small centered-column", 64, undefined, false);
+                    await this.addToOutput(cmd.name, "font-small centered-column", 128, undefined, false);
                 }
                 else { // name is vertical
-                    await this.addToOutput(cmd.namefirst, "centered-column", 64, undefined, false);
-                    await this.addToOutput(cmd.namelast, "centered-column", 64, undefined, false);
+                    await this.addToOutput(cmd.namefirst, "centered-column", 128, undefined, false);
+                    await this.addToOutput(cmd.namelast, "centered-column", 128, undefined, false);
                 }
-                await this.addToOutput(cmd.about, undefined, 64);
-                await this.addToOutput(cmd.about_reachme, undefined, 32);
+                await this.addToOutput(cmd.about, undefined, 96);
+                await this.addToOutput(cmd.about_reachme, undefined, 96);
                 break;
             }
             case "contact": {
@@ -354,12 +354,12 @@ export class Terminal {
                 }
                 // puts them side by side on verywide, but prints it out line by line instead of char by char
                 if (localStorage.getItem("format") === "verywide") {
-                    await this.addToOutput(cmd.contacts_verywide, undefined, 4);
+                    await this.addToOutput(cmd.contacts_verywide, undefined, 8);
                 }
                 else {
                     // optionally, changed this to be "centered-column"
-                    await this.addToOutput(cmd.contact_github, undefined, 192, "https://github.com/MicJagger");
-                    await this.addToOutput(cmd.contact_linkedin, undefined, 192, "https://www.linkedin.com/in/michael-jagiello/");
+                    await this.addToOutput(cmd.contact_github, undefined, 256, "https://github.com/MicJagger");
+                    await this.addToOutput(cmd.contact_linkedin, undefined, 256, "https://www.linkedin.com/in/michael-jagiello/");
                 }
                 break;
             }
@@ -380,15 +380,15 @@ export class Terminal {
                     await this.addToOutput(msg);
                     break;
                 }
-                await this.addToOutput(cmd.education);
+                await this.addToOutput(cmd.education, undefined, 96);
                 await this.addToOutput(["", " "]);
-                await this.addToOutput(cmd.experience, undefined, 64);
+                await this.addToOutput(cmd.experience, undefined, 128);
                 await this.addToOutput(["", " "]);
                 if (localStorage.getItem("format") === "verywide") {
-                    await this.addToOutput(cmd.skills_verywide);
+                    await this.addToOutput(cmd.skills_verywide, undefined, 96);
                 }
                 else {
-                    await this.addToOutput(cmd.skills);
+                    await this.addToOutput(cmd.skills, undefined, 96);
                 }
                 break;
             }
@@ -399,11 +399,11 @@ export class Terminal {
                     this.addToOutput(msg);
                     break;
                 }
-                await this.addToOutput(cmd.splash, undefined, 128);
-                await this.addToOutput(["", "running in... a web browser\n"], undefined, 48);
-                await this.addToOutput(["", "windowWidth=" + window.innerWidth.toString() + "\n"], undefined, 48);
-                await this.addToOutput(["", "windowHeight=" + window.innerHeight.toString() + "\n"], undefined, 48);
-                await this.addToOutput(["", "loading...\n"], undefined, 48);
+                await this.addToOutput(cmd.splash, undefined, 160);
+                await this.addToOutput(["", "running in... a web browser\n"], undefined, 64);
+                await this.addToOutput(["", "windowWidth=" + window.innerWidth.toString() + "\n"], undefined, 64);
+                await this.addToOutput(["", "windowHeight=" + window.innerHeight.toString() + "\n"], undefined, 64);
+                await this.addToOutput(["", "loading...\n"], undefined, 64);
                 break;
             }
             case "font": {
@@ -437,14 +437,14 @@ export class Terminal {
                     await this.addToOutput(msg);
                     break;
                 }
-                await this.addToOutput(cmd.project_personal_website_title, undefined, undefined, "https://github.com/MicJagger/personal-website");
-                await this.addToOutput(cmd.project_personal_website, undefined, 80);
-                await this.addToOutput(cmd.project_localpro_connect_title, undefined, undefined, "https://github.com/MicJagger/CENPROJECT");
-                await this.addToOutput(cmd.project_localpro_connect, undefined, 80);
-                await this.addToOutput(cmd.project_bingo_simulator_title, undefined, undefined, "https://github.com/MicJagger/bingo-simulator");
-                await this.addToOutput(cmd.project_bingo_simulator, undefined, 80);
-                await this.addToOutput(cmd.project_pwm_generator_title, undefined, undefined, "https://github.com/MicJagger/pwm-generator");
-                await this.addToOutput(cmd.project_pwm_generator, undefined, 80);
+                await this.addToOutput(cmd.project_personal_website_title, undefined, 96, "https://github.com/MicJagger/personal-website");
+                await this.addToOutput(cmd.project_personal_website, undefined, 192);
+                await this.addToOutput(cmd.project_localpro_connect_title, undefined, 96, "https://github.com/MicJagger/CENPROJECT");
+                await this.addToOutput(cmd.project_localpro_connect, undefined, 192);
+                await this.addToOutput(cmd.project_bingo_simulator_title, undefined, 96, "https://github.com/MicJagger/bingo-simulator");
+                await this.addToOutput(cmd.project_bingo_simulator, undefined, 192);
+                await this.addToOutput(cmd.project_pwm_generator_title, undefined, 96, "https://github.com/MicJagger/pwm-generator");
+                await this.addToOutput(cmd.project_pwm_generator, undefined, 192);
                 break;
             }
             default: {
