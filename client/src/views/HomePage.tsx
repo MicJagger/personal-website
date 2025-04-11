@@ -55,7 +55,7 @@ const HomePage = () => {
         }
         
         await sleep(500);
-        await terminal0.artificialInput("fetch", 3);
+        await terminal0.artificialInput("fetch", 4);
         await sleep(1500);
         var scrollPoint = document.getElementById("about");
         scrollPoint?.scrollIntoView({
@@ -67,7 +67,6 @@ const HomePage = () => {
         terminal3.artificialInput("projects", 8);
         terminal4.artificialInput("contact", 6);
         terminal5.artificialInput("copyright", 8);
-        //terminal0.enableUserInput();
     }
 
     loadWatcher();

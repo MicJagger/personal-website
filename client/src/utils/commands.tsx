@@ -93,7 +93,7 @@ export const education: string[] = [
 "font-title", "Education\n",
 "", "\n",
 "", " - University of Florida - \n",
-"", " - Bachelor's of Science - \n",
+"", " -  Bachelor of Science  - \n",
 "", " -   Computer Science    - \n",
 ];
 
@@ -191,6 +191,18 @@ export const project_bingo_simulator_title: string[] = [
 "white font-large bolden", "Bingo Simulator"
 ];
 
+export const project_letter_boxed_solver: string[] = [
+"",
+"This is a website built on Typescript and Rust, utilizing WebAssembly.\n" +
+"It solved the Letter Boxed game from The New York Times quickly on the client device using the compiled Rust code.\n" +
+"I also included some moderate optimizations of my own, which allows even mobile devices to solve a higher order algorithm in milliseconds.\n" + 
+"\n"
+];
+
+export const project_letter_boxed_solver_title: string[] = [
+"white font-large bolden", "Letter Boxed Solver"
+];
+
 export const project_localpro_connect: string[] = [ 
 "",
 "This is a website made by a team of mine, using the MERN stack in JavaScript, and ran using Docker.\n" +
@@ -205,8 +217,7 @@ export const project_localpro_connect_title: string[] = [
 
 export const project_personal_website: string[] = [ 
 "",
-"This website right here!\n" +
-"Built using TypeScript, and of course HTML and CSS.\n" +
+"This website right here! It's built using TypeScript, and of course HTML and CSS.\n" +
 "These terminals are fully functional, and are not just animations.\n" +
 "The terminal at the top of the page is usable, and once the input line is clicked you can run any of these commands and more.\n" +
 "\n"
@@ -234,12 +245,14 @@ export const skills: string[] = [
 "font-title", "Skills\n",
 "", "\n", "",
 " - C && C++\n" +
+" - Rust\n" +
+" - TypeScript && JavaScript\n" +
+" - HTML && CSS\n" +
 " - Java\n" +
-" - TypeScript && JavaScript    \n" +
-" - HTML && CS\n" +
 " - Python\n" +
 " - C# && Unity\n" +
 " - SQL\n" +
+" - React.js\n" +
 " - Git\n" +
 " - Docker\n" +
 " - Linux CLI\n" +
@@ -250,10 +263,11 @@ export const skills: string[] = [
 export const skills_verywide: string[] = [ 
 "font-title", "Skills\n",
 "", 
-" - C && C++                      - Java                        \n" +
+" - C && C++                      - Rust                        \n" +
 " - TypeScript && JavaScript      - HTML && CSS                 \n" +
-" - Python                        - C# && Unity                 \n" +
-" - SQL                           - Git                         \n" +
+" - Java                          - Python                      \n" +
+" - C# && Unity                   - SQL                         \n" +
+" - React.js                      - Git                         \n" +
 " - Docker                        - Linux CLI                   \n" +
 " - 3D Design in AutoCAD          - Server Hosting              \n"
 ];

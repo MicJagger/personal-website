@@ -100,6 +100,7 @@ export class Terminal {
     }
 
     // dont chain these without async management
+    // defaults to 96 characters per second
     public async addToOutput(message: string[], sectionClass?: string, charsPerSecond?: number, hyperlink?: string, newpage?: boolean) {
 
         var keyboardWasEnabled: boolean = this.allowUserInput;
@@ -109,7 +110,7 @@ export class Terminal {
 
         var charSpeed: number;
         if (charsPerSecond === null || charsPerSecond === undefined) {
-            charSpeed = 50;
+            charSpeed = 96;
         }
         else {
             charSpeed = charsPerSecond;
@@ -158,6 +159,7 @@ export class Terminal {
             else {
                 if (innerHTML! === true) { // inner html form
                     newPiece!.innerHTML = message[i];
+                    this.checkAndScrollTerminal0();
                     await this.sleepFor(sleepTime);
                 }
                 else { // standard
@@ -184,6 +186,7 @@ export class Terminal {
     
                                 newSection!.appendChild(newPiece);
                                 newPiece.className = message[i - 1];
+                                this.checkAndScrollTerminal0();
                             }
                         }
                         else {
@@ -239,13 +242,12 @@ export class Terminal {
         }
 
         var charSpeed: number;
-        if (charsPerSecond !== null) {
+        if (charsPerSecond === null || charsPerSecond === undefined) {
             charSpeed = 3;
         }
         else {
             charSpeed = charsPerSecond;
         }
-
         for (let i = 0; i < text.length; i++) {
             this.addToInput(text[i]);
             await charSpeedLimiter(charSpeed);
@@ -438,13 +440,15 @@ export class Terminal {
                     break;
                 }
                 await this.addToOutput(cmd.project_personal_website_title, undefined, 96, "https://github.com/MicJagger/personal-website");
-                await this.addToOutput(cmd.project_personal_website, undefined, 192);
+                await this.addToOutput(cmd.project_personal_website, undefined, 256);
+                await this.addToOutput(cmd.project_letter_boxed_solver_title, undefined, 96, "https://github.com/MicJagger/letter-boxed-solver");
+                await this.addToOutput(cmd.project_letter_boxed_solver, undefined, 256);
                 await this.addToOutput(cmd.project_localpro_connect_title, undefined, 96, "https://github.com/MicJagger/CENPROJECT");
-                await this.addToOutput(cmd.project_localpro_connect, undefined, 192);
-                await this.addToOutput(cmd.project_bingo_simulator_title, undefined, 96, "https://github.com/MicJagger/bingo-simulator");
-                await this.addToOutput(cmd.project_bingo_simulator, undefined, 192);
+                await this.addToOutput(cmd.project_localpro_connect, undefined, 256);
                 await this.addToOutput(cmd.project_pwm_generator_title, undefined, 96, "https://github.com/MicJagger/pwm-generator");
-                await this.addToOutput(cmd.project_pwm_generator, undefined, 192);
+                await this.addToOutput(cmd.project_pwm_generator, undefined, 256);
+                await this.addToOutput(cmd.project_bingo_simulator_title, undefined, 96, "https://github.com/MicJagger/bingo-simulator");
+                await this.addToOutput(cmd.project_bingo_simulator, undefined, 256);
                 break;
             }
             default: {
