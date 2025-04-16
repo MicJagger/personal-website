@@ -14,25 +14,36 @@ export const about_reachme: string[] = [
 "link-unstyle white", ".\n"
 ];
 
+const styleGit = " class=\"link-unstyle white\"";
+const styleLinkedIn = " class=\"link-unstyle linkedin\"";
+
+const linkGit = " href=\"https://github.com/MicJagger\"";
+const linkLinkedIn = " href=\"https://www.linkedin.com/in/michael-jagiello/\""
+
+const openNewTab: string = " target=\"_blank\" rel=\"noopener noreferrer\"";
+
+const gitStuff = styleGit + linkGit + openNewTab;
+const linkedinStuff = styleLinkedIn + linkLinkedIn + openNewTab;
+
 export const contacts_verywide: string[] = [
-"innerHTML", "<a class=\"link-unstyle white\" href=\"https://github.com/MicJagger\">         #############         </a>   ", "innerHTML", "<a class=\"link-unstyle linkedin\" href=\"https://www.linkedin.com/in/michael-jagiello/\">+++++++++++++++++++++++++++++++</a>\n",
-"innerHTML", "<a class=\"link-unstyle white\" href=\"https://github.com/MicJagger\">      ###################      </a>   ", "innerHTML", "<a class=\"link-unstyle linkedin\" href=\"https://www.linkedin.com/in/michael-jagiello/\">+++++++++++++++++++++++++++++++</a>\n",
-"innerHTML", "<a class=\"link-unstyle white\" href=\"https://github.com/MicJagger\">    #######################    </a>   ", "innerHTML", "<a class=\"link-unstyle linkedin\" href=\"https://www.linkedin.com/in/michael-jagiello/\">+++++=  -++++++++++++++++++++++</a>\n",
-"innerHTML", "<a class=\"link-unstyle white\" href=\"https://github.com/MicJagger\">   ##########################  </a>   ", "innerHTML", "<a class=\"link-unstyle linkedin\" href=\"https://www.linkedin.com/in/michael-jagiello/\">++++      +++++++++++++++++++++</a>\n",
-"innerHTML", "<a class=\"link-unstyle white\" href=\"https://github.com/MicJagger\">  ######  ###########  ####### </a>   ", "innerHTML", "<a class=\"link-unstyle linkedin\" href=\"https://www.linkedin.com/in/michael-jagiello/\">++++:     +++++++++++++++++++++</a>\n",
-"innerHTML", "<a class=\"link-unstyle white\" href=\"https://github.com/MicJagger\"> #######               ####### </a>   ", "innerHTML", "<a class=\"link-unstyle linkedin\" href=\"https://www.linkedin.com/in/michael-jagiello/\">+++++====++++++++++++++++++++++</a>\n",
-"innerHTML", "<a class=\"link-unstyle white\" href=\"https://github.com/MicJagger\">#######                 #######</a>   ", "innerHTML", "<a class=\"link-unstyle linkedin\" href=\"https://www.linkedin.com/in/michael-jagiello/\">++++=    -++-   :=:     -++++++</a>\n",
-"innerHTML", "<a class=\"link-unstyle white\" href=\"https://github.com/MicJagger\">######                   ######</a>   ", "innerHTML", "<a class=\"link-unstyle linkedin\" href=\"https://www.linkedin.com/in/michael-jagiello/\">++++=     ++              =++++</a>\n",
-"innerHTML", "<a class=\"link-unstyle white\" href=\"https://github.com/MicJagger\">######                   ######</a>   ", "innerHTML", "<a class=\"link-unstyle linkedin\" href=\"https://www.linkedin.com/in/michael-jagiello/\">++++=     ++              .++++</a>\n",
-"innerHTML", "<a class=\"link-unstyle white\" href=\"https://github.com/MicJagger\">######                   ######</a>   ", "innerHTML", "<a class=\"link-unstyle linkedin\" href=\"https://www.linkedin.com/in/michael-jagiello/\">++++=     ++     -+++-     ++++</a>\n",
-"innerHTML", "<a class=\"link-unstyle white\" href=\"https://github.com/MicJagger\">#######                 #######</a>   ", "innerHTML", "<a class=\"link-unstyle linkedin\" href=\"https://www.linkedin.com/in/michael-jagiello/\">++++=     ++     =+++=     ++++</a>\n",
-"innerHTML", "<a class=\"link-unstyle white\" href=\"https://github.com/MicJagger\">#########             #########</a>   ", "innerHTML", "<a class=\"link-unstyle linkedin\" href=\"https://www.linkedin.com/in/michael-jagiello/\">++++=     ++     =+++=     ++++</a>\n",
-"innerHTML", "<a class=\"link-unstyle white\" href=\"https://github.com/MicJagger\"> ############     ############ </a>   ", "innerHTML", "<a class=\"link-unstyle linkedin\" href=\"https://www.linkedin.com/in/michael-jagiello/\">++++=     ++     =+++=     ++++</a>\n",
-"innerHTML", "<a class=\"link-unstyle white\" href=\"https://github.com/MicJagger\">  ####   ####     ###########  </a>   ", "innerHTML", "<a class=\"link-unstyle linkedin\" href=\"https://www.linkedin.com/in/michael-jagiello/\">++++=     ++     =+++=     ++++</a>\n",
-"innerHTML", "<a class=\"link-unstyle white\" href=\"https://github.com/MicJagger\">   #####           #########   </a>   ", "innerHTML", "<a class=\"link-unstyle linkedin\" href=\"https://www.linkedin.com/in/michael-jagiello/\">++++=    :++:   .=++++    .++++</a>\n",
-"innerHTML", "<a class=\"link-unstyle white\" href=\"https://github.com/MicJagger\">     #######       #######     </a>   ", "innerHTML", "<a class=\"link-unstyle linkedin\" href=\"https://www.linkedin.com/in/michael-jagiello/\">+++++++++++++++++++++++++++++++</a>\n",
-"innerHTML", "<a class=\"link-unstyle white\" href=\"https://github.com/MicJagger\">       #####       #####       </a>   ", "innerHTML", "<a class=\"link-unstyle linkedin\" href=\"https://www.linkedin.com/in/michael-jagiello/\">+++++++++++++++++++++++++++++++</a>\n"
-]
+"innerHTML", "<a " + gitStuff + ">         #############         </a>   ", "innerHTML", "<a " + linkedinStuff + ">+++++++++++++++++++++++++++++++</a>\n",
+"innerHTML", "<a " + gitStuff + ">      ###################      </a>   ", "innerHTML", "<a " + linkedinStuff + ">+++++++++++++++++++++++++++++++</a>\n",
+"innerHTML", "<a " + gitStuff + ">    #######################    </a>   ", "innerHTML", "<a " + linkedinStuff + ">+++++=  -++++++++++++++++++++++</a>\n",
+"innerHTML", "<a " + gitStuff + ">   ##########################  </a>   ", "innerHTML", "<a " + linkedinStuff + ">++++      +++++++++++++++++++++</a>\n",
+"innerHTML", "<a " + gitStuff + ">  ######  ###########  ####### </a>   ", "innerHTML", "<a " + linkedinStuff + ">++++:     +++++++++++++++++++++</a>\n",
+"innerHTML", "<a " + gitStuff + "> #######               ####### </a>   ", "innerHTML", "<a " + linkedinStuff + ">+++++====++++++++++++++++++++++</a>\n",
+"innerHTML", "<a " + gitStuff + ">#######                 #######</a>   ", "innerHTML", "<a " + linkedinStuff + ">++++=    -++-   :=:     -++++++</a>\n",
+"innerHTML", "<a " + gitStuff + ">######                   ######</a>   ", "innerHTML", "<a " + linkedinStuff + ">++++=     ++              =++++</a>\n",
+"innerHTML", "<a " + gitStuff + ">######                   ######</a>   ", "innerHTML", "<a " + linkedinStuff + ">++++=     ++              .++++</a>\n",
+"innerHTML", "<a " + gitStuff + ">######                   ######</a>   ", "innerHTML", "<a " + linkedinStuff + ">++++=     ++     -+++-     ++++</a>\n",
+"innerHTML", "<a " + gitStuff + ">#######                 #######</a>   ", "innerHTML", "<a " + linkedinStuff + ">++++=     ++     =+++=     ++++</a>\n",
+"innerHTML", "<a " + gitStuff + ">#########             #########</a>   ", "innerHTML", "<a " + linkedinStuff + ">++++=     ++     =+++=     ++++</a>\n",
+"innerHTML", "<a " + gitStuff + "> ############     ############ </a>   ", "innerHTML", "<a " + linkedinStuff + ">++++=     ++     =+++=     ++++</a>\n",
+"innerHTML", "<a " + gitStuff + ">  ####   ####     ###########  </a>   ", "innerHTML", "<a " + linkedinStuff + ">++++=     ++     =+++=     ++++</a>\n",
+"innerHTML", "<a " + gitStuff + ">   #####           #########   </a>   ", "innerHTML", "<a " + linkedinStuff + ">++++=    :++:   .=++++    .++++</a>\n",
+"innerHTML", "<a " + gitStuff + ">     #######       #######     </a>   ", "innerHTML", "<a " + linkedinStuff + ">+++++++++++++++++++++++++++++++</a>\n",
+"innerHTML", "<a " + gitStuff + ">       #####       #####       </a>   ", "innerHTML", "<a " + linkedinStuff + ">+++++++++++++++++++++++++++++++</a>\n"
+];
 
 export const contact_github: string[] = [ 
 "link-unstyle white",
