@@ -273,38 +273,36 @@ export const project_pwm_generator_title: string[] = [
 
 // Back to normal
 
-export const skills: string[] = [ 
+export const skills: string[] = [
 "font-title", "Skills\n",
-"", "\n", "",
-" - C && C++\n" +
-" - Rust\n" +
-" - TypeScript && JavaScript\n" +
+"", "\n",
+"font-large", "Frontend Web Design\n", "", 
+" - TypeScript && Javascript\n" +
 " - HTML && CSS\n" +
-" - Java\n" +
-" - Python\n" +
-" - C# && Unity\n" +
+" - Rust in WebAssembly\n" +
+" - React.js\n" +
+" - Vue.js\n",
+"", "\n",
+"font-large", "Backend and Server Engineering\n", "", 
 " - Golang\n" +
+" - C && C++ Socketing\n" +
 " - SQL\n" +
-" - React.js && Vue.js\n" +
-" - OpenGL\n" +
+" - Server Hosting\n" +
+" - Cloud Deployment\n",
+"", "\n",
+"font-large", "Application and Game Development\n", "",
+" - Quasar + Electron.js (Vue.js)\n" +
+" - Cross-platform C++\n" +
+" - 3D OpenGL + SDL\n" +
+" - C# && Unity\n",
+"", "\n",
+"font-large", "Everything Else\n", "",
+" - Python\n" +
+" - Embedded Programming\n" +
 " - Git\n" +
-" - Docker\n" +
 " - Linux CLI\n" +
-" - 3D Design in AutoCAD\n" + 
-" - Server Hosting\n"
-];
-
-export const skills_verywide: string[] = [ 
-"font-title", "Skills\n",
-"", 
-" - C && C++                      - Rust                        \n" +
-" - TypeScript && JavaScript      - HTML && CSS                 \n" +
-" - Java                          - Python                      \n" +
-" - C# && Unity                   - Golang                      \n" +
-" - SQL                           - React.js && Vue.js          \n" +
-" - OpenGL                        - Git                         \n" + 
-" - Docker                        - Linux CLI                   \n" +
-" - 3D Design in AutoCAD          - Server Hosting              \n"
+" - Docker\n" +
+" - 3D Design in AutoCAD\n"
 ];
 
 export const splash: string[] = [ 

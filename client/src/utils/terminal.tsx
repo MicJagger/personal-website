@@ -382,16 +382,11 @@ export class Terminal {
                     await this.addToOutput(msg);
                     break;
                 }
-                await this.addToOutput(cmd.education, undefined, 96);
+                await this.addToOutput(cmd.education, undefined, 128);
                 await this.addToOutput(["", " "]);
                 await this.addToOutput(cmd.experience, undefined, 128);
                 await this.addToOutput(["", " "]);
-                if (localStorage.getItem("format") === "verywide") {
-                    await this.addToOutput(cmd.skills_verywide, undefined, 96);
-                }
-                else {
-                    await this.addToOutput(cmd.skills, undefined, 96);
-                }
+                await this.addToOutput(cmd.skills, undefined, 128);
                 break;
             }
             case "fetch": {
