@@ -440,15 +440,25 @@ export class Terminal {
                     break;
                 }
                 await this.addToOutput(cmd.project_personal_website_title, undefined, 96, "https://github.com/MicJagger/personal-website");
-                await this.addToOutput(cmd.project_personal_website, undefined, 256);
+                await this.addToOutput(cmd.project_personal_website, undefined, 384);
+
                 await this.addToOutput(cmd.project_letter_boxed_solver_title, undefined, 96, "https://github.com/MicJagger/letter-boxed-solver");
-                await this.addToOutput(cmd.project_letter_boxed_solver, undefined, 256);
+                await this.addToOutput(cmd.project_letter_boxed_solver, undefined, 384);
+                await this.addToOutput(cmd.project_letter_boxed_solver_link, undefined, 384, "https://letterboxedsolver.micjagger.net");
+                await this.addToOutput(cmd.newline, undefined, 384);
+
                 await this.addToOutput(cmd.project_localpro_connect_title, undefined, 96, "https://github.com/MicJagger/CENPROJECT");
-                await this.addToOutput(cmd.project_localpro_connect, undefined, 256);
+                await this.addToOutput(cmd.project_localpro_connect, undefined, 384);
+
+                await this.addToOutput(cmd.project_gravity_simulator_title, undefined, 96, "https://github.com/MicJagger/gravity-simulator");
+                await this.addToOutput(cmd.project_gravity_simulator, undefined, 384);
+
                 await this.addToOutput(cmd.project_pwm_generator_title, undefined, 96, "https://github.com/MicJagger/pwm-generator");
-                await this.addToOutput(cmd.project_pwm_generator, undefined, 256);
+                await this.addToOutput(cmd.project_pwm_generator, undefined, 384);
+
                 await this.addToOutput(cmd.project_bingo_simulator_title, undefined, 96, "https://github.com/MicJagger/bingo-simulator");
-                await this.addToOutput(cmd.project_bingo_simulator, undefined, 256);
+                await this.addToOutput(cmd.project_bingo_simulator, undefined, 384);
+
                 break;
             }
             default: {

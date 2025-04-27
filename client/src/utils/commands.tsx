@@ -188,6 +188,10 @@ export const namelast: string[] = [ "link-unstyle white font-small",
 "                |___/                       \n"
 ];
 
+export const newline: string[] = [
+"", "\n"
+];
+
 // projects 
 
 export const project_bingo_simulator: string[] = [ 
@@ -202,12 +206,29 @@ export const project_bingo_simulator_title: string[] = [
 "white font-large bolden", "Bingo Simulator"
 ];
 
+export const project_gravity_simulator: string[] = [
+"",
+"This is a desktop application written in C++ that simulates real-time gravity, and displays the 3D objects using OpenGL.\n" +
+"The simulator is built on multiple threads to handle the physics, input, and rendering separately.\n" +
+"It draws the spheres and supports custom colors as well as simple directional lighting from the star of the system.\n" +
+"It currently has a preset that spawns our solar system, which accurately and stably calculates the motions of the bodies.\n" +
+"\n"
+];
+
+export const project_gravity_simulator_title: string[] = [
+"white font-large bolden", "Gravity Simulator"
+];
+
 export const project_letter_boxed_solver: string[] = [
 "",
 "This is a website built on Typescript and Rust, utilizing WebAssembly.\n" +
 "It solved the Letter Boxed game from The New York Times quickly on the client device using the compiled Rust code.\n" +
-"I also included some moderate optimizations of my own, which allows even mobile devices to solve a higher order algorithm in milliseconds.\n" + 
-"\n"
+"I also included some moderate optimizations of my own, which allows even mobile devices to solve a higher order algorithm in milliseconds.\n"
+];
+
+export const project_letter_boxed_solver_link: string[] = [
+"white bolden",
+"Live Link"
 ];
 
 export const project_letter_boxed_solver_title: string[] = [
@@ -262,8 +283,10 @@ export const skills: string[] = [
 " - Java\n" +
 " - Python\n" +
 " - C# && Unity\n" +
+" - Golang\n" +
 " - SQL\n" +
-" - React.js\n" +
+" - React.js && Vue.js\n" +
+" - OpenGL\n" +
 " - Git\n" +
 " - Docker\n" +
 " - Linux CLI\n" +
@@ -277,8 +300,9 @@ export const skills_verywide: string[] = [
 " - C && C++                      - Rust                        \n" +
 " - TypeScript && JavaScript      - HTML && CSS                 \n" +
 " - Java                          - Python                      \n" +
-" - C# && Unity                   - SQL                         \n" +
-" - React.js                      - Git                         \n" +
+" - C# && Unity                   - Golang                      \n" +
+" - SQL                           - React.js && Vue.js          \n" +
+" - OpenGL                        - Git                         \n" + 
 " - Docker                        - Linux CLI                   \n" +
 " - 3D Design in AutoCAD          - Server Hosting              \n"
 ];
