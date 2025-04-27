@@ -296,13 +296,14 @@ export const skills: string[] = [
 " - 3D OpenGL + SDL\n" +
 " - C# && Unity\n",
 "", "\n",
-"font-large", "Everything Else\n", "",
+"font-large", "Some More Stuff\n", "",
 " - Python\n" +
 " - Embedded Programming\n" +
 " - Git\n" +
 " - Linux CLI\n" +
 " - Docker\n" +
-" - 3D Design in AutoCAD\n"
+" - 3D Design in AutoCAD\n" +
+" - Learning new things\n"
 ];
 
 export const splash: string[] = [ 
