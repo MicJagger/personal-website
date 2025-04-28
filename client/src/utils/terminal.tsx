@@ -456,6 +456,28 @@ export class Terminal {
 
                 break;
             }
+            case "sudo": {
+                if (args.length !== 4) {
+                    let msg: string[] = cmd.expected_arg_count;
+                    msg.push("4\n");
+                    await this.addToOutput(msg);
+                    break;
+                }
+                if (args[1] === "apt" && args[2] === "install" && args[3] === "cowsay") {
+                    await this.addToOutput(cmd.cowsay_good, undefined, 96);
+                    await this.sleepFor(1000);
+                    await this.addToOutput(cmd.cowsay, undefined, 1024); // probably technically isn't this fast
+                }
+                else if (args[1] === "apt" && args[2] === "remove" && args[3] === "cowsay") {
+                    await this.addToOutput(cmd.cowsay_mistake, undefined, 128);
+                    await this.sleepFor(1000);
+                    await this.addToOutput(cmd.cowsay, undefined, 1024);
+                }
+                else {
+                    await this.addToOutput(cmd.invalid);
+                }
+                break;
+            }
             default: {
                 await this.addToOutput(cmd.invalid);
                 break;
