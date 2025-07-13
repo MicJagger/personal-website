@@ -4,7 +4,7 @@
 
 export const about: string[] = [
 "", "\n",
-"", "Hey, I'm Michael! I'm a Software Engineer and computer nerd that enjoys making cool stuff, and learning something new every day.\n\n" +
+"", "Hey, I'm Michael! I'm a software engineer and computer nerd that enjoys making cool stuff, and learning something new every day.\n\n" +
 "I am always looking to improve my skills and to gain more experience in anything computing.\n\n"
 ];
 
@@ -161,15 +161,19 @@ export const education: string[] = [
 export const experience: string[] = [
 "font-title", "Experience\n",
 "", "\n",
+"font-large", "Programmer Analyst I\n",
+"font-large", "Fidelity Information Services (FIS)\n",
+"", " - description inbound\n",
+"", "\n",
 "font-large", "Computing Category Specialist\n",
 "font-large", "Best Buy\n",
-"", 
+"",
+" - Assisted customers in computing purchasing decisions while simultaneously pursuing store goals\n" +
 " - Exceeded store targets to be number one in sales for FY24Q2 with over $300k in revenue\n" +
 " - Prioritized top-tier customer support to consistently hold above a 90% satisfaction rate\n" +
 " - Fostered a cohesive team atmosphere and train coworkers in computing competency\n" +
 " - Researched and developed resources to maintain team repository of detailed product information\n",
-"", "\n",
-"", "I am looking to expand this list :)\n"
+"", "\n"
 ];
 
 export const font_list: string[] = [
@@ -343,7 +347,7 @@ export const skills: string[] = [
 "font-large", "Application and Game Development\n", "",
 " - Quasar + Electron.js (Vue.js)\n" +
 " - Cross-platform C++\n" +
-" - 3D OpenGL + SDL\n" +
+" - 3D OpenGL + SDL2 (C++)\n" +
 " - C# && Unity\n",
 "", "\n",
 "font-large", "Some More Stuff\n", "",
